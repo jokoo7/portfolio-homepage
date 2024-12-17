@@ -1,9 +1,9 @@
-import HomeHeading from "@/modules/home/heading";
+import Heading from "@/modules/home/heading";
 
 export default function Home() {
   return (
     <>
-      <HomeHeading />
+      <Heading />
     </>
   );
 }

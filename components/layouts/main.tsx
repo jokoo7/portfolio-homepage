@@ -9,7 +9,7 @@ const MainLayout = ({
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className="wrapper">{children}</main>
     </>
   );
 };
