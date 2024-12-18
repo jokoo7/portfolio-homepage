@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainLayout from "@/components/layouts/main";
 import AnimatePresenceLayout from "@/components/animate-presence";
+import { gabarito } from "@/lib/fonts";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body className={`${gabarito.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MainLayout>
             <AnimatePresenceLayout>{children}</AnimatePresenceLayout>

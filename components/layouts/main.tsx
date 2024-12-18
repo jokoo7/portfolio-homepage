@@ -9,7 +9,7 @@ const MainLayout = ({
   return (
     <>
       <Navbar />
-      <main className="wrapper">{children}</main>
+      <main className="wrapper mb-[1000px]">{children}</main>
     </>
   );
 };

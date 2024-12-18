@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type IProps = {
   children: React.ReactNode;
   delay?: number;
-  className: string;
+  className?: string;
 } & HTMLMotionProps<"section">; // Menggabungkan dengan properti HTML untuk elemen section
 
 const variants = {
