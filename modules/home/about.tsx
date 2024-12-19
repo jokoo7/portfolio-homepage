@@ -5,9 +5,9 @@ import React from "react";
 
 const About = () => {
   return (
-    <Section delay={0.3}>
-      <h3 className="mt-2 scroll-m-20 text-2xl font-semibold tracking-tight">About</h3>
-      <p className="leading-6 [&:not(:first-child)]:mt-2 hyphens-auto text-justify">
+    <Section delay={0.3} className="mt-10">
+      <h3 className="mt-4 scroll-m-20 text-5xl font-semibold tracking-tight font-display">About</h3>
+      <p className="leading-7 text-lg [&:not(:first-child)]:mt-2 hyphens-auto text-justify text-muted-foreground">
         Takuya is a freelance and a full-stack developer based in Osaka with a passion for building
         digital services/stuff he wants. He has a knack for all things launching products, from planning
         and designing all the way to solving real-life problems with code. When not online, he loves

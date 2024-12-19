@@ -15,9 +15,9 @@ const Logo = () => {
   return (
     <Link href="/" className="flex gap-0.5 items-center group">
       <svg
-        width="20"
-        height="20"
-        className="w-5 inline-block transition-transform group-hover:rotate-[20deg] -mt-1"
+        width="27"
+        height="27"
+        className="w-fit inline-block transition-transform group-hover:rotate-[20deg] mr-1"
         viewBox="0 0 40 40"
         fill="currentColor"
       >
@@ -34,9 +34,7 @@ const Logo = () => {
         <path d="M32.114,11.35C32.114,11.35 29.196,13.155 30.864,16.589C32.532,20.023 34.677,19.25 36,18.588C37.322,17.927 38.02,14.778 35.931,12.665C33.843,10.551 32.114,11.35 32.114,11.35Z"></path>
         <path d="M19.212,17.136C19.212,17.136 12.651,19.306 12.84,25.174C12.888,28.022 10.569,28.548 11.073,32.567C11.727,34.322 12.649,36.92 15.89,36.85C19.131,36.781 19.603,34.354 23.377,32.97C27.151,31.586 31.009,33.828 33.802,31.213C36.596,28.598 35.188,24.468 31.876,22.731C28.564,20.995 24.793,16.327 19.212,17.136Z"></path>
       </svg>
-      <span className="scroll-m-20 text-[22px] leading-[30px] font-bold tracking-tight -mt-0.5">
-        Joko Santoso
-      </span>
+      <span className="scroll-m-20 text-2xl font-bold tracking-tight -mt-1">joko santoso</span>
     </Link>
   );
 };

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
@@ -60,6 +61,10 @@ export default {
       },
       screens: {
         xs: "420px",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        display: ["var(--font-calsans)"],
       },
     },
   },

@@ -8,7 +8,7 @@ type IProps = {
 
 const NavLink = ({ href, children }: IProps) => {
   return (
-    <Link href={href} className="hover:underline hover:text-secondary-foreground">
+    <Link href={href} className="text-sm hover:underline hover:text-primary">
       {children}
     </Link>
   );

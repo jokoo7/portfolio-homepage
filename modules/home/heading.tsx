@@ -1,40 +1,25 @@
 "use client";
 
 import Section from "@/components/section";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 const HomeHeading = () => {
   return (
     <>
       <Section>
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl mb-2">
-          Hello, I&apos;m an{" "}
-          <mark className="text-transparent bg-clip-text bg-gradient-to-r to-primary from-violet-700">
-            Fullstack Developer
-          </mark>{" "}
-          based in Indonesia!
-        </h1>
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between">
-          <div className="border-t-2 border-t-muted-foreground">
-            <h2 className="pt-2 scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-              Joko Santoso
-            </h2>
-            <p className="text-muted-foreground">
-              Fullstack Engineer (Bridging User Interfaces & Backend Systems)
-            </p>
-          </div>
-          <div className="flex-shrink-0 bg-transparent border-1 w-full sm:w-fit flex justify-center">
-            <div className="border-2 border-white rounded-full">
-              <Image
-                src="/images/me.jpg"
-                width={100}
-                height={100}
-                alt="profile"
-                className="rounded-full"
-              />
-            </div>
-          </div>
+        <div className="w-full space-y-2">
+          <h1 className="text-center scroll-m-20 max-w-lg mx-auto text-4xl font-extrabold tracking-tight lg:text-6xl font-display">
+            Hello, my name is Joko Santoso
+          </h1>
+          <p className="text-muted-foreground max-w-xl mx-auto text-2xl text-center mb-8">
+            I&apos;m an Fullstack Developer based in Pekanbaru, Indonesia!
+          </p>
+        </div>
+        <div className="w-full flex justify-center items-center mt-4">
+          <Button variant="link" className="text-base hover:no-underline">
+            About me →
+          </Button>
         </div>
       </Section>
     </>

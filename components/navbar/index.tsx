@@ -12,8 +12,8 @@ const NavLinks = [
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/20 dark:bg-transparent backdrop-blur-xl border-b border-primary/10 z-50">
-      <div className="wrapper">
+    <nav className="fixed top-0 left-0 right-0 bg-white/20 dark:bg-transparent backdrop-blur-xl z-50 px-8">
+      <div className="wrapper mt-4 border rounded-3xl bg-background">
         <div className="flex h-14 items-center justify-between">
           <div className="flex gap-10 items-center">
             <div className="flex-shrink-0">
@@ -27,7 +27,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 space-x-2">
             <Button variant="ghost" size="icon">
               <Link target="_blank" rel="noreferrer" href="https://github.com/jokosann">
                 <svg viewBox="0 0 438.549 438.549" className="h-4 w-4">

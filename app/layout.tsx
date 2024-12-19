@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainLayout from "@/components/layouts/main";
 import AnimatePresenceLayout from "@/components/animate-presence";
-import { gabarito } from "@/lib/fonts";
+import { calSans, inter } from "@/lib/fonts";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${gabarito.className} antialiased`}>
+    <html lang="en" suppressHydrationWarning className={[inter.variable, calSans.variable].join(" ")}>
+      <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <MainLayout>
             <AnimatePresenceLayout>{children}</AnimatePresenceLayout>

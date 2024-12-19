@@ -38,7 +38,7 @@ const Timeline: React.FC = () => {
     <div className="relative w-fit overflow-hidden space-y-4">
       {timelineData.map((item, index) => (
         <div key={index} className="gap-4 flex items-start">
-          <div className="w-16 text-left text-muted-foreground">
+          <div className="w-16 text-left">
             <div className="font-bold">{item.year}</div>
           </div>
           <div className="relative flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-primary border-4 border-white">
