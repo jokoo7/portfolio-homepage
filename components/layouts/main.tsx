@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
 import React from "react";
+import Navbar from "@/components/navbar";
 
 const MainLayout = ({
   children,
@@ -9,7 +9,7 @@ const MainLayout = ({
   return (
     <>
       <Navbar />
-      <main className="mb-[1000px] mt-32">{children}</main>
+      <main className="wrapper mt-10 mb-[1000px]">{children}</main>
     </>
   );
 };

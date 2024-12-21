@@ -1,9 +1,9 @@
-import HomeHeading from "@/modules/home/heading";
+import HomePage from "@/components/pages/home";
 
 export default function Home() {
   return (
     <>
-      <HomeHeading />
+      <HomePage />
     </>
   );
 }

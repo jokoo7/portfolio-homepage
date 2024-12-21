@@ -3,12 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainLayout from "@/components/layouts/main";
 import AnimatePresenceLayout from "@/components/animate-presence";
-import { calSans, inter } from "@/lib/fonts";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+import { dmSans, inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,9 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={[inter.variable, calSans.variable].join(" ")}>
+    <html lang="en" suppressHydrationWarning className={[dmSans.variable, inter.variable].join(" ")}>
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <MainLayout>
             <AnimatePresenceLayout>{children}</AnimatePresenceLayout>
           </MainLayout>

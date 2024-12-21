@@ -1,12 +1,13 @@
-import { Gabarito, Rubik, Public_Sans, Inter } from "next/font/google";
-import LocalFont from "next/font/local";
+import { DM_Sans, Inter } from "next/font/google";
 
-export const gabarito = Gabarito({ subsets: ["latin"] });
-export const rubik = Rubik({ subsets: ["latin"] });
-export const publicSans = Public_Sans({ subsets: ["latin"] });
-export const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+export const dmSans = DM_Sans({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+});
 
-export const calSans = LocalFont({
-  src: "../public/fonts/CalSans-SemiBold.ttf",
-  variable: "--font-calsans",
+export const inter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
