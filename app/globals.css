@@ -28,7 +28,7 @@
 
 @layer components {
   .wrapper {
-    max-width: 1024px;
+    max-width: 896px;
     margin-inline: auto;
     padding-inline: 2rem;
   }

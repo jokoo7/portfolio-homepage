@@ -1,27 +1,21 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import Section from "../section";
-import { useEffect, useState } from "react";
-import { MoveRight } from "lucide-react";
 import Link from "next/link";
+import ArrowSvg from "../svg/arrow";
 
 const HomePage = () => {
-  const { theme } = useTheme();
-  const [fillColor, setFillColor] = useState("#181717"); // Warna default
-
-  useEffect(() => {
-    setFillColor(theme === "light" ? "#181717" : "#f3f3f3");
-  }, [theme]);
-
   return (
     <>
       <header>
-        <div className="w-full flex flex-col xs:flex-row justify-between gap-4 xs:gap-0 py-20">
-          <Section className="text-5xl sm:text-6xl font-semibold w-full">
+        <div className="w-full flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 py-20">
+          <Section className="text-5xl sm:text-5xl font-medium w-full">
             <span>Hello, I&apos;m Joko Santoso.</span>
           </Section>
-          <Section delay={0.2} className="text-lg sm:text-2xl text-main-gray w-full text-start xs:mt-20">
+          <Section
+            delay={0.2}
+            className="text-lg sm:text-xl text-main-gray w-full xs:w-[80%] sm:w-full text-start sm:mt-14"
+          >
             <span>
               I&apos;m an Fullstack Developer (Bridging User Interfaces & Backend Systems) who is
               currently based in Pekanbaru, Indonesia.
@@ -29,32 +23,73 @@ const HomePage = () => {
           </Section>
         </div>
         <Section delay={0.4}>
-          <svg
-            width="34"
-            height="39"
-            viewBox="0 0 34 39"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer"
-          >
-            <path
-              d="M19.2187 0.181824H14.4176V29.2102L3.31959 18.1122L0.0326538 21.4361L16.8182 38.2216L33.6406 21.4361L30.2798 18.1122L19.2187 29.2102V0.181824Z"
-              fill={fillColor}
-            />
-          </svg>
+          <ArrowSvg w="34" h="39" className="rotate-90" />
         </Section>
       </header>
       <Section delay={0.5} className="mt-20">
         <div className="relative w-full">
           <div className="xs:w-[80%]">
             <h1 className="text-3xl font-medium mb-3 xs:mb-2">Projects</h1>
-            <span className="text-main-gray">
+            <span className="text-main-gray text-lg block sm:w-[90%] md:w-[70%]">
               Take a look below at some of my featured work for clients from the past few years.
             </span>
           </div>
           <Link href="/projects" className="absolute top-2 right-0 flex items-center gap-1">
-            <span className="-mt-0.5">More</span> <MoveRight size={20} strokeWidth={2} />
+            <span className="-mt-0.5">More</span> <ArrowSvg w="15" h="12" />
           </Link>
+        </div>
+      </Section>
+      <Section delay={0.5} className="mt-8">
+        <div className="w-full font-inter py-10 border-t border-b border-foreground flex flex-col md:flex-row gap-8 md:gap-10">
+          <div className="flex flex-col justify-between w-full md:w-[40%]">
+            <div className="">
+              <h4 className="uppercase text-base font-semibold mb-4">01 / nextnime</h4>
+              <p className="mb-4 line-clamp-3">
+                Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
+                look development.
+              </p>
+              <span className="block text-sm text-main-gray">
+                ReactJS, NextJS, TailwindCSS, Typscript
+              </span>
+            </div>
+            <Link href="/projects" className="hidden md:flex items-center gap-2 hover:underline">
+              <span className="-mt-0.5">More shots from this project</span>{" "}
+              <ArrowSvg w="15" h="12" className="-rotate-45" />
+            </Link>
+          </div>
+          <div className="w-full md:w-[60%]">
+            <div className="w-full aspect-video bg-gray-800"></div>
+            <Link href="/projects" className="flex items-center gap-2 hover:underline md:hidden mt-6">
+              <span className="-mt-0.5">More shots from this project</span>{" "}
+              <ArrowSvg w="15" h="12" className="-rotate-45" />
+            </Link>
+          </div>
+        </div>
+
+        <div className="w-full font-inter py-10 border-t border-b border-foreground flex flex-col md:flex-row gap-8 md:gap-10">
+          <div className="flex flex-col justify-between w-full md:w-[40%]">
+            <div className="">
+              <h4 className="uppercase text-base font-semibold mb-4">01 / nextnime</h4>
+              <p className="mb-4 line-clamp-3">
+                Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
+                look development.
+              </p>
+              <span className="block text-sm text-main-gray">
+                ReactJS, NextJS, TailwindCSS, Typscript
+              </span>
+            </div>
+            <Link href="/projects" className="hidden md:flex items-center gap-2 hover:underline">
+              <span className="-mt-0.5">More shots from this project</span>{" "}
+              <ArrowSvg w="15" h="12" className="-rotate-45" />
+            </Link>
+          </div>
+          <div className="w-full md:w-[60%]">
+            <div className="w-full aspect-video bg-gray-800"></div>
+            <Link href="/projects" className="flex items-center gap-2 hover:underline md:hidden mt-6">
+              <span className="-mt-0.5">More shots from this project</span>{" "}
+              <ArrowSvg w="15" h="12" className="-rotate-45" />
+            </Link>
+          </div>
         </div>
       </Section>
     </>
