@@ -19,6 +19,7 @@ export default {
           DEFAULT: "var(--secondary)",
           foreground: "var(--secondary-foreground)",
         },
+        border: "#a3a3a3",
       },
       screens: {
         xs: "512px",
@@ -29,7 +30,6 @@ export default {
       },
       keyframes: {
         scroll: {
-          // "0%": { transform: "translateX(50%)" },
           to: { transform: "translate(calc(-100% - 5rem))" },
         },
       },

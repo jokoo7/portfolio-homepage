@@ -5,22 +5,26 @@
 @layer base {
   :root {
     --background: #f3f3f3;
-    --foreground: #181717;
-    --main-gray: #606060;
+    --foreground: #0a0a0a;
+    --main-gray: #525252;
     --secondary: #2429af;
     --secondary-foreground: #2429af;
   }
 
   .dark {
-    --background: #181717;
+    --background: #0a0a0a;
     --foreground: #f3f3f3;
-    --main-gray: #606060;
+    --main-gray: #a3a3a3;
     --secondary: #2429af;
     --secondary-foreground: #2429af;
   }
 }
 
 @layer base {
+  * {
+    @apply border-border border-opacity-50;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
   }

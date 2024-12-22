@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const MainLayout = ({
   children,
@@ -9,7 +10,8 @@ const MainLayout = ({
   return (
     <>
       <Navbar />
-      <main className="mt-10 mb-[1000px]">{children}</main>
+      <main className="mt-10">{children}</main>
+      <Footer />
     </>
   );
 };
