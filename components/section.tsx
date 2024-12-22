@@ -25,7 +25,7 @@ const Section = ({ children, delay = 0, className, ...props }: IProps) => {
       variants={variants}
       transition={{ duration: 0.4, type: "easeInOut", delay }}
       style={{ position: "relative" }}
-      className={cn("", className)}
+      className={cn("wrapper", className)}
       {...props}
     >
       {children}

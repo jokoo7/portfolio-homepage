@@ -27,6 +27,16 @@ export default {
         sans: ["var(--font-dm-sans)", ...defaultTheme.fontFamily.sans],
         inter: ["var(--font-inter)"],
       },
+      keyframes: {
+        scroll: {
+          // "0%": { transform: "translateX(50%)" },
+          to: { transform: "translate(calc(-100% - 5rem))" },
+        },
+      },
+      animation: {
+        scroll:
+          "scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

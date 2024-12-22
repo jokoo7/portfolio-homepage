@@ -4,16 +4,18 @@ import { useEffect, useState } from "react";
 type IProps = {
   w: string;
   h: string;
+  current?: string;
+  swapCurrent?: string;
   className?: string;
 };
 
-const ArrowSvg = ({ w, h, className }: IProps) => {
+const ArrowSvg = ({ w, h, className, current = "#181717", swapCurrent = "#f3f3f3" }: IProps) => {
   const { theme } = useTheme();
-  const [fillColor, setFillColor] = useState("#181717");
+  const [fillColor, setFillColor] = useState(current);
 
   useEffect(() => {
-    setFillColor(theme === "light" ? "#181717" : "#f3f3f3");
-  }, [theme]);
+    setFillColor(theme === "light" ? current : swapCurrent);
+  }, [current, swapCurrent, theme]);
 
   return (
     <svg
