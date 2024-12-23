@@ -1,18 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
+  const navRef = useRef(0);
   const [toggle, setToggle] = useState(false);
+  const [navbar, setNavbar] = useState(true);
+  const [navBg, setNavBg] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const { scrollY } = window;
+          const isScrollingDown = scrollY > navRef.current;
+
+          setNavbar((prev) => {
+            const newNavbarState = !isScrollingDown || scrollY === 0;
+            return prev !== newNavbarState ? newNavbarState : prev;
+          });
+
+          setNavBg((prev) => {
+            const newNavBgState = scrollY > 0;
+            return prev !== newNavBgState ? newNavBgState : prev;
+          });
+
+          navRef.current = scrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Initial check in case the user starts on a scrolled page
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="w-full">
+    <nav
+      className={cn(
+        "w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 -translate-y-[100%]",
+        { "translate-y-0": navbar },
+        { "bg-background": navBg },
+        { "bg-transparent": !navBg }
+      )}
+    >
       <div className="wrapper flex justify-between items-center h-16">
         <div className="text-3xl font-semibold whitespace-nowrap">sann.</div>
-        <div className="flex items-center gap-8 ">
+        <div className="flex items-center gap-8">
           <div className="hidden sm:block space-x-8">
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
@@ -29,7 +74,7 @@ const Navbar = () => {
             >
               <Menu
                 strokeWidth={1.5}
-                className={` h-[1.5rem] w-[1.5rem] rotate-0 transition-all text-background  ${
+                className={`h-[1.5rem] w-[1.5rem] rotate-0 transition-all text-background ${
                   toggle ? "scale-0" : "scale-100"
                 }`}
               />

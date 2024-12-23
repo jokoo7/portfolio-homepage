@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="wrapper mt-20">
       <div className="mt-10 border-t">
-        <div className="flex flex-col sm:flex-row gap-10 sm:gap-0 py-10 items-start justify-between">
+        <div className="flex flex-col sm:flex-row gap-16 sm:gap-0 py-10 items-start justify-between">
           <div>
             <span className="text-xl block">I am thrilled to answer to</span>
             <div className="text-xl flex items-center gap-2">
@@ -36,11 +36,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="h-16 flex flex-col xs:flex-row items-center justify-between gap-4">
-        <span className="block text-secondary font-inter text-sm font-medium">
-          Joko Santoso ⏤ {new Date().getFullYear()}
-        </span>
-      </div>
+      <span className="h-12 mt-8 sm:mt-0 block text-secondary font-inter text-sm font-medium">
+        Joko Santoso ⏤ {new Date().getFullYear()}
+      </span>
     </div>
   );
 };

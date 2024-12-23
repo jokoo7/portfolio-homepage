@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <header className="max-w-4xl mx-auto">
-        <div className="w-full flex flex-col justify-between gap-4 sm:gap-0 py-6">
+        <div className="w-full flex flex-col justify-between gap-4 sm:gap-0 pb-6">
           <Section className="text-5xl xs:text-6xl sm:text-7xl font-bold w-full flex flex-col">
             <span>Websites&</span>
             <span>Branding.</span>

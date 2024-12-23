@@ -3,6 +3,7 @@
 import React from "react";
 import Section from "@/components/section";
 import Image from "next/image";
+import { CloudDownload } from "lucide-react";
 
 const AboutPage = () => {
   return (
@@ -23,9 +24,15 @@ const AboutPage = () => {
               Currently, I&apos;m a front-end web developer based in Pakanbaru, Indonesia ⏤ freelancing
               and seeking opportunities to collaborate or contribute through internships.
             </p>
+            <div className="mt-8">
+              <button className="flex items-center gap-3 text-main-gray hover:underline">
+                <CloudDownload className="animate-bounce" />
+                <span className="block -mt-1.5">Download CV</span>
+              </button>
+            </div>
           </div>
           <div className="w-full sm:w-fit flex justify-center">
-            <div className="w-52 md:w-60 aspect-[3/4] h-fit border flex-shrink-0 overflow-hidden">
+            <div className="w-full xs:w-72 sm:w-52 md:w-60 aspect-[3/4] h-fit border flex-shrink-0 overflow-hidden">
               <Image
                 src="/images/me.jpg"
                 width={100}
@@ -37,20 +44,19 @@ const AboutPage = () => {
           </div>
         </div>
       </Section>
-      <Section delay={0.4} className="my-20">
-        <div className="grid grid-cols-1 gap-y-4 xs:grid-cols-3 sm:gap-y-10 sm:gap-x-20 font-inter w-full sm:w-[80%]">
+      <Section delay={0.4} className="mt-16 mb-20">
+        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-4 sm:gap-y-10 sm:gap-x-0 font-inter w-full md:w-[90%]">
           <p className="underline whitespace-nowrap">Main Skils</p>
 
-          <p className="text-sm xs:col-span-2 text-main-gray leading-6">
+          <p className="text-sm xs:col-span-3 text-main-gray leading-6">
             Html, Css, Javascript, Typscript, PHP, React, Next.js, Tailwindcss, Redux, Node.js,
             Express.js, MongoDB, PostgreSQL, Git, Npm, Firebase, Laravel, Composer, Prisma, Jest.
           </p>
 
           <p className="underline whitespace-nowrap">Main Software</p>
 
-          <p className="text-sm xs:col-span-2 text-main-gray leading-6">VS Code, Github, Postman.</p>
+          <p className="text-sm xs:col-span-3 text-main-gray leading-6">VS Code, Github, Postman.</p>
         </div>
-        <div></div>
       </Section>
     </>
   );
