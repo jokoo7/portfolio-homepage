@@ -15,8 +15,8 @@ const Navbar = () => {
         <div className="flex items-center gap-8 ">
           <div className="hidden sm:block space-x-8">
             <Link href="/">Home</Link>
-            <Link href="/projects">Projects</Link>
             <Link href="/about">About</Link>
+            <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
           </div>
           <div className="flex items-center gap-5">

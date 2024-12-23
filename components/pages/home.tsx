@@ -241,7 +241,7 @@ const HomePage = () => {
           </button>
         </div>
       </Section> */}
-      <Section delay={0.5} className="mt-10 border-t">
+      {/* <Section delay={0.5} className="mt-10 border-t">
         <div className="flex flex-col sm:flex-row gap-10 sm:gap-0 py-10 items-start justify-between">
           <div>
             <span className="text-xl block">I am thrilled to answer to</span>
@@ -258,7 +258,7 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-      </Section>
+      </Section> */}
     </>
   );
 };
