@@ -8,7 +8,7 @@ type IProps = {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-} & HTMLMotionProps<"section">; // Menggabungkan dengan properti HTML untuk elemen section
+} & HTMLMotionProps<"section">;
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -16,7 +16,7 @@ const variants = {
   exit: { opacity: 0, x: 0, y: 20 },
 };
 
-const Section = ({ children, delay = 0, className, ...props }: IProps) => {
+const MotionSection = ({ children, delay = 0, className, ...props }: IProps) => {
   return (
     <motion.section
       initial="hidden"
@@ -33,4 +33,4 @@ const Section = ({ children, delay = 0, className, ...props }: IProps) => {
   );
 };
 
-export default Section;
+export default MotionSection;
