@@ -14,7 +14,7 @@ const CardProject = ({ title, description, tech }: IProps) => {
     <div className="w-full font-inter py-10 border-b flex flex-col md:flex-row gap-4 md:gap-10">
       <div className="order-2 sm:order-1 flex flex-col justify-between w-full md:w-[40%]">
         <div>
-          <h4 className="text-xl font-medium mb-3 font-sans">{title}</h4>
+          <h4 className="text-xl font-medium mb-3 font-sans">01 / {title}</h4>
           <p className="mb-4 line-clamp-3 text-[15px]">{description}</p>
           <span className="block text-sm text-main-gray">{tech}</span>
         </div>

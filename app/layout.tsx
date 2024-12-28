@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import MainLayout from "@/components/layouts/main";
-import AnimatePresenceLayout from "@/components/animate-presence";
 import { dmSans, inter } from "@/lib/fonts";
+import Body from "./body";
+import { HamburgerContextProvider } from "@/context/hamberger-state";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,13 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={[dmSans.variable, inter.variable].join(" ")}>
-      <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <MainLayout>
-            <AnimatePresenceLayout>{children}</AnimatePresenceLayout>
-          </MainLayout>
-        </ThemeProvider>
-      </body>
+      <HamburgerContextProvider>
+        <Body>{children}</Body>
+      </HamburgerContextProvider>
     </html>
   );
 }

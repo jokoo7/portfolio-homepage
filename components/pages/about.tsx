@@ -12,8 +12,8 @@ const AboutPage = () => {
       <section className="wrapper flex flex-col gap-10 sm:flex-row">
         <div>
           <MotionDiv>
-            <h1 className="text-4xl md:text-5xl font-semibold mb-4">
-              Hi I&apos;m Joko Santoso, frontend & website developer.
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-inter">
+              Hi I&apos;m joko Santoso, Frontend Developer.
             </h1>
           </MotionDiv>
           <MotionDiv delay={0.1}>

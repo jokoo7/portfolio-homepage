@@ -5,22 +5,18 @@ import { Hammer } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowSvg from "../svg/arrow";
+import Heading from "../heading";
 
 const ProjectsPage = () => {
   return (
     <>
       <MotionSection delay={0.5}>
-        <div className="relative w-full border-b pb-6">
-          <div className="">
-            <div className="flex gap-2 items-center mb-3">
-              <Hammer strokeWidth={2.5} size={24} />
-              <h1 className="text-2xl font-medium font-inter">Projects</h1>
-            </div>
-            <span className="text-main-gray font-inter text-base block">
-              Showcasing my passion for technology, design, and problem-solving through code.
-            </span>
-          </div>
-        </div>
+        <Heading
+          title="Projects"
+          description="Showcasing my passion for technology, design, and problem-solving through code."
+        >
+          <Hammer strokeWidth={2.5} size={24} />
+        </Heading>
         <div className="w-full font-inter py-10 border-b flex flex-col md:flex-row gap-4 md:gap-10">
           <div className="order-2 sm:order-1 flex flex-col justify-between w-full md:w-[40%]">
             <div>
