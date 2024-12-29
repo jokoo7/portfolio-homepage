@@ -5,6 +5,8 @@ import MotionSection from "@/components/motion-section";
 import Image from "next/image";
 import { CloudDownload } from "lucide-react";
 import MotionDiv from "../motion-div";
+import SkillList from "../skil-list";
+import SoftwareList from "../software-list";
 
 const AboutPage = () => {
   return (
@@ -13,7 +15,7 @@ const AboutPage = () => {
         <div>
           <MotionDiv>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 font-inter">
-              Hi I&apos;m joko Santoso, Frontend Developer.
+              Hi I&apos;m Joko Santoso, Frontend Developer.
             </h1>
           </MotionDiv>
           <MotionDiv delay={0.1}>
@@ -51,17 +53,14 @@ const AboutPage = () => {
         </MotionDiv>
       </section>
       <MotionSection delay={0.5} className="mt-16">
-        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-4 sm:gap-y-10 sm:gap-x-0 font-inter w-full md:w-[90%] pb-16 border-b">
+        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-5 sm:gap-y-10 sm:gap-x-0 font-inter w-full pb-16 border-b">
           <p className="underline whitespace-nowrap">Main Skils</p>
 
-          <p className="text-sm xs:col-span-3 text-main-gray leading-6">
-            Html, Css, Javascript, Typscript, PHP, React, Next.js, Tailwindcss, Redux, Node.js,
-            Express.js, MongoDB, PostgreSQL, Git, Npm, Firebase, Laravel, Composer, Prisma, Jest.
-          </p>
+          <SkillList />
 
           <p className="underline whitespace-nowrap">Main Software</p>
 
-          <p className="text-sm xs:col-span-3 text-main-gray leading-6">VS Code, Github, Postman.</p>
+          <SoftwareList />
         </div>
       </MotionSection>
     </>

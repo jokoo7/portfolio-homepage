@@ -12,18 +12,27 @@ const ContactPage = () => {
   return (
     <>
       <MotionSection>
-        <Heading
-          title="Contact"
-          description="Showcasing my passion for technology, design, and problem-solving through code."
-        >
+        <Heading title="Contact" description="Let`s get in touch.">
           <Send strokeWidth={2.5} size={24} />
         </Heading>
         <div className="mt-6 pb-16 border-b">
           <h1 className="mb-4">Find me on.</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <CardContact label="Github" icon={<Github w="20px" h="25px" />} />
-            <CardContact label="Tiktok" icon={<Tiktok w="20px" h="25px" />} />
-            <CardContact label="Instagram" icon={<Ig w="20px" h="25px" />} />
+            <CardContact
+              href="https://github.com/jokosannn"
+              label="Github"
+              icon={<Github w="20px" h="25px" />}
+            />
+            <CardContact
+              href="https://www.tiktok.com/@sannn1605"
+              label="Tiktok"
+              icon={<Tiktok w="20px" h="25px" />}
+            />
+            <CardContact
+              href="https://www.instagram.com/jokosannn"
+              label="Instagram"
+              icon={<Ig w="20px" h="25px" />}
+            />
           </div>
         </div>
       </MotionSection>

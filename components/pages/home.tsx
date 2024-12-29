@@ -7,6 +7,7 @@ import { Hammer, Handshake } from "lucide-react";
 import CardProject from "../card-project";
 import Heading from "../heading";
 import CardService from "../card-service";
+import { getProjects } from "@/lib/projects";
 
 const HomePage = () => {
   return (
@@ -37,30 +38,9 @@ const HomePage = () => {
           <Hammer strokeWidth={2.5} size={24} />
         </Heading>
 
-        <CardProject
-          title="Nextnime App"
-          description="Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
-                look development."
-          tech="ReactJS, NextJS, TailwindCSS, Typscript"
-        />
-        <CardProject
-          title="Nextnime App"
-          description="Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
-                look development."
-          tech="ReactJS, NextJS, TailwindCSS, Typscript"
-        />
-        <CardProject
-          title="Nextnime App"
-          description="Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
-                look development."
-          tech="ReactJS, NextJS, TailwindCSS, Typscript"
-        />
-        <CardProject
-          title="Nextnime App"
-          description="Goblin concept digital sculpture with human-like skin. Learned a lot of quick tips and
-                look development."
-          tech="ReactJS, NextJS, TailwindCSS, Typscript"
-        />
+        {getProjects.map((project, index) => (
+          <CardProject key={index} project={project} />
+        ))}
 
         <Link
           href="/projects"
