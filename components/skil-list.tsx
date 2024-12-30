@@ -1,4 +1,4 @@
-import { SKILS } from "@/lib/stacks";
+import { SKILS } from "@/constants/stacks";
 import { JSX } from "react";
 
 export default function SkillList() {

@@ -7,16 +7,16 @@ import { Hammer, Handshake } from "lucide-react";
 import CardProject from "../card-project";
 import Heading from "../heading";
 import CardService from "../card-service";
-import { getProjects } from "@/lib/projects";
+import { getProjects } from "@/constants/projects";
 
 const HomePage = () => {
   return (
     <>
       <header className="max-w-4xl mx-auto mb-10">
         <div className="w-full flex flex-col justify-between gap-4 sm:gap-0 pb-6">
-          <MotionSection className="text-5xl xs:text-6xl sm:text-7xl font-bold w-full flex flex-col">
-            <span>Websites&</span>
-            <span>Branding.</span>
+          <MotionSection className="text-5xl font-inter xs:text-6xl font-bold w-full flex flex-col">
+            <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Portfolio Website⏤</span>
+            <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Let&apos;s Connect.</span>
           </MotionSection>
           <MotionSection delay={0.2} className="text-lg xs:text-xl text-main-gray w-full sm:mt-6">
             <span className="block w-full text-start">

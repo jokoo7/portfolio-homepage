@@ -4,7 +4,7 @@ import MotionSection from "../motion-section";
 import { Hammer } from "lucide-react";
 import Heading from "../heading";
 import CardProject from "../card-project";
-import { getProjects } from "@/lib/projects";
+import { getProjects } from "@/constants/projects";
 
 const ProjectsPage = () => {
   return (

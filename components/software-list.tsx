@@ -1,4 +1,4 @@
-import { SOFTWARE } from "@/lib/stacks";
+import { SOFTWARE } from "@/constants/stacks";
 import { JSX } from "react";
 
 export default function SoftwareList() {

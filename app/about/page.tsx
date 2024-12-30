@@ -1,11 +1,11 @@
+import DefaultLayout from "@/components/layouts/main";
 import AboutPage from "@/components/pages/about";
-import React from "react";
 
 const About = () => {
   return (
-    <>
+    <DefaultLayout>
       <AboutPage />
-    </>
+    </DefaultLayout>
   );
 };
 

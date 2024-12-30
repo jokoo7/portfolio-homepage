@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { dmSans, inter } from "@/lib/fonts";
-import Body from "./body";
 import { HamburgerContextProvider } from "@/context/hamberger-state";
+import MainLayout from "@/components/layouts/root";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={[dmSans.variable, inter.variable].join(" ")}>
       <HamburgerContextProvider>
-        <Body>{children}</Body>
+        <MainLayout>{children}</MainLayout>
       </HamburgerContextProvider>
     </html>
   );
