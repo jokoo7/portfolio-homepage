@@ -1,31 +1,31 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from "@/components/ui/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { Hammer, Send } from "lucide-react";
 
-export default function Page() {
+export default async function DashboardPage() {
   return (
-    <SidebarInset>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-        <div className="flex items-center gap-2 px-3">
-          <SidebarTrigger />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="block">
-                <BreadcrumbLink href="#">Setup My Portfolio</BreadcrumbLink>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+    <div className="flex flex-1 flex-col gap-4 w-full">
+      <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-md border bg-card text-card-foreground shadow">
+          <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="tracking-tight text-sm font-medium">Total Projects</div>
+            <Hammer size={20} />
+          </div>
+          <div className="p-6 pt-0">
+            <div className="text-2xl font-bold">2</div>
+            <p className="text-xs text-muted-foreground">+2 from last month</p>
+          </div>
         </div>
-      </header>
-      <div className="flex flex-1 flex-col gap-4 p-4 w-full">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <div className="aspect-video rounded-xl bg-muted/50" />
-          <div className="aspect-video rounded-xl bg-muted/50" />
-          <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="rounded-md border bg-card text-card-foreground shadow">
+          <div className="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+            <div className="tracking-tight text-sm font-medium">Total Contacts</div>
+            <Send size={20} />
+          </div>
+          <div className="p-6 pt-0">
+            <div className="text-2xl font-bold">3</div>
+            <p className="text-xs text-muted-foreground">+0 from last month</p>
+          </div>
         </div>
-        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
       </div>
-    </SidebarInset>
+      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+    </div>
   );
 }

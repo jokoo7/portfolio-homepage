@@ -2,16 +2,11 @@
 
 import { redirect } from "next/navigation";
 import { checkUserExists } from "./firebase-service";
-import { createSession } from "./session-service";
+import { createSession, deleteSession } from "./session-service";
 
 type FormState =
   | {
-      errors?: {
-        name?: string[];
-        email?: string[];
-        password?: string[];
-      };
-      message?: string;
+      messages?: string;
     }
   | undefined;
 
@@ -29,4 +24,9 @@ export const login = async (state: FormState, payload: FormData) => {
   await createSession({ username });
 
   redirect("/admin/dashboard");
+};
+
+export const logout = async () => {
+  await deleteSession();
+  redirect("/admin/login");
 };

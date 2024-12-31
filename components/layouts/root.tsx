@@ -7,6 +7,7 @@ import { useHamburger } from "@/context/hamberger-state";
 import { ThemeProvider } from "../theme-provider";
 import Link from "next/link";
 import { ModeToggle } from "../mode-toggle";
+import { Toaster } from "../ui/toaster";
 
 const disabledRoute = ["/admin/dashboard", "/admin/login"];
 
@@ -57,6 +58,7 @@ const MainLayout = ({
           </div>
         )}
         {children}
+        <Toaster />
       </ThemeProvider>
     </body>
   );

@@ -17,7 +17,7 @@ const encrypt = async (payload: any) => {
 };
 
 export const createSession = async (payload: any) => {
-  const expires = new Date(Date.now() + 5 * 60 * 1000);
+  const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
   const session = await encrypt({ payload, expires });
 
   (await cookies()).set("session", session, {
@@ -43,8 +43,8 @@ export const verifySession = cache(async () => {
   const cookie = (await cookies()).get("session")?.value;
   const session: any = await decrypt(cookie);
 
-  if (session) {
-    redirect("/admin/dashboard");
+  if (!session) {
+    redirect("/admin/login");
   }
 
   return {
