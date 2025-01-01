@@ -91,6 +91,33 @@ export const SKILS: StackProps = {
   Json,
 };
 
+export const SKILS_PROJECTS = [
+  PHP, // 0
+  JavaScript, // 1
+  TypeScript, // 2
+  Nextjs, // 3
+  Reactjs, // 4
+  Laravel, // 5
+  TailwindCSS, // 6
+  Bootstrap, // 6
+  Vite, // 7
+  PostgreSql, // 8
+  SASS, // 9
+  Firebase, // 10
+  FramerMotion, // 11
+  Jest, // 12
+  Expressjs, // 13
+  Redux, // 14
+  ReactQuery, // 15
+  HTML, // 16
+  CSS, // 17
+  Prisma, // 18
+  Nodejs, // 19
+  ReactRouter, // 20
+  ReactHookForm, // 21
+  Json, // 22
+];
+
 export const SOFTWARE: StackProps = {
   Github,
   VsCode,

@@ -6,7 +6,7 @@ import { Project } from "@/constants/projects";
 const CardProject = ({ project }: { project: Project }) => {
   return (
     <div className="w-full font-inter py-10 border-b flex flex-col md:flex-row gap-4 md:gap-10">
-      <div className="order-2 sm:order-1 flex flex-col justify-between w-full md:w-[40%]">
+      <div className="order-2 md:order-1 flex flex-col justify-between w-full md:w-[40%]">
         <div>
           <h4 className="text-xl font-medium mb-3 font-sans">{project.title}</h4>
           <p className="mb-4 line-clamp-3 text-[15px]">{project.description}</p>
@@ -18,12 +18,12 @@ const CardProject = ({ project }: { project: Project }) => {
             ))}
           </div>
         </div>
-        <Link href={project.link} className="flex items-center gap-2 hover:underline mt-8 sm:mt-0">
+        <Link href={project.url} className="flex items-center gap-2 hover:underline mt-8 sm:mt-0">
           <span className="-mt-0.5">More shots from this project</span>{" "}
           <ArrowSvg w="15" h="12" className="-rotate-45" />
         </Link>
       </div>
-      <div className="order-1 sm:order-2 w-full md:w-[60%]">
+      <div className="order-1 md:order-2 w-full md:w-[60%]">
         <div className="w-full aspect-video ">
           <Image
             src={project.image}

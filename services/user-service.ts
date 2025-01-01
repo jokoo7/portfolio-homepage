@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { checkUserExists } from "./firebase-service";
 import { createSession, deleteSession } from "./session-service";
 
-type FormState =
+export type FormState =
   | {
       messages?: string;
     }

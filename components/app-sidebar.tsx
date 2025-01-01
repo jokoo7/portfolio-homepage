@@ -15,6 +15,7 @@ import { Button } from "./ui/button";
 import { logout } from "@/services/user-service";
 import { verifySession } from "@/services/session-service";
 import Link from "next/link";
+import { Session } from "@/types/session-type";
 
 const items = [
   {
@@ -30,7 +31,7 @@ const items = [
 ];
 
 export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const session = await verifySession();
+  const session: Session | undefined = await verifySession();
 
   return (
     <Sidebar {...props}>

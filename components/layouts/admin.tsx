@@ -39,7 +39,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </BreadcrumbItem>
               {pathSegments.map((segment, index) => {
                 const href = "/admin/dashboard/" + pathSegments.slice(0, index + 1).join("/");
-                console.log(href);
                 return (
                   <Fragment key={segment}>
                     <BreadcrumbSeparator />

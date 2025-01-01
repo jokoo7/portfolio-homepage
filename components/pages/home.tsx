@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import MotionSection from "../motion-section";
@@ -7,9 +8,20 @@ import { Hammer, Handshake } from "lucide-react";
 import CardProject from "../card-project";
 import Heading from "../heading";
 import CardService from "../card-service";
-import { getProjects } from "@/constants/projects";
+import { useEffect, useState } from "react";
+import { retriveData } from "@/services/firebase-service";
 
 const HomePage = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    async function getProjects() {
+      const result: any = await retriveData("projects");
+      setProjects(result);
+    }
+    getProjects();
+  }, []);
+
   return (
     <>
       <header className="max-w-4xl mx-auto mb-10">
@@ -38,7 +50,7 @@ const HomePage = () => {
           <Hammer strokeWidth={2.5} size={24} />
         </Heading>
 
-        {getProjects.map((project, index) => (
+        {projects.map((project, index) => (
           <CardProject key={index} project={project} />
         ))}
 
