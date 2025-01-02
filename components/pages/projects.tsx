@@ -33,8 +33,6 @@ const ProjectsPage = () => {
     getProjects();
   }, []);
 
-  console.log(projects);
-
   return (
     <>
       <MotionSection delay={0.5}>

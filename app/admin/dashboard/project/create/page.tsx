@@ -41,7 +41,7 @@ const formSchema = z.object({
   techStack: z.string().array().min(1, "Select at least one techstack"),
 });
 
-export default function MyForm() {
+export default function DashboardProjectCreatePage() {
   const [files, setFiles] = useState<File[] | null>(null);
 
   const dropZoneConfig = {

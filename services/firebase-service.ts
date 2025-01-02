@@ -31,3 +31,12 @@ export const createProjectToDb = async (data: any, callback: Function) => {
       console.log(error);
     });
 };
+
+export const createContactToDb = async (data: any, callback: Function) => {
+  await addDoc(collection(firestore, "contacts"), data)
+    .then(() => callback(true))
+    .catch((error) => {
+      callback(false);
+      console.log(error);
+    });
+};

@@ -1,14 +1,37 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Send } from "lucide-react";
 import MotionSection from "../motion-section";
-import Ig from "../svg/ig";
-import Github from "../svg/github";
-import Tiktok from "../svg/tiktok";
 import CardContact from "../card-contact";
 import Heading from "../heading";
+import { useEffect, useState } from "react";
+import { retriveData } from "@/services/firebase-service";
 
 const ContactPage = () => {
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function getProjects() {
+      setLoading(true);
+      try {
+        const result: any = await retriveData("contacts");
+        // Urutkan data berdasarkan created_at secara descending (terbaru di atas)
+        const sortedContacts = result.sort(
+          (a: { created_at: string | number | Date }, b: { created_at: string | number | Date }) =>
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+        setContacts(sortedContacts);
+      } catch (error) {
+        console.error("Error retrieving projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getProjects();
+  }, []);
+
   return (
     <>
       <MotionSection>
@@ -18,21 +41,20 @@ const ContactPage = () => {
         <div className="mt-6 pb-16 border-b">
           <h1 className="mb-4">Find me on.</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <CardContact
-              href="https://github.com/jokosannn"
-              label="Github"
-              icon={<Github w="20px" h="25px" />}
-            />
-            <CardContact
-              href="https://www.tiktok.com/@sannn1605"
-              label="Tiktok"
-              icon={<Tiktok w="20px" h="25px" />}
-            />
-            <CardContact
-              href="https://www.instagram.com/jokosannn"
-              label="Instagram"
-              icon={<Ig w="20px" h="25px" />}
-            />
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                {contacts?.map((contact: any, index) => (
+                  <CardContact
+                    key={index}
+                    href={contact.url}
+                    label={contact.label}
+                    icon={contact.icon}
+                  />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </MotionSection>
