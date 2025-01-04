@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 pb-6">
-        <span className="order-2 sm:order-1 block text-main-blue font-inter text-sm font-medium">
+        <span className="order-2 sm:order-1 block  font-inter text-sm font-medium">
           Joko Santoso ⏤ {new Date().getFullYear()}
         </span>
         <div className="order-1 sm:order-2 flex gap-4 text-sm font-medium">

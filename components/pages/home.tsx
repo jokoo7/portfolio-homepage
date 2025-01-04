@@ -4,12 +4,12 @@
 import MotionSection from "../motion-section";
 import Link from "next/link";
 import ArrowSvg from "../svg/arrow";
-import { Hammer, Handshake } from "lucide-react";
 import CardProject from "../card-project";
-import Heading from "../heading";
 import CardService from "../card-service";
 import { useEffect, useState } from "react";
 import { retriveData } from "@/services/firebase-service";
+import { BackgroundLines } from "../ui/background-lines";
+import { HoverBorderGradient } from "../ui/hover-border-gradient";
 
 const HomePage = () => {
   const [projects, setProjects] = useState([]);
@@ -24,13 +24,13 @@ const HomePage = () => {
 
   return (
     <>
-      <header className="max-w-4xl mx-auto mb-10">
+      {/* <header className="max-w-4xl mx-auto mb-10">
         <div className="w-full flex flex-col justify-between gap-4 sm:gap-0 pb-6">
           <MotionSection className="text-5xl font-inter xs:text-6xl font-bold w-full flex flex-col">
             <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Portfolio Website⏤</span>
             <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Let&apos;s Connect.</span>
           </MotionSection>
-          <MotionSection delay={0.2} className="text-lg xs:text-xl text-main-gray w-full sm:mt-6">
+          <MotionSection delay={0.2} className="text-lg xs:text-xl text-secondary w-full sm:mt-6">
             <span className="block w-full text-start">
               Hey there, I&apos;m Joko Santoso, a Frontend Developer (Bridging User Interfaces) who is
               currently based in Pekanbaru, Indonesia.
@@ -40,39 +40,77 @@ const HomePage = () => {
         <MotionSection delay={0.4}>
           <ArrowSvg w="30" h="35" className="rotate-90" />
         </MotionSection>
-      </header>
+      </header> */}
+
+      <BackgroundLines
+        svgOptions={{ duration: 5 }}
+        className="flex items-center justify-center w-full flex-col px-8"
+      >
+        <MotionSection>
+          <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-5xl md:text-6xl lg:text-7xl font-sans relative z-20 font-bold tracking-tight">
+            Portfolio Website, <br /> Let&apos;s Connect
+            <ArrowSvg w="30" h="35" className="rotate-90 my-5 mx-auto" />
+          </h2>
+        </MotionSection>
+        <MotionSection delay={0.2}>
+          <p className="max-w-xl mx-auto text-lg md:text-xl text-neutral-700 dark:text-neutral-400 text-center">
+            Hey there, I&apos;m Joko Santoso, a Frontend Developer (Bridging User Interfaces) who is
+            currently based in Pekanbaru, Indonesia.
+          </p>
+        </MotionSection>
+      </BackgroundLines>
+
+      <div className="px-8">
+        <h4 className="text-4xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+          Explore My Best Projects
+        </h4>
+
+        <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+          From interactive web applications to advanced AI integrations, each project is designed to
+          deliver creative and innovative solutions. Dive into my work to see ideas come to life!
+        </p>
+      </div>
 
       <MotionSection delay={0.5} className="mb-16">
-        <Heading
+        {/* <Heading
           title="Projects"
           description="Showcasing my passion for technology, design, and problem-solving through code."
         >
           <Hammer strokeWidth={2.5} size={24} />
-        </Heading>
+        </Heading> */}
 
-        {projects.map((project, index) => (
-          <CardProject key={index} project={project} />
-        ))}
+        <div className="grid gap-4 md:grid-cols-2">
+          {projects.map((project, index) => (
+            <CardProject key={index} project={project} />
+          ))}
+        </div>
 
-        <Link
-          href="/projects"
-          className="w-fit flex items-center gap-2 px-6 h-14 mt-10 mx-auto rounded-full bg-foreground text-background group transition-all hover:scale-105"
-        >
-          <span className="-mt-0.5">View All Projects</span>{" "}
-          <ArrowSvg
-            w="15"
-            h="12"
-            current="#f3f3f3"
-            swapCurrent="#181717"
-            className="group-hover:-rotate-45 transition-all"
-          />
-        </Link>
+        <div className="w-full flex justify-center mt-10">
+          <Link href="/projects">
+            <HoverBorderGradient
+              containerClassName="rounded-full"
+              as="button"
+              className="bg-background text-foreground flex items-center space-x-2  group transition-all hover:scale-105"
+            >
+              <span>View All Projects</span>
+              <ArrowSvg w="15" h="12" className="group-hover:-rotate-45 transition-all" />
+            </HoverBorderGradient>
+          </Link>
+        </div>
       </MotionSection>
 
       <MotionSection>
-        <Heading title="Service" description="I can deliver the following services.">
-          <Handshake strokeWidth={2.5} size={24} />
-        </Heading>
+        <div className="px-8">
+          <h4 className="text-4xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white sm:px-10">
+            Professional Services Tailored for You
+          </h4>
+
+          <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+            Offering a range of services from web development solutions. Each service is crafted to meet
+            your unique needs, delivering results that exceed expectations. Let&apos;s bring your ideas
+            to life together!
+          </p>
+        </div>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2 pb-16 border-b">
           <CardService

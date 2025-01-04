@@ -34,7 +34,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <MotionSection>
+      <MotionSection className="mt-32">
         <Heading title="Contact" description="Let`s get in touch.">
           <Send strokeWidth={2.5} size={24} />
         </Heading>

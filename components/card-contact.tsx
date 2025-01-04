@@ -13,7 +13,7 @@ const CardContact = ({ label, icon, href }: IProps) => {
     <Link
       target="_blank"
       href={href}
-      className="flex h-max w-full items-end justify-between border bg-opacity-40 bg-gradient-to-br p-4  border-slate-300 from-slate-100 to-slate-200 dark:border-slate-600 dark:from-gray-700 dark:to-slate-950 cursor-pointer"
+      className="flex h-max w-full items-end justify-between border bg-opacity-40 bg-gradient-to-br p-4  border-slate-300 from-slate-100 to-slate-200 dark:border-slate-600 dark:from-slate-900 dark:to-slate-950 cursor-pointer"
     >
       <div className="flex gap-2 items-center">
         <div className="w-6 aspect-square dark:bg-foreground">

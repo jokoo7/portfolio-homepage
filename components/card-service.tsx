@@ -7,7 +7,7 @@ type IProps = {
 
 const CardService = ({ children, title, description, label }: IProps) => {
   return (
-    <div className="relative p-4 dark:border-neutral-700 md:p-6">
+    <div className="relative p-4 dark:border-neutral-700 md:p-6 border rounded-md">
       <div className="mb-5 flex items-center justify-center px-6 py-4">
         <div className="h-36 w-52 overflow-hidden rounded-lg border dark:border-neutral-700">
           <div className="flex items-center justify-start gap-1 border-b bg-neutral-200 px-2 py-1 dark:border-neutral-700 dark:bg-neutral-900">

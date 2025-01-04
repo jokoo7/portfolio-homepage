@@ -12,7 +12,7 @@ const Heading = ({ title, description, children }: IProps) => {
           {children}
           <h1 className="text-2xl font-medium font-inter">{title}</h1>
         </div>
-        <span className="text-main-gray font-inter text-base block">{description}</span>
+        <span className="text-secondary font-inter text-base block">{description}</span>
       </div>
     </div>
   );
