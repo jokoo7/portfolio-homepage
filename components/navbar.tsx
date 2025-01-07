@@ -64,7 +64,7 @@ const Navbar = () => {
             }
           )}
         >
-          sann.
+          koo.
         </Link>
         <div className="flex items-center gap-8">
           <div className="hidden sm:block space-x-8">

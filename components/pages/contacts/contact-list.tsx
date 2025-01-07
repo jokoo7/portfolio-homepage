@@ -1,5 +1,6 @@
 import CardContact from "@/components/card-contact";
-import { getContacts } from "@/services/constact-service";
+import ContactLoading from "@/components/loading/contact-loading";
+import { getContacts } from "@/services/contact-service";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
@@ -22,7 +23,7 @@ const ContactList = () => {
   });
 
   if (isLoading) {
-    return <p className="text-center text-neutral-500 dark:text-neutral-300">Loading...</p>;
+    return <ContactLoading />;
   }
 
   if (isError) {

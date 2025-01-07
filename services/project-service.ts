@@ -2,7 +2,7 @@
 import { Project } from "@/constants/projects";
 import { SKILS_PROJECTS } from "@/constants/stacks";
 import { JSX } from "react";
-import { retriveData } from "./firebase-service";
+import { getDataBySlug, retriveData } from "./firebase-service";
 
 export const dbToStack = (numbers: string[]): JSX.Element[] => {
   if (!Array.isArray(numbers)) {
@@ -14,7 +14,6 @@ export const dbToStack = (numbers: string[]): JSX.Element[] => {
 
 export const getProjects = async () => {
   const result: any = await retriveData("projects");
-
   if (Array.isArray(result)) {
     const updatedProjects = result.map((project) => ({
       ...project,
@@ -42,4 +41,13 @@ export const getBestProjects = async () => {
   } else {
     console.error("Unexpected data format:", result);
   }
+};
+
+export const getProjectDetail = async (slug: string) => {
+  const result: any = await getDataBySlug("projects", slug);
+
+  return {
+    ...result,
+    techStack: result.techStack ? dbToStack(result.techStack) : [],
+  };
 };

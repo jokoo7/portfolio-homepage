@@ -32,6 +32,7 @@ import {
 } from "@/components/ui/file-upload";
 import { SKILS_PROJECTS } from "@/constants/stacks";
 import { createProjectToDb } from "@/services/firebase-service";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   image: z.string(),
@@ -45,8 +46,12 @@ const formSchema = z.object({
 
 export default function DashboardProjectCreatePage() {
   const [files, setFiles] = useState<File[] | null>(null);
+  const { toast } = useToast();
 
   const dropZoneConfig = {
+    accept: {
+      "image/*": [".jpg", ".jpeg", ".png", ".gif"],
+    },
     maxFiles: 5,
     maxSize: 1024 * 1024 * 4,
     multiple: true,
@@ -84,19 +89,32 @@ export default function DashboardProjectCreatePage() {
   }, [title, setValue]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    const data = {
+      ...values,
+      is_best: false,
+    };
+
     try {
-      createProjectToDb(values, (result: boolean) => {
+      createProjectToDb(data, (result: boolean) => {
         if (result) {
-          console.log("berhasil upload");
+          toast({
+            description: "Yess! Berhasil create project",
+          });
           // Reset form setelah berhasil upload
           form.reset();
           setFiles(null); // Reset state file
         } else {
-          console.log("gagal upload");
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Failed to create project.",
+          });
         }
       });
     } catch (error) {
-      console.error("Form submission error", error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Form submission error." + error,
+      });
     }
   }
 
@@ -114,14 +132,23 @@ export default function DashboardProjectCreatePage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to upload file");
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Failed to upload file.",
+        });
       }
 
       const data = await response.json();
-      console.log("File uploaded:", data.filePath);
       form.setValue("image", data.filePath); // Simpan path file di form
+
+      toast({
+        description: "Yess! File uploaded:" + data.filePath,
+      });
     } catch (error) {
-      console.error("Upload error:", error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! FailedUpload error." + error,
+      });
     }
   }
 
@@ -196,7 +223,11 @@ export default function DashboardProjectCreatePage() {
             <FormItem>
               <FormLabel>Slug</FormLabel>
               <FormControl>
-                <Input {...field} readOnly className="cursor-not-allowed bg-gray-100" />
+                <Input
+                  {...field}
+                  readOnly
+                  className="cursor-not-allowed bg-gray-100 dark:bg-neutral-900"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

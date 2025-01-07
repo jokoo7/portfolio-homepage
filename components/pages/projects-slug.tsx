@@ -1,10 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Project } from "@/constants/projects";
-import { getDataBySlug } from "@/services/firebase-service";
-import { dbToStack } from "@/services/project-service";
-import { useEffect, useState } from "react";
+import { getProjectDetail } from "@/services/project-service";
 import { BiLinkExternal } from "react-icons/bi";
 import { SiGithub } from "react-icons/si";
 import { buttonVariants } from "../ui/button";
@@ -12,48 +8,42 @@ import Link from "next/link";
 import Back from "../back";
 import { CornerUpRight } from "lucide-react";
 import Image from "../image";
+import { useQuery } from "@tanstack/react-query";
+import { Project } from "@/constants/projects";
+import MotionSection from "../motion-section";
 
 interface ProjectSlugProps {
   slug: string;
 }
 
 const ProjectsSlug = ({ slug }: ProjectSlugProps) => {
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const {
+    data: project,
+    isLoading,
+    isError,
+  } = useQuery<Project>({
+    queryKey: ["project-detail", slug],
+    queryFn: () => getProjectDetail(slug),
+  });
 
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        setLoading(true);
-        const result: any = await getDataBySlug("projects", slug);
-
-        if (result) {
-          setProject({
-            ...result,
-            techStack: result.techStack ? dbToStack(result.techStack) : [],
-          });
-        }
-      } catch (error) {
-        console.error("Error retrieving project:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProject();
-  }, [slug]);
-
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="mt-32 wrapper">
-        <p>Loading...</p>
+      <div className="flex items-center justify-center h-screen">
+        <div className="relative">
+          <div className="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
+          <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
+        </div>
       </div>
     );
   }
 
+  if (isError) {
+    return <p className="text-center text-red-500">Failed to load projects. Please try again later.</p>;
+  }
+
   if (!project) {
     return (
-      <div className="mt-32 wrapper">
+      <div className="mt-28 wrapper">
         <p>Project not found.</p>
         <Back />
       </div>
@@ -61,7 +51,7 @@ const ProjectsSlug = ({ slug }: ProjectSlugProps) => {
   }
 
   return (
-    <div className="mt-32 wrapper">
+    <MotionSection className="mt-28 wrapper">
       <div className="mb-2">
         <Back />
       </div>
@@ -79,17 +69,18 @@ const ProjectsSlug = ({ slug }: ProjectSlugProps) => {
           )}
         </div>
 
-        <div className="flex flex-col md:flex-row gap-1 md:items-center md:justify-between mb-4">
-          <div className="flex flex-col xs:flex-row xs:items-center xs:gap-4 mt-4 xs:mt-0">
+        <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between my-4">
+          <div className="flex flex-col xs:flex-row xs:items-center xs:gap-4 xs:mt-0">
             <div
               className={`${buttonVariants({
                 variant: "ghost",
-              })} w-fit px-0 hover:bg-transparent`}
+                size: "none",
+              })}`}
             >
               <span className="block whitespace-nowrap text-base">Tech Stack</span>
               <CornerUpRight size={20} className="rotate-90 xs:rotate-0" />
             </div>
-            <div className="flex gap-4 my-4">
+            <div className="flex gap-4">
               {project.techStack?.length > 0 ? (
                 project.techStack.map((tech, index) => (
                   <div key={index} className="w-5 aspect-square">
@@ -139,7 +130,7 @@ const ProjectsSlug = ({ slug }: ProjectSlugProps) => {
           )}
         </div>
       </div>
-    </div>
+    </MotionSection>
   );
 };
 

@@ -1,4 +1,5 @@
 import CardProject from "@/components/card-project";
+import ProjectLoading from "@/components/loading/project-loading";
 import { Project } from "@/constants/projects";
 import { motion } from "framer-motion";
 import React from "react";
@@ -11,7 +12,7 @@ type IProps = {
 
 const ProjectList = ({ projects, isLoading, isError }: IProps) => {
   if (isLoading) {
-    return <p className="text-center text-neutral-500 dark:text-neutral-300">Loading...</p>;
+    return <ProjectLoading />;
   }
 
   if (isError) {

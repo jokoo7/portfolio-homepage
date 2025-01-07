@@ -16,6 +16,7 @@ import { logout } from "@/services/user-service";
 import { verifySession } from "@/services/session-service";
 import Link from "next/link";
 import { Session } from "@/types/session-type";
+import { ModeToggle } from "./mode-toggle";
 
 const items = [
   {
@@ -76,6 +77,9 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
+          <div className="mt-4">
+            <ModeToggle />
+          </div>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
