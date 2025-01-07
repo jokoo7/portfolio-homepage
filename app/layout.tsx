@@ -3,6 +3,7 @@ import "./globals.css";
 import { dmSans, inter } from "@/lib/fonts";
 import { HamburgerContextProvider } from "@/context/hamberger-state";
 import MainLayout from "@/components/layouts/root";
+import ReactQueryProvider from "@/components/react-query-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={[dmSans.variable, inter.variable].join(" ")}>
       <HamburgerContextProvider>
-        <MainLayout>{children}</MainLayout>
+        <MainLayout>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </MainLayout>
       </HamburgerContextProvider>
     </html>
   );

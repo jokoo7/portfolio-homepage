@@ -1,20 +1,19 @@
 type IProps = {
   title: string;
   description: string;
-  children?: React.ReactNode;
 };
 
-const Heading = ({ title, description, children }: IProps) => {
+const Heading = ({ title, description }: IProps) => {
   return (
-    <div className="relative w-full border-b pb-4">
-      <div className="">
-        <div className="flex gap-2 items-center mb-3">
-          {children}
-          <h1 className="text-2xl font-medium font-inter">{title}</h1>
-        </div>
-        <span className="text-secondary font-inter text-base block">{description}</span>
-      </div>
-    </div>
+    <>
+      <h4 className="font-inter text-4xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+        {title}
+      </h4>
+
+      <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+        {description}
+      </p>
+    </>
   );
 };
 

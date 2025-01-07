@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -36,7 +36,9 @@ import { createProjectToDb } from "@/services/firebase-service";
 const formSchema = z.object({
   image: z.string(),
   title: z.string().min(1, "Title is required"),
+  slug: z.string().min(1, "Slug is required"),
   url: z.string().url().optional(),
+  github_url: z.string().url().optional(),
   description: z.string().min(1, "Description is required"),
   techStack: z.string().array().min(1, "Select at least one techstack"),
 });
@@ -54,11 +56,32 @@ export default function DashboardProjectCreatePage() {
     defaultValues: {
       image: "",
       title: "",
+      slug: "",
       url: "",
+      github_url: "",
       description: "",
       techStack: [],
     },
   });
+
+  const { watch, setValue } = form;
+
+  // Watch title changes
+  const title = watch("title");
+
+  // Generate slug based on title
+  useEffect(() => {
+    if (title) {
+      const generatedSlug = title
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+        .replace(/\s+/g, "-"); // Replace spaces with dashes
+      setValue("slug", generatedSlug);
+    } else {
+      setValue("slug", "");
+    }
+  }, [title, setValue]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -168,10 +191,39 @@ export default function DashboardProjectCreatePage() {
 
         <FormField
           control={form.control}
+          name="slug"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Slug</FormLabel>
+              <FormControl>
+                <Input {...field} readOnly className="cursor-not-allowed bg-gray-100" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
           name="url"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Url</FormLabel>
+              <FormControl>
+                <Input placeholder="https:" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="github_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Github Url</FormLabel>
               <FormControl>
                 <Input placeholder="https:" {...field} />
               </FormControl>

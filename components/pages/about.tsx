@@ -2,16 +2,16 @@
 
 import React from "react";
 import MotionSection from "@/components/motion-section";
-import Image from "next/image";
 import { CloudDownload } from "lucide-react";
 import MotionDiv from "../motion-div";
 import SkillList from "../skil-list";
 import SoftwareList from "../software-list";
+import Image from "../image";
 
 const AboutPage = () => {
   return (
     <>
-      <section className="wrapper flex flex-col gap-10 sm:flex-row mt-32">
+      <section className="wrapper flex flex-col gap-10 sm:flex-row mt-28">
         <div>
           <MotionDiv>
             <h1 className="bg-clip-text text-transparent mb-4 bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-4xl sm:text-5xl font-sans relative z-20 font-bold tracking-tight">
@@ -19,7 +19,7 @@ const AboutPage = () => {
             </h1>
           </MotionDiv>
           <MotionDiv delay={0.1}>
-            <p className="mb-4 text-base md:text-lg text-secondary">
+            <p className="text-base md:text-lg text-secondary-gray mb-4">
               My work is primarily focused on creating engaging and dynamic web interfaces, leveraging
               modern technologies to deliver seamless user experiences. I enjoy exploring innovative
               design concepts and translating them into responsive, accessible, and visually appealing
@@ -27,14 +27,14 @@ const AboutPage = () => {
             </p>
           </MotionDiv>
           <MotionDiv delay={0.2}>
-            <p className="text-base md:text-lg text-secondary">
+            <p className="text-secondary-gray">
               Currently, I&apos;m a front-end web developer based in Pakanbaru, Indonesia ⏤ freelancing
               and seeking opportunities to collaborate or contribute through internships.
             </p>
           </MotionDiv>
 
           <MotionDiv delay={0.3} className="mt-8">
-            <button className="flex items-center gap-3 text-secondary hover:underline">
+            <button className="flex items-center gap-3 text-secondary-gray hover:underline">
               <CloudDownload className="animate-bounce" />
               <span className="block -mt-1.5">Download CV</span>
             </button>
@@ -44,8 +44,8 @@ const AboutPage = () => {
           <div className="w-full xs:w-72 sm:w-52 md:w-60 aspect-[3/4] h-fit border flex-shrink-0 overflow-hidden">
             <Image
               src="/images/me.jpg"
-              width={100}
-              height={100}
+              width={200}
+              height={400}
               alt="me"
               className="w-full h-full object-cover"
             />

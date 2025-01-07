@@ -106,3 +106,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .text-secondary-gray {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+}

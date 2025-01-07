@@ -47,7 +47,7 @@ const Navbar = () => {
       className={cn(
         "w-full fixed top-0 left-0 right-0 z-50 transition-all duration-500 -translate-y-[100%]",
         { "translate-y-0": navbarVisible },
-        { "dark:bg-[#181818] bg-background": navBackground },
+        { "dark:bg-[#181818] bg-secondary": navBackground },
         { "bg-transparent": !navBackground }
       )}
     >

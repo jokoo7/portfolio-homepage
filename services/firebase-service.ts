@@ -40,3 +40,16 @@ export const createContactToDb = async (data: any, callback: Function) => {
       console.log(error);
     });
 };
+
+export const getDataBySlug = async (collectionName: string, slug: string) => {
+  const snapshot = await getDocs(
+    query(collection(firestore, collectionName), where("slug", "==", slug))
+  );
+
+  const data = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  return data[0];
+};

@@ -1,47 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import MotionSection from "../motion-section";
 import Link from "next/link";
 import ArrowSvg from "../svg/arrow";
-import CardProject from "../card-project";
 import CardService from "../card-service";
-import { useEffect, useState } from "react";
-import { retriveData } from "@/services/firebase-service";
 import { BackgroundLines } from "../ui/background-lines";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
+import Heading from "../heading";
+import ProjectList from "./projects/project-list";
+import { useQuery } from "@tanstack/react-query";
+import { getBestProjects } from "@/services/project-service";
 
 const HomePage = () => {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    async function getProjects() {
-      const result: any = await retriveData("projects");
-      setProjects(result);
-    }
-    getProjects();
-  }, []);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["projects-best"],
+    queryFn: getBestProjects,
+  });
 
   return (
     <>
-      {/* <header className="max-w-4xl mx-auto mb-10">
-        <div className="w-full flex flex-col justify-between gap-4 sm:gap-0 pb-6">
-          <MotionSection className="text-5xl font-inter xs:text-6xl font-bold w-full flex flex-col">
-            <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Portfolio Website⏤</span>
-            <span className="block leading-[3.3rem] xs:leading-[3.8rem]">Let&apos;s Connect.</span>
-          </MotionSection>
-          <MotionSection delay={0.2} className="text-lg xs:text-xl text-secondary w-full sm:mt-6">
-            <span className="block w-full text-start">
-              Hey there, I&apos;m Joko Santoso, a Frontend Developer (Bridging User Interfaces) who is
-              currently based in Pekanbaru, Indonesia.
-            </span>
-          </MotionSection>
-        </div>
-        <MotionSection delay={0.4}>
-          <ArrowSvg w="30" h="35" className="rotate-90" />
-        </MotionSection>
-      </header> */}
-
       <BackgroundLines
         svgOptions={{ duration: 5 }}
         className="flex items-center justify-center w-full flex-col px-8"
@@ -60,29 +37,16 @@ const HomePage = () => {
         </MotionSection>
       </BackgroundLines>
 
-      <div className="px-8">
-        <h4 className="text-4xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-          Explore My Best Projects
-        </h4>
+      <MotionSection delay={0.5} className="wrapper mb-16">
+        <Heading
+          title="Explore My Best Projects"
+          description="From interactive web applications to advanced AI integrations, each project is designed to
+          deliver creative and innovative solutions. Dive into my work to see ideas come to life!"
+        />
 
-        <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          From interactive web applications to advanced AI integrations, each project is designed to
-          deliver creative and innovative solutions. Dive into my work to see ideas come to life!
-        </p>
-      </div>
-
-      <MotionSection delay={0.5} className="mb-16">
-        {/* <Heading
-          title="Projects"
-          description="Showcasing my passion for technology, design, and problem-solving through code."
-        >
-          <Hammer strokeWidth={2.5} size={24} />
-        </Heading> */}
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <CardProject key={index} project={project} />
-          ))}
+        {/* Projects List */}
+        <div className="mt-10">
+          <ProjectList projects={data ?? []} isLoading={isLoading} isError={isError} />
         </div>
 
         <div className="w-full flex justify-center mt-10">
@@ -99,20 +63,15 @@ const HomePage = () => {
         </div>
       </MotionSection>
 
-      <MotionSection>
-        <div className="px-8">
-          <h4 className="text-4xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white sm:px-10">
-            Professional Services Tailored for You
-          </h4>
+      <MotionSection delay={0.5} className="wrapper">
+        <Heading
+          title="Professional Services Tailored for You"
+          description="Offering a range of services from web development solutions. Each service is crafted to meet
+            your unique needs, delivering results that exceed expectations. Let's bring your ideas
+            to life together!"
+        />
 
-          <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-            Offering a range of services from web development solutions. Each service is crafted to meet
-            your unique needs, delivering results that exceed expectations. Let&apos;s bring your ideas
-            to life together!
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2 pb-16 border-b">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 pb-16 border-b">
           <CardService
             label="coding"
             title="Website Development"

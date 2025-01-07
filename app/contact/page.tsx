@@ -1,5 +1,5 @@
 import DefaultLayout from "@/components/layouts/main";
-import ContactPage from "@/components/pages/contact";
+import ContactPage from "@/components/pages/contacts/contact";
 
 const Contact = () => {
   return (
