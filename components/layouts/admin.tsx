@@ -8,11 +8,13 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const { open } = useSidebar();
   const pathname = usePathname();
   // Mengonversi path menjadi array bagian-bagian breadcrumb
   const basePath = "/admin/dashboard";
@@ -23,17 +25,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const segmentLabels = (segment: string) =>
     segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
 
-  // console.log(pathSegments);
-
   return (
-    <SidebarInset>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+    <>
+      <header
+        className={cn(
+          "flex h-16 shrink-0 items-center gap-2 border-b fixed top-0 z-20 bg-background left-0 md:left-[16rem] right-0 transition-all duration-200",
+          { "md:left-0": !open }
+        )}
+      >
         <div className="flex items-center gap-2 px-3">
           <SidebarTrigger />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              {/* Item breadcrumb pertama untuk "Home" */}
               <BreadcrumbItem>
                 <BreadcrumbLink href="/admin/dashboard">Dashboard</BreadcrumbLink>
               </BreadcrumbItem>
@@ -53,6 +57,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
       </header>
       {children}
-    </SidebarInset>
+    </>
   );
 }

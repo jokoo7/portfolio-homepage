@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,11 +33,13 @@ import {
   FileUploaderItem,
 } from "@/components/ui/file-upload";
 import { SKILS_PROJECTS } from "@/constants/stacks";
-import { createProjectToDb } from "@/services/firebase-service";
+import { updateProjectToDb } from "@/services/firebase-service";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
+import { getDataById } from "@/services/project-service";
 
 const formSchema = z.object({
-  image: z.string(),
+  image: z.string().optional(),
   title: z.string().min(1, "Title is required"),
   slug: z.string().min(1, "Slug is required"),
   url: z.string().url().optional(),
@@ -44,7 +48,17 @@ const formSchema = z.object({
   techStack: z.string().array().min(1, "Select at least one techstack"),
 });
 
-export default function DashboardProjectCreatePage() {
+type IProps = {
+  id: string;
+};
+
+export default function DashboardProjectEditPage({ id }: IProps) {
+  const { data: project } = useQuery<any>({
+    queryKey: ["project", id],
+    queryFn: () => getDataById("projects", id),
+    initialData: null,
+  });
+
   const [files, setFiles] = useState<File[] | null>(null);
   const { toast } = useToast();
 
@@ -56,6 +70,7 @@ export default function DashboardProjectCreatePage() {
     maxSize: 1024 * 1024 * 4,
     multiple: true,
   };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -69,10 +84,24 @@ export default function DashboardProjectCreatePage() {
     },
   });
 
-  const { watch, setValue } = form;
+  const { watch, reset, setValue, formState } = form;
 
   // Watch title changes
   const title = watch("title");
+
+  useEffect(() => {
+    if (project) {
+      reset({
+        image: "",
+        title: project.title ?? "",
+        slug: project.slug ?? "",
+        url: project.url ?? "",
+        github_url: project.github_url ?? "",
+        description: project.description ?? "",
+        techStack: project.techStack || [],
+      });
+    }
+  }, [project, reset]);
 
   // Generate slug based on title
   useEffect(() => {
@@ -87,36 +116,6 @@ export default function DashboardProjectCreatePage() {
       setValue("slug", "");
     }
   }, [title, setValue]);
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = {
-      ...values,
-      is_best: false,
-    };
-
-    try {
-      createProjectToDb(data, (result: boolean) => {
-        if (result) {
-          toast({
-            description: "Yess! Berhasil create project",
-          });
-          // Reset form setelah berhasil upload
-          form.reset();
-          setFiles(null); // Reset state file
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Failed to create project.",
-          });
-        }
-      });
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Form submission error." + error,
-      });
-    }
-  }
 
   async function handleFilesChange(files: File[] | null) {
     if (!files || files.length === 0) return;
@@ -136,23 +135,50 @@ export default function DashboardProjectCreatePage() {
           variant: "destructive",
           title: "Uh oh! Failed to upload file.",
         });
+        return;
       }
 
       const data = await response.json();
-      form.setValue("image", data.filePath); // Simpan path file di form
+      form.setValue("image", data.filePath); // Save file path in form
 
       toast({
-        description: "Yess! File uploaded:" + data.filePath,
+        description: "Yess! File uploaded: " + data.filePath,
       });
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Uh oh! FailedUpload error." + error,
+        title: "Uh oh! Upload error: " + error,
       });
     }
   }
 
-  // console.log(files[0].name);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const data = {
+      ...values,
+      is_best: project.is_best ? true : false,
+    };
+
+    try {
+      await updateProjectToDb(data, id, (result: boolean) => {
+        if (result) {
+          toast({
+            description: "Yess! Berhasil update project",
+          });
+          setFiles(null); // Reset files state
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Uh oh! Failed to update project.",
+          });
+        }
+      });
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Form submission error: " + error,
+      });
+    }
+  }
 
   return (
     <Form {...form}>
@@ -160,9 +186,9 @@ export default function DashboardProjectCreatePage() {
         <FormField
           control={form.control}
           name="image"
-          render={({}) => (
+          render={() => (
             <FormItem>
-              <FormLabel>Chose Image</FormLabel>
+              <FormLabel>Choose Image</FormLabel>
               <FormControl>
                 <FileUploader
                   value={files}
@@ -174,24 +200,21 @@ export default function DashboardProjectCreatePage() {
                   className="relative bg-background rounded-lg p-2"
                 >
                   <FileInput id="fileInput" className="outline-dashed outline-1 outline-slate-500">
-                    <div className="flex items-center justify-center flex-col p-8 w-full ">
+                    <div className="flex items-center justify-center flex-col p-8 w-full">
                       <CloudUpload className="text-gray-500 w-10 h-10" />
                       <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
-                        <span className="font-semibold">Click to upload</span>
-                        &nbsp; or drag and drop
+                        <span className="font-semibold">Click to upload</span>&nbsp; or drag and drop
                       </p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
                     </div>
                   </FileInput>
                   <FileUploaderContent>
-                    {files &&
-                      files.length > 0 &&
-                      files.map((file, i) => (
-                        <FileUploaderItem key={i} index={i}>
-                          <Paperclip className="h-4 w-4 stroke-current" />
-                          <span>{file.name}</span>
-                        </FileUploaderItem>
-                      ))}
+                    {files?.map((file, i) => (
+                      <FileUploaderItem key={i} index={i}>
+                        <Paperclip className="h-4 w-4 stroke-current" />
+                        <span>{file.name}</span>
+                      </FileUploaderItem>
+                    ))}
                   </FileUploaderContent>
                 </FileUploader>
               </FormControl>
@@ -210,7 +233,6 @@ export default function DashboardProjectCreatePage() {
               <FormControl>
                 <Input placeholder="Title your project" {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -241,9 +263,8 @@ export default function DashboardProjectCreatePage() {
             <FormItem>
               <FormLabel>Url</FormLabel>
               <FormControl>
-                <Input placeholder="https:" {...field} />
+                <Input placeholder="https://" {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -256,9 +277,8 @@ export default function DashboardProjectCreatePage() {
             <FormItem>
               <FormLabel>Github Url</FormLabel>
               <FormControl>
-                <Input placeholder="https:" {...field} />
+                <Input placeholder="https://" {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -277,7 +297,6 @@ export default function DashboardProjectCreatePage() {
                   {...field}
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -314,8 +333,8 @@ export default function DashboardProjectCreatePage() {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
-          Create
+        <Button className="w-full" type="submit" disabled={formState.isSubmitting}>
+          {formState.isSubmitting ? "Loading..." : "Updated"}
         </Button>
       </form>
     </Form>

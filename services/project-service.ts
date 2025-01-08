@@ -3,6 +3,8 @@ import { Project } from "@/constants/projects";
 import { SKILS_PROJECTS } from "@/constants/stacks";
 import { JSX } from "react";
 import { getDataBySlug, retriveData } from "./firebase-service";
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from "@/lib/firebase";
 
 export const dbToStack = (numbers: string[]): JSX.Element[] => {
   if (!Array.isArray(numbers)) {
@@ -51,3 +53,10 @@ export const getProjectDetail = async (slug: string) => {
     techStack: result.techStack ? dbToStack(result.techStack) : [],
   };
 };
+
+export async function getDataById(collectionName: string, id: string) {
+  const snapshot = await getDoc(doc(firestore, collectionName, id));
+  const data = snapshot.data();
+
+  return data;
+}
