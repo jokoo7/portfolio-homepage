@@ -31,7 +31,6 @@ import {
   FileUploaderItem,
 } from "@/components/ui/file-upload";
 import { SKILS_PROJECTS } from "@/constants/stacks";
-import { createProjectToDb } from "@/services/firebase-service";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -69,7 +68,7 @@ export default function DashboardProjectCreatePage() {
     },
   });
 
-  const { watch, setValue } = form;
+  const { watch, setValue, formState } = form;
 
   // Watch title changes
   const title = watch("title");
@@ -88,61 +87,39 @@ export default function DashboardProjectCreatePage() {
     }
   }, [title, setValue]);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = {
-      ...values,
-      is_best: false,
-    };
-
-    try {
-      createProjectToDb(data, (result: boolean) => {
-        if (result) {
-          toast({
-            description: "Yess! Berhasil create project",
-          });
-          // Reset form setelah berhasil upload
-          form.reset();
-          setFiles(null); // Reset state file
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Failed to create project.",
-          });
-        }
-      });
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Form submission error." + error,
-      });
-    }
-  }
-
-  async function handleFilesChange(files: File[] | null) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!files || files.length === 0) return;
     const selectedFile = files[0];
 
     const formData = new FormData();
+
     formData.append("file", selectedFile);
+    formData.append("title", values.title);
+    formData.append("slug", values.slug);
+    formData.append("url", values.url || "");
+    formData.append("github_url", values.github_url || "");
+    formData.append("description", values.description);
+    formData.append("techStack", JSON.stringify(values.techStack));
 
     try {
-      const response = await fetch("/api/image-upload", {
+      const response = await fetch("/api/project", {
         method: "POST",
         body: formData,
       });
+      const data = await response.json();
 
       if (!response.ok) {
         toast({
           variant: "destructive",
-          title: "Uh oh! Failed to upload file.",
+          title: data.message,
         });
       }
 
-      const data = await response.json();
-      form.setValue("image", data.filePath); // Simpan path file di form
+      form.reset();
+      setFiles(null);
 
       toast({
-        description: "Yess! File uploaded:" + data.filePath,
+        description: data.message,
       });
     } catch (error) {
       toast({
@@ -152,11 +129,9 @@ export default function DashboardProjectCreatePage() {
     }
   }
 
-  // console.log(files[0].name);
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-3xl mx-auto">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-3xl mx-auto mb-10">
         <FormField
           control={form.control}
           name="image"
@@ -168,7 +143,6 @@ export default function DashboardProjectCreatePage() {
                   value={files}
                   onValueChange={(files) => {
                     setFiles(files);
-                    handleFilesChange(files);
                   }}
                   dropzoneOptions={dropZoneConfig}
                   className="relative bg-background rounded-lg p-2"
@@ -314,8 +288,8 @@ export default function DashboardProjectCreatePage() {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
-          Create
+        <Button className="w-full" type="submit" disabled={formState.isSubmitting}>
+          {formState.isSubmitting ? "Loading..." : "Create"}
         </Button>
       </form>
     </Form>

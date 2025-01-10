@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Project } from "@/constants/projects";
+import { Project } from "@/types/project-type";
 import { SKILS_PROJECTS } from "@/constants/stacks";
 import { JSX } from "react";
 import { getDataBySlug, retriveData } from "./firebase-service";

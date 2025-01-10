@@ -1,5 +1,4 @@
-import React from "react";
-import DashboardProjectEditPage from "./edit";
+import DashboardProjectEditPage from "../../_components/edit-project";
 
 async function Page({ params }: { params: Promise<{ id: string }> }) {
   return <DashboardProjectEditPage id={(await params).id} />;

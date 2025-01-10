@@ -33,7 +33,6 @@ import {
   FileUploaderItem,
 } from "@/components/ui/file-upload";
 import { SKILS_PROJECTS } from "@/constants/stacks";
-import { updateProjectToDb } from "@/services/firebase-service";
 import { useToast } from "@/hooks/use-toast";
 import { useQuery } from "@tanstack/react-query";
 import { getDataById } from "@/services/project-service";
@@ -117,32 +116,40 @@ export default function DashboardProjectEditPage({ id }: IProps) {
     }
   }, [title, setValue]);
 
-  async function handleFilesChange(files: File[] | null) {
-    if (!files || files.length === 0) return;
-    const selectedFile = files[0];
-
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     const formData = new FormData();
-    formData.append("file", selectedFile);
+
+    // Sertakan file hanya jika ada
+    if (files && files.length > 0) {
+      formData.append("file", files[0]);
+    }
+    formData.append("title", values.title);
+    formData.append("id", id);
+    formData.append("slug", values.slug);
+    formData.append("url", values.url || "");
+    formData.append("github_url", values.github_url || "");
+    formData.append("description", values.description);
+    formData.append("techStack", JSON.stringify(values.techStack));
 
     try {
-      const response = await fetch("/api/image-upload", {
-        method: "POST",
+      const response = await fetch("/api/project", {
+        method: "PATCH",
         body: formData,
       });
+
+      const data = await response.json();
 
       if (!response.ok) {
         toast({
           variant: "destructive",
-          title: "Uh oh! Failed to upload file.",
+          title: data.message,
         });
-        return;
       }
 
-      const data = await response.json();
-      form.setValue("image", data.filePath); // Save file path in form
+      setFiles(null);
 
       toast({
-        description: "Yess! File uploaded: " + data.filePath,
+        description: data.message,
       });
     } catch (error) {
       toast({
@@ -152,37 +159,9 @@ export default function DashboardProjectEditPage({ id }: IProps) {
     }
   }
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = {
-      ...values,
-      is_best: project.is_best ? true : false,
-    };
-
-    try {
-      await updateProjectToDb(data, id, (result: boolean) => {
-        if (result) {
-          toast({
-            description: "Yess! Berhasil update project",
-          });
-          setFiles(null); // Reset files state
-        } else {
-          toast({
-            variant: "destructive",
-            title: "Uh oh! Failed to update project.",
-          });
-        }
-      });
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Form submission error: " + error,
-      });
-    }
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-3xl mx-auto">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-3xl mx-auto mb-10">
         <FormField
           control={form.control}
           name="image"
@@ -194,7 +173,6 @@ export default function DashboardProjectEditPage({ id }: IProps) {
                   value={files}
                   onValueChange={(files) => {
                     setFiles(files);
-                    handleFilesChange(files);
                   }}
                   dropzoneOptions={dropZoneConfig}
                   className="relative bg-background rounded-lg p-2"

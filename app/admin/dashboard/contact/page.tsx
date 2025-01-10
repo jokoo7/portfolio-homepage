@@ -1,15 +1,16 @@
+import * as React from "react";
+import { Plus } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
+import DashboardContact from "./_components/dashboard-contact";
 
-const DashboardContactPage = () => {
+export default function DataTableDemo() {
   return (
-    <>
-      <Link className={buttonVariants({ variant: "secondary" })} href="/admin/dashboard/contact/create">
-        create contact
+    <div className="w-full">
+      <Link className={buttonVariants({ variant: "outline" })} href="/admin/dashboard/contact/create">
+        <Plus /> Create new contact
       </Link>
-    </>
+      <DashboardContact />
+    </div>
   );
-};
-
-export default DashboardContactPage;
+}

@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Trash2 } from "lucide-react";
-import { useDeleteFileAndData } from "./use-delete-mutation-project";
+import { useDeleteFileAndDataContact } from "./delete-mutation-contact";
 
 type Props = {
   filePath: string;
   id: string;
 };
 
-export default function ButtonDeleteProject({ filePath, id }: Props) {
-  const deleteMutation: any = useDeleteFileAndData();
+export default function ButtonDeleteContact({ filePath, id }: Props) {
+  const deleteMutation: any = useDeleteFileAndDataContact();
 
   const handleDelete = () => {
     deleteMutation.mutate({ filePath, id });

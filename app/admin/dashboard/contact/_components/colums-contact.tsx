@@ -10,13 +10,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Project } from "@/constants/projects";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Copy, Eye, MoreHorizontal, Pencil } from "lucide-react";
 import Link from "next/link";
-import ButtonDeleteProject from "./button-delete-project";
+import ButtonDeleteContact from "./button-delete-contact";
+import { Contact } from "@/types/contact-type";
 
-export const columns: ColumnDef<Project>[] = [
+export const columns: ColumnDef<Contact>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -46,7 +46,7 @@ export const columns: ColumnDef<Project>[] = [
       };
 
       return (
-        <Button variant="ghost" onClick={handleSorting}>
+        <Button className="w-fit" variant="ghost" onClick={handleSorting}>
           No
           <ArrowUpDown className="ml-2" />
         </Button>
@@ -56,62 +56,35 @@ export const columns: ColumnDef<Project>[] = [
     accessorFn: (_, rowIndex) => rowIndex + 1, // Hitung indeks secara otomatis
   },
   {
-    accessorKey: "image",
-    header: "Image",
+    accessorKey: "icon",
+    header: () => <div className="text-left">Icon</div>,
     cell: ({ row }) => (
-      <div className="w-20 aspect-video overflow-hidden">
+      <div className="w-6 aspect-square dark:bg-foreground">
         <Image
-          src={row.getValue("image")}
-          alt={row.getValue("title")}
-          width={100}
-          height={100}
-          className="w-full h-full object-cover"
+          src={row.getValue("icon")}
+          alt={row.getValue("label")}
+          width={50}
+          height={50}
+          className="text-current"
         />
       </div>
     ),
   },
   {
-    accessorKey: "title",
-    header: "Title",
-    cell: ({ row }) => <div>{row.getValue("title")}</div>,
+    accessorKey: "label",
+    header: "Label",
+    cell: ({ row }) => <div>{row.getValue("label")}</div>,
   },
   {
-    accessorKey: "slug",
-    header: "Slug",
-    cell: ({ row }) => <div>{row.getValue("slug")}</div>,
-  },
-  {
-    accessorKey: "techStack",
-    header: () => <div className="text-left">Tech Stack</div>,
-    cell: ({ row }) => {
-      const techStack = row.getValue("techStack");
-
-      // Pastikan techStack adalah array
-      if (!Array.isArray(techStack)) {
-        return <div className="text-right font-medium">Invalid data</div>;
-      }
-
-      return (
-        <div className="flex gap-2">
-          {techStack.map((tech, index) => (
-            <div key={index} className="w-5 aspect-square">
-              {tech}
-            </div>
-          ))}
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "description",
-    header: "Description",
-    cell: ({ row }) => <div className="line-clamp-2 max-w-60">{row.getValue("description")}</div>,
+    accessorKey: "url",
+    header: "Url",
+    cell: ({ row }) => <div>{row.getValue("url")}</div>,
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const project = row.original;
+      const contact = row.original;
 
       return (
         <DropdownMenu>
@@ -125,20 +98,20 @@ export const columns: ColumnDef<Project>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() => navigator.clipboard.writeText(project.id)}
+              onClick={() => navigator.clipboard.writeText(contact.id)}
             >
               <Copy />
               Copy payment ID
             </DropdownMenuItem>
-            <ButtonDeleteProject filePath={project.image} id={project.id} />
-            <Link href={`/admin/dashboard/project/edit/${project.id}`}>
+            <ButtonDeleteContact filePath={contact.icon} id={contact.id} />
+            <Link href={`/admin/dashboard/contact/edit/${contact.id}`}>
               <DropdownMenuItem className="cursor-pointer">
                 <Pencil /> Edit
               </DropdownMenuItem>
             </Link>
             <DropdownMenuItem className="cursor-pointer">
               <Eye />
-              View project details
+              View contact details
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

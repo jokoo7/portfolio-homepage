@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ArrowSvg from "./svg/arrow";
-import { Project } from "@/constants/projects";
+import { Project } from "@/types/project-type";
 import Image from "./image";
 
 const CardProject = ({ project }: { project: Project }) => {

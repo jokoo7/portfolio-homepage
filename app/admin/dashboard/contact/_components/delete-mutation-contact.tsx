@@ -10,7 +10,7 @@ type DeleteFileAndDataParams = {
 };
 
 async function deleteFileAndData({ filePath, id }: DeleteFileAndDataParams) {
-  const response = await fetch("/api/delete-project", {
+  const response = await fetch("/api/contact", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ filePath, id }),
@@ -24,7 +24,7 @@ async function deleteFileAndData({ filePath, id }: DeleteFileAndDataParams) {
   return response.json();
 }
 
-export function useDeleteFileAndData() {
+export function useDeleteFileAndDataContact() {
   const { toast } = useToast();
   const queryClient: any = useQueryClient();
 
@@ -32,7 +32,7 @@ export function useDeleteFileAndData() {
     mutationFn: deleteFileAndData,
     onSuccess: () => {
       // Invalidasi query untuk merivalidasi data
-      queryClient.invalidateQueries(["projects"]);
+      queryClient.invalidateQueries(["contacts"]);
 
       // Tampilkan notifikasi sukses
       toast({

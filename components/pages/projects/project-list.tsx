@@ -1,6 +1,6 @@
 import CardProject from "@/components/card-project";
 import ProjectLoading from "@/components/loading/project-loading";
-import { Project } from "@/constants/projects";
+import { Project } from "@/types/project-type";
 import { motion } from "framer-motion";
 import React from "react";
 

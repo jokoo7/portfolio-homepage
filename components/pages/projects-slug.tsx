@@ -9,7 +9,7 @@ import Back from "../back";
 import { CornerUpRight } from "lucide-react";
 import Image from "../image";
 import { useQuery } from "@tanstack/react-query";
-import { Project } from "@/constants/projects";
+import { Project } from "@/types/project-type";
 import MotionSection from "../motion-section";
 
 interface ProjectSlugProps {

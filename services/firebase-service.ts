@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { firestore } from "@/lib/firebase";
 import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
-import { getDataById } from "./project-service";
 
 export const retriveData = async (collectionName: string) => {
   const snapshot = await getDocs(collection(firestore, collectionName));
@@ -24,42 +22,46 @@ export const checkUserExists = async (password: string) => {
   return data[0];
 };
 
-export const createProjectToDb = async (data: any, callback: Function) => {
-  await addDoc(collection(firestore, "projects"), data)
-    .then(() => callback(true))
-    .catch((error) => {
-      callback(false);
-      console.log(error);
-    });
+export const createProjectToDb = async (data: any): Promise<boolean> => {
+  try {
+    await addDoc(collection(firestore, "projects"), data);
+    return true;
+  } catch (error) {
+    console.error("Failed to add project to database:", error);
+    return false;
+  }
 };
 
-export const updateProjectToDb = async (data: any, id: string, callback: (result: boolean) => void) => {
-  // Ambil data proyek berdasarkan slug
-  const project: any = await getDataById("projects", id);
-
-  // Gabungkan data baru dengan data lama (menggunakan image lama)
-  const result = {
-    ...data,
-    image: data.image ? data.image : project?.image, // Gunakan image lama jika image baru tidak ada
-  };
-
-  console.log(result);
-
-  return await updateDoc(doc(firestore, "projects", id), result)
-    .then(() => callback(true))
-    .catch((error) => {
-      callback(false);
-      console.log(error);
-    });
+export const updateProjectToDb = async (data: any, id: string) => {
+  try {
+    // Update dokumen di Firestore
+    await updateDoc(doc(firestore, "projects", id), data);
+    return true;
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return false;
+  }
 };
 
-export const createContactToDb = async (data: any, callback: Function) => {
-  await addDoc(collection(firestore, "contacts"), data)
-    .then(() => callback(true))
-    .catch((error) => {
-      callback(false);
-      console.log(error);
-    });
+export const createContactToDb = async (data: any) => {
+  try {
+    await addDoc(collection(firestore, "contacts"), data);
+    return true;
+  } catch (error) {
+    console.error("Failed to add contact to database:", error);
+    return false;
+  }
+};
+
+export const updateContactToDb = async (data: any, id: string) => {
+  try {
+    // Update dokumen di Firestore
+    await updateDoc(doc(firestore, "contact", id), data);
+    return true;
+  } catch (error) {
+    console.error("Error updating contact:", error);
+    return false;
+  }
 };
 
 export const getDataBySlug = async (collectionName: string, slug: string) => {

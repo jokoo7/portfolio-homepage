@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -22,22 +24,38 @@ import {
   FileUploaderItem,
 } from "@/components/ui/file-upload";
 import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
+import { getDataById } from "@/services/project-service";
 
 const formSchema = z.object({
-  icon: z.string(),
+  icon: z.string().optional(),
   label: z.string().min(1, "Label is required"),
   url: z.string().url().optional(),
 });
 
-export default function DashboardContactCreatePage() {
-  const { toast } = useToast();
+type IProps = {
+  id: string;
+};
+
+export default function DashboardContactEditPage({ id }: IProps) {
+  const { data: contact } = useQuery<any>({
+    queryKey: ["contact", id],
+    queryFn: () => getDataById("contacts", id),
+    initialData: null,
+  });
+
   const [files, setFiles] = useState<File[] | null>(null);
+  const { toast } = useToast();
 
   const dropZoneConfig = {
+    accept: {
+      "image/*": [".jpg", ".jpeg", ".png", ".gif", ".svg"],
+    },
     maxFiles: 5,
     maxSize: 1024 * 1024 * 4,
     multiple: true,
   };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,23 +65,35 @@ export default function DashboardContactCreatePage() {
     },
   });
 
-  const { formState } = form;
+  const { reset, formState } = form;
+
+  useEffect(() => {
+    if (contact) {
+      reset({
+        icon: "",
+        label: contact.label ?? "",
+        url: contact.url ?? "",
+      });
+    }
+  }, [contact, reset]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (!files || files.length === 0) return;
-    const selectedFile = files[0];
-
     const formData = new FormData();
 
-    formData.append("file", selectedFile);
+    // Sertakan file hanya jika ada
+    if (files && files.length > 0) {
+      formData.append("file", files[0]);
+    }
     formData.append("label", values.label);
+    formData.append("id", id);
     formData.append("url", values.url || "");
 
     try {
       const response = await fetch("/api/contact", {
-        method: "POST",
+        method: "PATCH",
         body: formData,
       });
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -73,7 +103,6 @@ export default function DashboardContactCreatePage() {
         });
       }
 
-      form.reset();
       setFiles(null);
 
       toast({
@@ -82,7 +111,7 @@ export default function DashboardContactCreatePage() {
     } catch (error) {
       toast({
         variant: "destructive",
-        title: "Uh oh! FailedUpload error." + error,
+        title: "Uh oh! Upload error: " + error,
       });
     }
   }
