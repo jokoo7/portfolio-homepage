@@ -271,7 +271,7 @@ export default function DashboardProjectCreatePage() {
                   className="max-w-xs"
                 >
                   <MultiSelectorTrigger>
-                    <MultiSelectorInput placeholder="Select Techstack" />
+                    <MultiSelectorInput />
                   </MultiSelectorTrigger>
                   <MultiSelectorContent>
                     <MultiSelectorList>
