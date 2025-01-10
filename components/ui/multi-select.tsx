@@ -319,10 +319,7 @@ const MultiSelectorList = forwardRef<any, any>(({ className, children }, ref) =>
 
 MultiSelectorList.displayName = "MultiSelectorList";
 
-const MultiSelectorItem = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Item>,
-  { value: string } & React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item>
->(({ className, value, children, ...props }, ref) => {
+const MultiSelectorItem = forwardRef<any, any>(({ className, value, children, ...props }, ref) => {
   const { value: Options, onValueChange, setInputValue } = useMultiSelect();
 
   const mousePreventDefault = useCallback((e: React.MouseEvent) => {
