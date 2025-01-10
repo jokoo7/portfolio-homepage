@@ -293,7 +293,7 @@ export default function DashboardProjectEditPage({ id }: IProps) {
                   className="max-w-xs"
                 >
                   <MultiSelectorTrigger>
-                    <MultiSelectorInput placeholder="Select Techstack" />
+                    <MultiSelectorInput />
                   </MultiSelectorTrigger>
                   <MultiSelectorContent>
                     <MultiSelectorList>
