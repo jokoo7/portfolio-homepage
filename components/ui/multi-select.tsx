@@ -7,6 +7,7 @@ import { Command as CommandPrimitive } from "cmdk";
 import { X as RemoveIcon, Check } from "lucide-react";
 import React, {
   KeyboardEvent,
+  ReactNode,
   createContext,
   forwardRef,
   useCallback,
@@ -19,6 +20,8 @@ interface MultiSelectorProps extends React.ComponentPropsWithoutRef<typeof Comma
   values: string[];
   onValuesChange: (value: string[]) => void;
   loop?: boolean;
+  className: string;
+  children: ReactNode;
 }
 
 interface MultiSelectContextProps {
