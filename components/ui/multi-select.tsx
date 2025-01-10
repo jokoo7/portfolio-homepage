@@ -300,10 +300,7 @@ const MultiSelectorContent = forwardRef<HTMLDivElement, React.HTMLAttributes<HTM
 
 MultiSelectorContent.displayName = "MultiSelectorContent";
 
-const MultiSelectorList = forwardRef<
-  React.ElementRef<typeof CommandPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
->(({ className, children }, ref) => {
+const MultiSelectorList = forwardRef<any, any>(({ className, children }, ref) => {
   return (
     <CommandList
       ref={ref}
