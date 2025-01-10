@@ -1,6 +1,5 @@
 import { retriveData } from "./firebase-service";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const getContacts = async () => {
   const result: any[] = await retriveData("contacts");
   // Sort contacts by created_at descending

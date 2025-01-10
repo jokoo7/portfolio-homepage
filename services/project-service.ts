@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Project } from "@/types/project-type";
 import { SKILS_PROJECTS } from "@/constants/stacks";
 import { JSX } from "react";

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { firestore } from "@/lib/firebase";
 import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 
