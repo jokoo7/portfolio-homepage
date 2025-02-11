@@ -1,38 +1,11 @@
 import CardContact from "@/components/card-contact";
-import ContactLoading from "@/components/loading/contact-loading";
-import { getContacts } from "@/services/contact-service";
-import { useQuery } from "@tanstack/react-query";
+import { CONTACTS as contacts } from "@/constants/contacts";
 import { motion } from "framer-motion";
 
-// Define contact type
-interface Contact {
-  created_at: string | Date;
-  url: string;
-  label: string;
-  icon: string;
-}
-
 const ContactList = () => {
-  const {
-    data: contacts = [],
-    isLoading,
-    isError,
-  } = useQuery<Contact[]>({
-    queryKey: ["contacts"],
-    queryFn: getContacts,
-  });
-
-  if (isLoading) {
-    return <ContactLoading />;
-  }
-
-  if (isError) {
-    return <p className="text-center text-red-500">Failed to load contacts. Please try again later.</p>;
-  }
-
   if (contacts.length === 0) {
     return (
-      <p className="text-center text-neutral-500 dark:text-neutral-300">
+      <p className="text-center text-neutral-600 dark:text-neutral-400">
         No contacts available at the moment.
       </p>
     );
@@ -47,7 +20,7 @@ const ContactList = () => {
           transition={{ duration: 0.5, delay: index * 0.1 }}
           key={index}
         >
-          <CardContact href={contact.url} label={contact.label} icon={contact.icon} />
+          <CardContact data={contact} />
         </motion.div>
       ))}
     </div>

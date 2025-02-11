@@ -25,6 +25,7 @@ const MainLayout = ({
   return (
     <body className={cn("antialiased", { "overflow-hidden": isHamburger })}>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <Toaster />
         {!disabledRoute.includes(location) && (
           <div
             className={`w-full overflow-hidden fixed inset-0 dark:bg-[#181818] bg-background z-40 transition-all duration-500 ${
@@ -58,7 +59,6 @@ const MainLayout = ({
           </div>
         )}
         {children}
-        <Toaster />
       </ThemeProvider>
     </body>
   );

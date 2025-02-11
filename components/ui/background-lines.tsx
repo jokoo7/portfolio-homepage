@@ -15,7 +15,7 @@ export const BackgroundLines = ({
   };
 }) => {
   return (
-    <div className={cn("my-32 w-full bg-transparent", className)}>
+    <div className={cn("w-full bg-transparent", className)}>
       <SVG svgOptions={svgOptions} />
       {children}
     </div>

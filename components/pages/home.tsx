@@ -8,24 +8,17 @@ import { BackgroundLines } from "../ui/background-lines";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 import Heading from "../heading";
 import ProjectList from "./projects/project-list";
-import { useQuery } from "@tanstack/react-query";
-import { getBestProjects } from "@/services/project-service";
 
 const HomePage = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["projects-best"],
-    queryFn: getBestProjects,
-  });
-
   return (
     <>
       <BackgroundLines
         svgOptions={{ duration: 5 }}
-        className="flex items-center justify-center w-full flex-col px-8"
+        className="flex items-center justify-center w-full flex-col px-8 mb-16 mt-28"
       >
         <MotionSection>
           <h2 className="bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-5xl md:text-6xl lg:text-7xl font-sans relative z-20 font-bold tracking-tight">
-            Portfolio Website, <br /> Let&apos;s Connect
+            Portfolio Website <br /> Let&apos;s Connect
             <ArrowSvg w="30" h="35" className="rotate-90 my-5 mx-auto" />
           </h2>
         </MotionSection>
@@ -46,7 +39,7 @@ const HomePage = () => {
 
         {/* Projects List */}
         <div className="mt-10">
-          <ProjectList projects={data ?? []} isLoading={isLoading} isError={isError} />
+          <ProjectList projects={[]} />
         </div>
 
         <div className="w-full flex justify-center mt-10">
@@ -63,7 +56,7 @@ const HomePage = () => {
         </div>
       </MotionSection>
 
-      <MotionSection delay={0.5} className="wrapper">
+      <MotionSection delay={0.5} className="wrapper pb-16 border-b">
         <Heading
           title="Professional Services Tailored for You"
           description="Offering a range of services from web development solutions. Each service is crafted to meet
@@ -71,7 +64,7 @@ const HomePage = () => {
             to life together!"
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 pb-16 border-b">
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
           <CardService
             label="coding"
             title="Website Development"
@@ -133,7 +126,7 @@ const HomePage = () => {
             title="Search Engine Optimization"
             description="Improvement Search Engine Optimization and web performance."
           >
-            <div className="flex h-40 flex-col items-center justify-start gap-1 px-6 text-neutral-500 dark:text-neutral-300">
+            <div className="flex h-40 flex-col items-center justify-start gap-1 px-6 text-neutral-600 dark:text-neutral-400">
               <p>Google</p>
               <div className="flex h-4 w-40 items-center rounded-full border border-neutral-300 px-3 py-2 text-[8px] dark:border-neutral-700">
                 <span aria-label="What is SEO?" className="font-inter">

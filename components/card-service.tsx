@@ -21,7 +21,7 @@ const CardService = ({ children, title, description, label }: IProps) => {
         </div>
       </div>
       <div className="w-full">
-        <span className="right-3 top-3 mb-1 flex w-max items-center justify-center rounded-lg border border-neutral-200 bg-neutral-200 bg-opacity-40 px-2 text-xs text-neutral-500 dark:border-foreground  dark:bg-main-blue dark:text-teal-200 md:absolute">
+        <span className="right-3 top-3 mb-1 flex w-max items-center justify-center rounded-lg border border-neutral-200 bg-neutral-200 bg-opacity-40 px-2 text-xs text-neutral-600 dark:border-foreground  dark:bg-main-blue dark:text-teal-200 md:absolute">
           {label}
         </span>
         <h3 className="text-xl font-medium">{title}</h3>

@@ -52,8 +52,8 @@ const AboutPage = () => {
           </div>
         </MotionDiv>
       </section>
-      <MotionSection delay={0.5} className="mt-16">
-        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-5 sm:gap-y-10 sm:gap-x-0 font-inter w-full pb-16 border-b">
+      <MotionSection delay={0.5} className="mt-16 pb-16 border-b">
+        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-5 sm:gap-y-10 sm:gap-x-0 font-inter w-full">
           <p className="underline whitespace-nowrap">Main Skils</p>
 
           <SkillList />

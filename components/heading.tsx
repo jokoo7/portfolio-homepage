@@ -10,7 +10,7 @@ const Heading = ({ title, description }: IProps) => {
         {title}
       </h4>
 
-      <p className="text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+      <p className="text-base max-w-2xl my-4 mx-auto text-neutral-600 text-center font-normal dark:text-neutral-400">
         {description}
       </p>
     </>

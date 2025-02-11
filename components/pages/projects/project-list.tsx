@@ -1,29 +1,20 @@
 import CardProject from "@/components/card-project";
-import ProjectLoading from "@/components/loading/project-loading";
 import { Project } from "@/types/project-type";
 import { motion } from "framer-motion";
+import { TriangleAlert } from "lucide-react";
 import React from "react";
 
 type IProps = {
   projects: Project[];
-  isLoading: boolean;
-  isError: boolean;
 };
 
-const ProjectList = ({ projects, isLoading, isError }: IProps) => {
-  if (isLoading) {
-    return <ProjectLoading />;
-  }
-
-  if (isError) {
-    return <p className="text-center text-red-500">Failed to load projects. Please try again later.</p>;
-  }
-
+const ProjectList = ({ projects }: IProps) => {
   if (projects.length === 0) {
     return (
-      <p className="text-center text-neutral-500 dark:text-neutral-300">
-        No projects available at the moment.
-      </p>
+      <div className="flex flex-col gap-1 text-red-400 items-center justify-center">
+        <TriangleAlert size={20} className="" />
+        <p className="text-center">No projects available at the moment</p>
+      </div>
     );
   }
 
