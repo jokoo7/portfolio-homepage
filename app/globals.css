@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,6 +116,9 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  html {
+    min-width: 360px;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-12;

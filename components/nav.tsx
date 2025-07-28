@@ -5,7 +5,6 @@ import { ModeToggle } from "./mode-toggle";
 const navItems = {
   "/blog": { name: "Blog" },
   "/projects": { name: "Projects" },
-  "/photos": { name: "Photos" },
 };
 
 export function Navbar() {
