@@ -12,7 +12,7 @@ export function ModeToggle() {
   return (
     <Button
       variant="ghost"
-      className="group/toggle h-8 w-8 px-0"
+      className="group/toggle h-8 w-8 px-0 bg-accent text-accent-foreground hover:bg-accent/50 dark:hover:bg-accent/50"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <FaCircleHalfStroke />

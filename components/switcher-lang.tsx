@@ -19,7 +19,10 @@ export default function SwitcherLang() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-8 w-8 px-0">
+        <Button
+          variant="ghost"
+          className="group/toggle h-8 w-8 px-0 bg-accent text-accent-foreground hover:bg-accent/50 dark:hover:bg-accent/50"
+        >
           <Languages />
         </Button>
       </DropdownMenuTrigger>
