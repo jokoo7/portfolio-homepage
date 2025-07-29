@@ -1,11 +1,12 @@
 {
   "Home": {
     "description": {
-      "intro": "Joko Santoso",
-      "work": "Saya merancang antarmuka web yang cepat, responsif, dan mudah digunakan. Dengan teknologi terkini, saya ubah setiap ide menjadi pengalaman digital yang mulus di semua perangkat.",
-      "experience": "Lebih dari 1 tahun saya tekuni dunia web. Fokus saya: solusi yang tidak hanya berfungsi, tetapi juga memanjakan pengguna.",
-      "accessibility": "Aksesibilitas adalah prioritas. Setiap kode saya tulis mengusung prinsip inklusif, memastikan semua orang—tanpa terkecuali—dapat menikmati konten yang saya ciptakan.",
-      "living": "Saat ini saya berbasis di Pekanbaru, Indonesia. Tersedia untuk proyek freelance, kolaborasi, maupun magang."
+      "intro": "Halo, saya seorang pengembang web independen yang berbasis di Riau!",
+      "profesi": "Perajin Digital (Software Engineer)",
+      "work": "Saya fokus mengembangkan aplikasi web modern yang cepat, responsif, dan berorientasi pada pengguna dengan JavaScript, TypeScript, dan berbagai framework frontend.",
+      "experience": "Dengan pengalaman beberapa tahun di pengembangan web, saya menikmati tantangan dalam memecahkan masalah kompleks dan mengubah ide menjadi solusi digital yang intuitif.",
+      "accessibility": "Saya percaya bahwa perangkat lunak yang hebat harus bisa diakses semua orang. Setiap baris kode yang saya tulis mengikuti prinsip inklusivitas.",
+      "living": "Saat ini saya berdomisili di Riau, Indonesia. Terbuka untuk proyek freelance, kolaborasi, dan peluang teknologi yang bermakna."
     }
   }
 }

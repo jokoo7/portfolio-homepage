@@ -1,7 +1,10 @@
 "use client";
 
-import { routing } from "@/lib/i18n/routing";
+import { Languages } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 export default function SwitcherLang() {
   const pathname = usePathname();
@@ -14,12 +17,16 @@ export default function SwitcherLang() {
   };
 
   return (
-    <div style={{ marginBottom: 20 }}>
-      {routing.locales.map((loc) => (
-        <button key={loc} onClick={() => changeLocale(loc)}>
-          {loc.toUpperCase()}
-        </button>
-      ))}
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 px-0">
+          <Languages />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => changeLocale("id")}>Indonesia</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLocale("en")}>English</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

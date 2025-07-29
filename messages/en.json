@@ -1,11 +1,12 @@
 {
   "Home": {
     "description": {
-      "intro": "Hi, I'm Joko Santoso—a frontend developer.",
-      "work": "I craft fast, responsive, and user-friendly web interfaces, turning fresh ideas into seamless digital experiences across every device.",
-      "experience": "With 1+ years in web development, I focus on solutions that not only work flawlessly but also delight users.",
-      "accessibility": "Accessibility is non-negotiable. Every line of code I write follows inclusive principles so everyone can enjoy the content I build.",
-      "living": "I'm currently based in Pekanbaru, Indonesia. Open to freelance projects, collaborations, and internship opportunities."
+      "intro": "Hello, I'm an indie web developer based in Riau!",
+      "profesi": "Digital Craftsman (Software Engineer)",
+      "work": "I specialize in building modern, performant, and user-centric web applications using JavaScript, TypeScript, and powerful frontend frameworks.",
+      "experience": "With several years of experience in web development, I thrive on solving complex problems and turning ideas into intuitive digital experiences.",
+      "accessibility": "I believe that great software is for everyone. I strive to write accessible, inclusive code that empowers all users, regardless of ability.",
+      "living": "I'm currently based in Riau, Indonesia. Open to freelance work, collaborative projects, and meaningful tech opportunities."
     }
   }
 }
