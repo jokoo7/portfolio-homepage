@@ -50,101 +50,101 @@
 :root {
   --radius: 0.625rem;
 
-  /* Light Mode - Warm Cream Theme */
-  --background: #f5f2ed;
-  --foreground: #1a1b1e;
-  --text: #2c3e50;
+  /* Light Mode - Warm Neutral */
+  --background: #fefcf9; /* Warm white */
+  --foreground: #1c1917; /* Warm black */
+  --text: #292524;
 
   --card: #ffffff;
-  --card-foreground: #1a1b1e;
+  --card-foreground: #1c1917;
 
   --popover: #ffffff;
-  --popover-foreground: #1a1b1e;
+  --popover-foreground: #1c1917;
 
-  --primary: #3d7aed;
+  --primary: #059669; /* Emerald green */
   --primary-foreground: #ffffff;
 
-  --secondary: #e2e8f0;
-  --secondary-foreground: #475569;
+  --secondary: #f3f4f6; /* Lebih netral, kontras lebih baik */
+  --secondary-foreground: #374151; /* Lebih gelap untuk kontras yang baik */
 
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --muted: #f9fafb; /* Netral light gray */
+  --muted-foreground: #6b7280; /* Medium gray untuk readability */
 
-  --accent: #10b981;
+  --accent: #ea580c; /* Orange accent */
   --accent-foreground: #ffffff;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  --border: #e5e7eb; /* Lebih netral */
+  --input: #ffffff;
+  --ring: #059669;
+
+  /* Chart Colors - Light Mode */
+  --chart-1: #059669;
+  --chart-2: #ea580c;
+  --chart-3: #0891b2;
+  --chart-4: #c2410c;
+  --chart-5: #7c2d12;
+
+  /* Sidebar - Light Mode */
+  --sidebar: #f9fafb; /* Konsisten dengan muted */
+  --sidebar-foreground: #374151; /* Konsisten dengan secondary-foreground */
+  --sidebar-primary: #059669;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ea580c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e5e7eb; /* Konsisten dengan border */
+  --sidebar-ring: #059669;
+}
+
+.dark {
+  /* Dark Mode - Warm Dark */
+  --background: #0c0a09; /* Warm black */
+  --foreground: #d1d5db; /* Soft gray, tidak menyakitkan mata */
+  --text: #d1d5db; /* Soft gray untuk teks default */
+
+  --card: #1f2937; /* Dark gray yang lebih seimbang */
+  --card-foreground: #d1d5db; /* Soft gray untuk card text */
+
+  --popover: #1f2937;
+  --popover-foreground: #d1d5db; /* Soft gray untuk popover */
+
+  --primary: #10b981; /* Brighter emerald */
+  --primary-foreground: #ffffff; /* Putih untuk kontras maksimal */
+
+  --secondary: #374151; /* Medium dark gray */
+  --secondary-foreground: #e5e7eb; /* Medium light gray, tidak terlalu terang */
+
+  --muted: #4b5563; /* Medium gray */
+  --muted-foreground: #9ca3af; /* Light gray untuk readability */
+
+  --accent: #fb923c; /* Warmer orange */
+  --accent-foreground: #ffffff; /* Putih untuk kontras maksimal */
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #e2e8f0;
-  --input: #ffffff;
-  --ring: #3d7aed;
-
-  /* Chart Colors - Light Mode */
-  --chart-1: #3b82f6;
-  --chart-2: #10b981;
-  --chart-3: #f59e0b;
-  --chart-4: #ec4899;
-  --chart-5: #8b5cf6;
-
-  /* Sidebar - Light Mode */
-  --sidebar: #e2e8f0;
-  --sidebar-foreground: #475569;
-  --sidebar-primary: #3d7aed;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #10b981;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #3d7aed;
-}
-
-.dark {
-  /* Dark Mode - Deep Dark Theme */
-  --background: #0f1419;
-  --foreground: #e6e6e6;
-  --text: #d1d5db;
-
-  --card: #1a1f2e;
-  --card-foreground: #e6e6e6;
-
-  --popover: #1a1f2e;
-  --popover-foreground: #e6e6e6;
-
-  --primary: #60a5fa;
-  --primary-foreground: #0f1419;
-
-  --secondary: #1e293b;
-  --secondary-foreground: #e2e8f0;
-
-  --muted: #334155;
-  --muted-foreground: #94a3b8;
-
-  --accent: #34d399;
-  --accent-foreground: #0f1419;
-
-  --destructive: #f87171;
-  --destructive-foreground: #0f1419;
-
-  --border: #334155;
-  --input: #1e293b;
-  --ring: #60a5fa;
+  --border: #4b5563; /* Konsisten dengan muted */
+  --input: #374151; /* Konsisten dengan secondary */
+  --ring: #10b981;
 
   /* Chart Colors - Dark Mode */
-  --chart-1: #60a5fa;
-  --chart-2: #34d399;
-  --chart-3: #fbbf24;
-  --chart-4: #f472b6;
-  --chart-5: #a78bfa;
+  --chart-1: #10b981;
+  --chart-2: #fb923c;
+  --chart-3: #06b6d4;
+  --chart-4: #f97316;
+  --chart-5: #dc2626;
 
   /* Sidebar - Dark Mode */
-  --sidebar: #1a1f2e;
-  --sidebar-foreground: #e2e8f0;
-  --sidebar-primary: #60a5fa;
-  --sidebar-primary-foreground: #0f1419;
-  --sidebar-accent: #34d399;
-  --sidebar-accent-foreground: #0f1419;
-  --sidebar-border: #334155;
-  --sidebar-ring: #60a5fa;
+  --sidebar: #1f2937; /* Konsisten dengan card */
+  --sidebar-foreground: #e5e7eb; /* Medium gray, tidak menyakitkan mata */
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fb923c;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4b5563; /* Konsisten dengan border */
+  --sidebar-ring: #10b981;
 }
 
 @layer base {
@@ -155,6 +155,6 @@
     min-width: 360px;
   }
   body {
-    @apply bg-background text-text font-sans antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-12;
+    @apply bg-background text-text font-sans antialiased;
   }
 }
