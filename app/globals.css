@@ -81,10 +81,6 @@
 }
 
 @layer base {
-  * {
-    @apply border-border border-opacity-50;
-  }
-
   body {
     @apply bg-background text-foreground font-sans;
   }
