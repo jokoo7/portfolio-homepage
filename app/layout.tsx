@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { HamburgerProvider } from "@/hooks/use-hamburger-menu";
+import NavbarProvider from "@/components/provider/navbar-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -24,10 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={cn("antialiased", inter.variable)}>
+        <HamburgerProvider>
+          <NavbarProvider>
+            <div className="absolute inset-0 -z-40 w-full min-h-screen bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] bg-[size:18px_18px] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_20%,#000_80%,transparent_100%)]"></div>
+            {children}
+          </NavbarProvider>
+        </HamburgerProvider>
       </body>
     </html>
   );
