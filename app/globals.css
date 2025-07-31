@@ -124,15 +124,10 @@
   * {
     @apply border-border outline-ring/50 font-sans;
   }
+  html {
+    @apply min-w-[360px];
+  }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-@layer components {
-  .wrapper {
-    max-width: 896px;
-    margin-inline: auto;
-    padding-inline: 2rem;
   }
 }

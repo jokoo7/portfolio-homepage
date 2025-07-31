@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
+import { ThemeSwitcher } from "../theme-switcher";
 
 export default function NavbarProvider({
   children,
@@ -86,7 +87,7 @@ export default function NavbarProvider({
           </Link>
 
           <div className={cn({ "animate-fade-down animate-delay-500": isHamburgerOpen })}>
-            {/* <ModeToggle /> */}
+            <ThemeSwitcher />
           </div>
         </div>
       </div>
@@ -100,7 +101,7 @@ export default function NavbarProvider({
           { "bg-transparent": !navBackground }
         )}
       >
-        <div className="wrapper flex justify-between items-center h-16">
+        <div className="max-w-4xl mx-auto px-8 flex justify-between items-center h-16">
           <Link
             href="/"
             className={cn(
@@ -119,7 +120,9 @@ export default function NavbarProvider({
               <Link href="/contact">Contact</Link>
             </div>
             <div className="flex items-center gap-5">
-              <div className="hidden sm:block">{/* <ModeToggle /> */}</div>
+              <div className="hidden sm:block">
+                <ThemeSwitcher />
+              </div>
               <div
                 onClick={() => setIsHamburgerOpen((prev) => !prev)}
                 className={cn(
