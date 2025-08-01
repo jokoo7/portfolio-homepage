@@ -32,6 +32,6 @@
     @apply min-w-[360px];
   }
   body {
-    @apply antialiased;
+    @apply font-inter antialiased;
   }
 }

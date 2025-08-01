@@ -11,9 +11,9 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="mb-8 flex flex-col gap-4">
+    <header className="mb-8 flex flex-col gap-8">
       <div className="flex items-center gap-4">
-        <div className="aspect-square w-14 shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
+        <div className="aspect-square w-16 shrink-0 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-700">
           <Image
             src="/me.jpg"
             alt="profile"
@@ -23,10 +23,7 @@ export function Header() {
           />
         </div>
         <div>
-          <Link
-            href="/"
-            className="text-lg font-medium text-black dark:text-white"
-          >
+          <Link href="/" className="font-medium text-black dark:text-white">
             Joko Santoso
           </Link>
           <TextEffect
