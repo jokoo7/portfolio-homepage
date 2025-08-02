@@ -5,6 +5,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
@@ -13,11 +14,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #52525b;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --text-primary: #a1a1aa;
 }
 
 @layer base {
@@ -32,6 +35,6 @@
     @apply min-w-[360px];
   }
   body {
-    @apply font-inter antialiased;
+    @apply font-inter text-text-primary antialiased;
   }
 }
