@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from 'next-themes'
 import { Header } from '@/components/header'
 import { cn } from '@/lib/utils'
+import { Footer } from '@/components/footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -45,6 +46,7 @@ export default function RootLayout({
             <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20 sm:px-6">
               <Header />
               {children}
+              <Footer />
             </div>
           </div>
         </ThemeProvider>

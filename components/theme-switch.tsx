@@ -18,7 +18,7 @@ export function ThemeSwitch() {
 
   return (
     <button
-      className="inline-flex aspect-square w-8 cursor-pointer items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors duration-100 focus-visible:outline-2 dark:bg-zinc-800 dark:text-zinc-400"
+      className="inline-flex aspect-square w-8 cursor-pointer items-center justify-center rounded-full text-zinc-500 transition-colors duration-100 focus-visible:outline-2 dark:text-zinc-400"
       type="button"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
