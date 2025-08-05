@@ -1,5 +1,13 @@
+import Card from '@/components/card'
 import MotionMain from '@/components/motion-main'
 import MotionSection from '@/components/motion-section'
+import { Button, buttonVariants } from '@/components/ui/button'
+import Heading from '@/components/ui/heading'
+import Paragraph from '@/components/ui/paragraph'
+import { BLOG_POSTS } from '@/data/blogs'
+import { EMAIL, SOCIAL_LINKS } from '@/data/contacts'
+import { PROJECTS } from '@/data/projects'
+import { SKILLS } from '@/data/skills'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -22,79 +30,6 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-export const PROJECTS = [
-  {
-    name: 'Motion Primitives Pro',
-    description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    img: '/projects/project_01.png',
-    id: 'project1',
-  },
-  {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    img: '/projects/project_02.jpg',
-    id: 'project2',
-  },
-]
-
-export const BLOG_POSTS = [
-  {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    img: '/blogs/blog-01.png',
-    uid: 'blog-1',
-  },
-  {
-    title: 'Why I left my job to start my own company',
-    description:
-      'A deep dive into my decision to leave my job and start my own company',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    img: '/blogs/blog-02.jpg',
-    uid: 'blog-2',
-  },
-  {
-    title: 'What I learned from my first year of freelancing',
-    description:
-      'A look back at my first year of freelancing and what I learned',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    img: '/blogs/blog-01.png',
-    uid: 'blog-3',
-  },
-  {
-    title: 'How to Export Metadata from MDX for Next.js SEO',
-    description:
-      'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
-    img: '/blogs/blog-02.jpg',
-    link: '/blog/example-mdx-metadata',
-    uid: 'blog-4',
-  },
-]
-
-export const SOCIAL_LINKS = [
-  {
-    label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
-  },
-  {
-    label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
-  },
-  {
-    label: 'Tiktok',
-    link: 'https://www.instagram.com/ibelick',
-  },
-]
-
-export const EMAIL = 'your@email.com'
-
 export default function Home() {
   return (
     <MotionMain
@@ -108,26 +43,26 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">About me</h1>
-          <p>
+          <Heading>About me</Heading>
+          <Paragraph>
             I specialize in building modern, performant, and user-centric web
             applications using JavaScript, TypeScript, and powerful frontend
             frameworks.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             With several years of experience in web development, I thrive on
             solving complex problems and turning ideas into intuitive digital
             experiences.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             I believe that great software is for everyone. I strive to write
             accessible, inclusive code that empowers all users, regardless of
             ability.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             I'm currently based in Riau, Indonesia. Open to freelance work,
             collaborative projects, and meaningful tech opportunities.
-          </p>
+          </Paragraph>
         </div>
       </MotionSection>
 
@@ -136,19 +71,19 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">Bio</h1>
+          <Heading>Bio</Heading>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-4">
-              <span className="block font-medium text-black dark:text-white">
+              <Paragraph className="font-sans font-medium text-zinc-700 dark:text-zinc-300">
                 2003
-              </span>
-              <p>Born in Riau, Indonesia.</p>
+              </Paragraph>
+              <Paragraph>Born in Riau, Indonesia.</Paragraph>
             </div>
             <div className="flex items-start gap-4">
-              <span className="block font-medium text-black dark:text-white">
+              <Paragraph className="font-sans font-medium text-zinc-700 dark:text-zinc-300">
                 2024 to present
-              </span>
-              <p>Working as a freelancer</p>
+              </Paragraph>
+              <Paragraph>Working as a freelancer</Paragraph>
             </div>
           </div>
         </div>
@@ -159,34 +94,28 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">Projects</h1>
+          <Heading>Skill and Tools</Heading>
+          <div className="flex flex-wrap gap-4">
+            {SKILLS.map((skill) => (
+              <Button key={skill.label}>
+                {skill.label}
+                {skill.icon}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </MotionSection>
+
+      <MotionSection
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="flex-1 space-y-4">
+          <Heading>Selected Projects</Heading>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {PROJECTS.map((project) => (
-              <div key={project.id} className="space-y-2">
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                  <Image
-                    src={project.img}
-                    alt={project.id}
-                    width={200}
-                    height={100}
-                    className="h-full w-full rounded-2xl object-cover"
-                  />
-                </div>
-                <div className="px-1">
-                  <a
-                    className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                    href={project.link}
-                    target="_blank"
-                  >
-                    {project.name}
-                    <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
-                  </a>
-                  <p className="text-base text-zinc-600 dark:text-zinc-400">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
+              <Card key={project.id} data={project} />
             ))}
           </div>
         </div>
@@ -197,33 +126,11 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">Blogs</h1>
+          <Heading>Blogs</Heading>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {BLOG_POSTS.map((blog) => (
-              <div key={blog.uid} className="space-y-2">
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                  <Image
-                    src={blog.img}
-                    alt={blog.uid}
-                    width={200}
-                    height={100}
-                    className="h-full w-full rounded-2xl object-cover"
-                  />
-                </div>
-                <div className="px-1">
-                  <a
-                    className="font-base group relative inline-block font-[450] text-zinc-900 underline-offset-2 hover:underline dark:text-zinc-50"
-                    href={blog.link}
-                    target="_blank"
-                  >
-                    {blog.title}
-                  </a>
-                  <p className="text-base text-zinc-600 dark:text-zinc-400">
-                    {blog.description}
-                  </p>
-                </div>
-              </div>
+              <Card key={blog.id} data={blog} />
             ))}
           </div>
         </div>
@@ -234,11 +141,11 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">I 💕</h1>
-          <p>
+          <Heading>I 💕</Heading>
+          <Paragraph>
             Art, Music, Drawing, Playing Drums, Photography, Leica, Machine
             Learning
-          </p>
+          </Paragraph>
         </div>
       </MotionSection>
 
@@ -247,8 +154,9 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <h1 className="font-medium text-black dark:text-white">Connect</h1>
-          <p className="mb-5 text-zinc-600 dark:text-zinc-400">
+          <Heading>Connect</Heading>
+
+          <Paragraph className="mb-5 text-zinc-600 dark:text-zinc-400">
             Feel free to contact me at{' '}
             <a
               className="underline dark:text-zinc-300"
@@ -256,13 +164,13 @@ export default function Home() {
             >
               {EMAIL}
             </a>
-          </p>
+          </Paragraph>
           <div className="flex flex-wrap items-center justify-start gap-3">
             {SOCIAL_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.link as string}
-                className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+                className={buttonVariants()}
               >
                 {link.label}
                 <svg

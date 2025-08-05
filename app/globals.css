@@ -9,6 +9,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
+  --font-segoe: var(--font-segoe-ui);
 }
 
 :root {
@@ -35,6 +36,6 @@
     @apply min-w-[360px];
   }
   body {
-    @apply text-text-primary antialiased;
+    @apply font-segoe antialiased;
   }
 }

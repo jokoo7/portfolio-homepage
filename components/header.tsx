@@ -5,10 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ThemeSwitch } from './theme-switch'
 import MotionSection from './motion-section'
+import { BriefcaseBusiness, NotebookPen } from 'lucide-react'
+import { buttonVariants } from './ui/button'
 
 const navLinks = [
-  { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/projects', label: 'Projects', icon: <BriefcaseBusiness /> },
+  { href: '/blogs', label: 'Blogs', icon: <NotebookPen /> },
 ]
 
 const VARIANTS_CONTAINER = {
@@ -49,7 +51,7 @@ export function Header() {
         <div>
           <Link
             href="/"
-            className="mb-0.5 block font-medium text-black dark:text-white"
+            className="block font-sans font-medium text-black dark:text-white"
           >
             Joko Santoso
           </Link>
@@ -66,30 +68,12 @@ export function Header() {
       >
         <div className="flex items-center gap-4">
           {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="group relative inline-flex shrink-0 items-center gap-[1px] text-zinc-900 underline-offset-2 transition-colors hover:underline dark:text-white"
-            >
+            <Link key={index} href={link.href} className={buttonVariants()}>
+              {link.icon}
               {link.label}
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-              >
-                <path
-                  d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
             </Link>
           ))}
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
         </div>
       </MotionSection>
     </header>

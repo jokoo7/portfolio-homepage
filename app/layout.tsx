@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes'
 import { Header } from '@/components/header'
 import { cn } from '@/lib/utils'
 import { Footer } from '@/components/footer'
+import { segoe } from '@/lib/font/font'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -34,7 +35,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(geistSans.variable, geistMono.variable, inter.variable)}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          inter.variable,
+          segoe.variable,
+        )}
       >
         <ThemeProvider
           enableSystem={true}
