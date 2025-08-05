@@ -11,8 +11,8 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     id: 'project1',
-    slug: 'motion-primitives-pro',
-    name: 'Motion Primitives Pro',
+    slug: 'nextnime',
+    name: 'Nextnime',
     description:
       'Advanced components and templates to craft beautiful websites.',
     link: 'https://pro.motion-primitives.com/',

@@ -1,12 +1,13 @@
 'use client'
 
-import { TextEffect } from '@/components/ui/text-effect'
+import { TextEffect } from '@/components/text-effect'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ThemeSwitch } from './theme-switch'
 import MotionSection from './motion-section'
 import { BriefcaseBusiness, NotebookPen } from 'lucide-react'
-import { buttonVariants } from './ui/button'
+import { buttonVariants } from './button'
+import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/projects', label: 'Projects', icon: <BriefcaseBusiness /> },
@@ -51,7 +52,7 @@ export function Header() {
         <div>
           <Link
             href="/"
-            className="block font-sans font-medium text-black dark:text-white"
+            className="font-playfair block text-2xl font-bold text-black dark:text-white"
           >
             Joko Santoso
           </Link>
@@ -68,7 +69,7 @@ export function Header() {
       >
         <div className="flex items-center gap-4">
           {navLinks.map((link, index) => (
-            <Link key={index} href={link.href} className={buttonVariants()}>
+            <Link key={index} href={link.href} className={cn(buttonVariants())}>
               {link.icon}
               {link.label}
             </Link>

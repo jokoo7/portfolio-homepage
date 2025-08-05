@@ -1,15 +1,17 @@
-import Card from '@/components/card'
+import CardProject from '@/components/card-project'
 import MotionMain from '@/components/motion-main'
 import MotionSection from '@/components/motion-section'
-import { Button, buttonVariants } from '@/components/ui/button'
-import Heading from '@/components/ui/heading'
-import Paragraph from '@/components/ui/paragraph'
+import { Button, buttonVariants } from '@/components/button'
+import Heading from '@/components/heading'
+import { Magnetic } from '@/components/magnetic'
+import Paragraph from '@/components/paragraph'
 import { BLOG_POSTS } from '@/data/blogs'
 import { EMAIL, SOCIAL_LINKS } from '@/data/contacts'
 import { PROJECTS } from '@/data/projects'
 import { SKILLS } from '@/data/skills'
 import Image from 'next/image'
 import Link from 'next/link'
+import CardArticle from '@/components/card-article'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -97,10 +99,16 @@ export default function Home() {
           <Heading>Skill and Tools</Heading>
           <div className="flex flex-wrap gap-4">
             {SKILLS.map((skill) => (
-              <Button key={skill.label}>
-                {skill.label}
-                {skill.icon}
-              </Button>
+              <Magnetic
+                key={skill.label}
+                springOptions={{ bounce: 0 }}
+                intensity={0.5}
+              >
+                <Button>
+                  {skill.label}
+                  {skill.icon}
+                </Button>
+              </Magnetic>
             ))}
           </div>
         </div>
@@ -115,7 +123,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {PROJECTS.map((project) => (
-              <Card key={project.id} data={project} />
+              <CardProject key={project.id} data={project} />
             ))}
           </div>
         </div>
@@ -126,11 +134,11 @@ export default function Home() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1 space-y-4">
-          <Heading>Blogs</Heading>
+          <Heading>Articles</Heading>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {BLOG_POSTS.map((blog) => (
-              <Card key={blog.id} data={blog} />
+              <CardArticle key={blog.id} data={blog} />
             ))}
           </div>
         </div>

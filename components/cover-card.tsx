@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import {
   MorphingDialog,
@@ -7,13 +5,11 @@ import {
   MorphingDialogContainer,
   MorphingDialogContent,
   MorphingDialogTrigger,
-} from './ui/morphing-dialog'
+} from './morphing-dialog'
 import Image from 'next/image'
 import { XIcon } from 'lucide-react'
-import Paragraph from './ui/paragraph'
-import Link from 'next/link'
 
-function Cover({ src, alt }: { src: string; alt: string }) {
+export default function CoverCard({ src, alt }: { src: string; alt: string }) {
   if (!src) return null // Jangan render Image jika src kosong
   return (
     <MorphingDialog
@@ -57,25 +53,5 @@ function Cover({ src, alt }: { src: string; alt: string }) {
         </MorphingDialogClose>
       </MorphingDialogContainer>
     </MorphingDialog>
-  )
-}
-
-export default function Card(data: any) {
-  return (
-    <div className="space-y-2">
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-        <Cover src={data.data.image} alt={data.data.id} />
-      </div>
-      <div className="px-1">
-        <Link
-          className="group relative inline-block font-sans font-medium text-zinc-900 hover:underline dark:text-zinc-50"
-          href={data.data.link ?? data.data.slug}
-          target="_blank"
-        >
-          {data.data.name ?? data.data.title}
-        </Link>
-        <Paragraph>{data.data.description}</Paragraph>
-      </div>
-    </div>
   )
 }
