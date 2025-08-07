@@ -1,30 +1,37 @@
 @import 'tailwindcss';
+@import 'tailwindcss-animated';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-text-primary: var(--text-primary);
+  --color-text-primary: var(--t-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-playfair: var(--font-playfair);
-  --font-segoe: var(--font-segoe-ui);
+  --font-source-sans-3: var(--font-source-sans-3);
+  --font-segoe: 'Segoe UI', Arial, sans-serif;
 }
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --text-primary: #52525b;
+  --t-primary: #52525b;
+  --t-secondary: #52525b;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --text-primary: #a1a1aa;
+  --t-primary: #a1a1aa;
+  --t-secondary: #52525b;
 }
 
 @layer base {
+  ::-webkit-scrollbar {
+    display: none;
+    background: #0a0a0a;
+  }
   *,
   ::after,
   ::before,
@@ -37,5 +44,11 @@
   }
   body {
     @apply font-segoe antialiased;
+  }
+}
+
+@layer components {
+  .wrapper {
+    @apply mx-auto w-full max-w-screen-sm px-6;
   }
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Inter, Playfair } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from 'next-themes'
-import { Header } from '@/components/header'
 import { cn } from '@/lib/utils'
 import { Footer } from '@/components/footer'
-import { geistMono, geistSans, playfair, segoe } from '@/lib/font/font'
+import { geistMono, geistSans, sourceSans3 } from '@/lib/font'
+import { HamburgerProvider } from '@/hooks/use-click-hamburger'
+import Navbar from '@/components/navbar'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,24 +23,24 @@ export default function RootLayout({
         className={cn(
           geistSans.variable,
           geistMono.variable,
-          playfair.variable,
-          segoe.variable,
+          sourceSans3.variable,
         )}
       >
-        <ThemeProvider
-          enableSystem={true}
-          attribute="class"
-          storageKey="theme"
-          defaultTheme="system"
-        >
-          <div className="flex min-h-screen w-full flex-col">
-            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20 sm:px-6">
-              <Header />
-              {children}
+        <HamburgerProvider>
+          <ThemeProvider
+            enableSystem={true}
+            attribute="class"
+            storageKey="theme"
+            defaultTheme="system"
+          >
+            <div className="absolute inset-0 -z-40 min-h-screen w-full bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_50%_60%_at_50%_20%,#000_80%,transparent_100%)] bg-[size:18px_18px]"></div>
+            <div className="flex min-h-screen w-full flex-col">
+              <Navbar />
+              <div className="wrapper relative flex-1 pt-16">{children}</div>
               <Footer />
             </div>
-          </div>
-        </ThemeProvider>
+          </ThemeProvider>
+        </HamburgerProvider>
       </body>
     </html>
   )

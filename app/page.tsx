@@ -1,4 +1,3 @@
-import CardProject from '@/components/card-project'
 import MotionMain from '@/components/motion-main'
 import MotionSection from '@/components/motion-section'
 import { Button, buttonVariants } from '@/components/button'
@@ -11,7 +10,16 @@ import { PROJECTS } from '@/data/projects'
 import { SKILLS } from '@/data/skills'
 import Image from 'next/image'
 import Link from 'next/link'
-import CardArticle from '@/components/card-article'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { TextEffect } from '@/components/text-effect'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/card'
+import CoverCard from '@/components/cover-card'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -40,6 +48,43 @@ export default function Home() {
       initial="hidden"
       animate="visible"
     >
+      <MotionSection
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="flex flex-col gap-4">
+          <div className="aspect-square w-24 shrink-0 overflow-hidden rounded-full p-0.5 ring-1 ring-zinc-300">
+            <Image
+              src="/profile.jpg"
+              alt="profile"
+              width={200}
+              height={200}
+              className="h-full w-full rounded-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <TextEffect
+              as="p"
+              preset="blur"
+              per="char"
+              className="font-source-sans-3 block text-4xl font-bold sm:text-5xl"
+              delay={0.3}
+            >
+              Joko Santoso
+            </TextEffect>
+            <TextEffect
+              as="p"
+              preset="fade"
+              per="char"
+              className="text-zinc-700 sm:text-lg dark:text-zinc-300"
+              delay={0.5}
+            >
+              Digital Craftsman ( Developer )
+            </TextEffect>
+          </div>
+        </div>
+      </MotionSection>
+
       <MotionSection
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -76,13 +121,13 @@ export default function Home() {
           <Heading>Bio</Heading>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-4">
-              <Paragraph className="font-sans font-medium text-zinc-700 dark:text-zinc-300">
+              <Paragraph className="font-medium text-zinc-700 dark:text-zinc-300">
                 2003
               </Paragraph>
               <Paragraph>Born in Riau, Indonesia.</Paragraph>
             </div>
             <div className="flex items-start gap-4">
-              <Paragraph className="font-sans font-medium text-zinc-700 dark:text-zinc-300">
+              <Paragraph className="font-medium text-zinc-700 dark:text-zinc-300">
                 2024 to present
               </Paragraph>
               <Paragraph>Working as a freelancer</Paragraph>
@@ -123,8 +168,22 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {PROJECTS.map((project) => (
-              <CardProject key={project.id} data={project} />
+              <Card key={project.id}>
+                <CardHeader>
+                  <CoverCard src={project.image} alt={project.id} />
+                </CardHeader>
+                <CardContent>
+                  <CardTitle path={project.link}>{project.name}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+
+          <div className="mt-8 flex w-full justify-center">
+            <Button>
+              See more <ArrowRight />
+            </Button>
           </div>
         </div>
       </MotionSection>
@@ -138,8 +197,22 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {BLOG_POSTS.map((blog) => (
-              <CardArticle key={blog.id} data={blog} />
+              <Card key={blog.id}>
+                <CardHeader>
+                  <CoverCard src={blog.image} alt={blog.id} />
+                </CardHeader>
+                <CardContent>
+                  <CardTitle path={blog.slug}>{blog.title}</CardTitle>
+                  <CardDescription>{blog.description}</CardDescription>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+
+          <div className="mt-8 flex w-full justify-center">
+            <Button>
+              See more <ArrowRight />
+            </Button>
           </div>
         </div>
       </MotionSection>
@@ -181,21 +254,7 @@ export default function Home() {
                 className={buttonVariants()}
               >
                 {link.label}
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3"
-                >
-                  <path
-                    d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <ArrowUpRight />
               </Link>
             ))}
           </div>

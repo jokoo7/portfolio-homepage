@@ -52,7 +52,7 @@ export function Header() {
         <div>
           <Link
             href="/"
-            className="font-playfair block text-2xl font-bold text-black dark:text-white"
+            className="font-source-sans-3 block text-2xl font-bold text-black dark:text-white"
           >
             Joko Santoso
           </Link>
