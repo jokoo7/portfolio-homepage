@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
 import './globals.css'
+import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { cn } from '@/lib/utils'
 import { Footer } from '@/components/footer'

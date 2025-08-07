@@ -17,14 +17,12 @@
   --background: #ffffff;
   --foreground: #171717;
   --t-primary: #52525b;
-  --t-secondary: #52525b;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --t-primary: #a1a1aa;
-  --t-secondary: #52525b;
 }
 
 @layer base {
