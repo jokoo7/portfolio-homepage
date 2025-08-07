@@ -13,4 +13,5 @@ export const geistMono = Geist_Mono({
 export const sourceSans3 = Source_Sans_3({
   variable: '--font-source-sans-3',
   weight: ['200', '300', '400', '500', '700', '800', '900'],
+  subsets: ['latin'],
 })
