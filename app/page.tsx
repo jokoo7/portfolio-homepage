@@ -20,6 +20,7 @@ import {
   CardTitle,
 } from '@/components/card'
 import CoverCard from '@/components/cover-card'
+import { formatDate } from '@/lib/utils'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -64,19 +65,19 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-1">
             <TextEffect
-              as="p"
+              as="h1"
               preset="blur"
               per="char"
-              className="font-source-sans-3 block text-4xl font-bold sm:text-5xl"
+              className="text-t-primary block text-4xl font-bold sm:text-5xl"
               delay={0.3}
             >
               Joko Santoso
             </TextEffect>
             <TextEffect
-              as="p"
+              as="span"
               preset="fade"
               per="char"
-              className="text-zinc-700 sm:text-lg dark:text-zinc-300"
+              className="text-t-secondary block sm:text-lg"
               delay={0.5}
             >
               Digital Craftsman ( Developer )
@@ -121,15 +122,11 @@ export default function Home() {
           <Heading>Bio</Heading>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-4">
-              <Paragraph className="font-medium text-zinc-700 dark:text-zinc-300">
-                2003
-              </Paragraph>
+              <Paragraph className="font-medium">2003</Paragraph>
               <Paragraph>Born in Riau, Indonesia.</Paragraph>
             </div>
             <div className="flex items-start gap-4">
-              <Paragraph className="font-medium text-zinc-700 dark:text-zinc-300">
-                2024 to present
-              </Paragraph>
+              <Paragraph className="font-medium">2024 to present</Paragraph>
               <Paragraph>Working as a freelancer</Paragraph>
             </div>
           </div>
@@ -203,7 +200,9 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <CardTitle path={blog.slug}>{blog.title}</CardTitle>
-                  <CardDescription>{blog.description}</CardDescription>
+                  <CardDescription>
+                    By admin — {formatDate(blog.date)}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}

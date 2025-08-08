@@ -3,7 +3,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import * as React from 'react'
 
 const buttonVariants = cva(
-  'relative inline-flex shrink-0 items-center gap-1.5 font-segoe text-sm text-black transition-colors duration-200 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer',
+  'relative inline-flex shrink-0 items-center gap-1.5 text-sm text-black transition-colors duration-200 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer',
   {
     variants: {
       variant: {

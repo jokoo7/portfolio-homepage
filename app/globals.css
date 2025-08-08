@@ -6,23 +6,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-text-primary: var(--t-primary);
-  --font-sans: var(--font-geist-sans);
+  --color-t-primary: var(--t-primary);
+  --color-t-secondary: var(--t-secondary);
+  --font-sans-heading: var(--font-source-sans-3);
+  --font-sans-body: 'Segoe UI', Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-source-sans-3: var(--font-source-sans-3);
-  --font-segoe: 'Segoe UI', Arial, sans-serif;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --t-primary: #52525b;
+  --t-primary: #18181b;
+  --t-secondary: #52525b;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --t-primary: #a1a1aa;
+  --background: #09090b;
+  --t-primary: #fafafa;
+  --t-secondary: #a1a1aa;
 }
 
 @layer base {
@@ -40,8 +40,16 @@
   html {
     @apply min-w-[360px];
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans-heading;
+  }
   body {
-    @apply font-segoe antialiased;
+    @apply font-sans-body bg-background antialiased;
   }
 }
 

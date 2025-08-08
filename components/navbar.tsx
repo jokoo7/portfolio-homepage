@@ -83,7 +83,7 @@ function NavbarDekstop(
         <Link
           href="/"
           className={cn(
-            'font-source-sans-3 cursor-pointer text-3xl font-bold whitespace-nowrap opacity-100 transition-all',
+            'font-sans-heading text-t-primary cursor-pointer text-3xl font-bold whitespace-nowrap opacity-100 transition-all',
             { 'invisible opacity-0 duration-200': isHamburgerOpen },
             { 'duration-300': !isHamburgerOpen },
           )}
@@ -91,7 +91,7 @@ function NavbarDekstop(
           Joko Santoso
         </Link>
 
-        <div className="font-segoe hidden space-x-8 sm:block">
+        <div className="hidden space-x-8 sm:block">
           {NAVLINKS.map((link, i) => (
             <Link key={i} href={link.path} className="hover:underline">
               {link.label}

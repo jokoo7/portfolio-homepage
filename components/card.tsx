@@ -27,7 +27,7 @@ const CardTitle = ({
 }) => {
   return (
     <Link
-      className="group font-segoe relative inline-block text-lg text-zinc-900 hover:underline dark:text-zinc-100"
+      className="group relative inline-block text-lg text-zinc-900 hover:underline dark:text-zinc-100"
       href={path}
       target="_blank"
     >

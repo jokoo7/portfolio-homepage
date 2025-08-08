@@ -5,10 +5,7 @@ export default function Heading({
   ...props
 }: { children: React.ReactNode } & React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h1
-      className="font-source-sans-3 text-2xl font-bold text-black dark:text-white"
-      {...props}
-    >
+    <h1 className="text-t-primary text-2xl font-bold" {...props}>
       {children}
     </h1>
   )

@@ -5,7 +5,7 @@ export default function Paragraph({
   ...props
 }: { children: React.ReactNode } & React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p className="font-segoe text-text-primary" {...props}>
+    <p className="text-t-secondary" {...props}>
       {children}
     </p>
   )

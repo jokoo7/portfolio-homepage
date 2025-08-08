@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { cn } from '@/lib/utils'
 import { Footer } from '@/components/footer'
-import { geistMono, geistSans, sourceSans3 } from '@/lib/font'
+import { geistMono, sourceSans3 } from '@/lib/font'
 import { HamburgerProvider } from '@/hooks/use-click-hamburger'
 import Navbar from '@/components/navbar'
 
@@ -19,13 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          geistSans.variable,
-          geistMono.variable,
-          sourceSans3.variable,
-        )}
-      >
+      <body className={cn(geistMono.variable, sourceSans3.variable)}>
         <HamburgerProvider>
           <ThemeProvider
             enableSystem={true}
