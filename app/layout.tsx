@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Manrope, Fragment_Mono } from 'next/font/google';
 import './globals.css';
+import { cn } from '@/lib/utils';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const manropeSans = Manrope({
+  variable: '--font-manrope-sans',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const fragmentMono = Fragment_Mono({
+  variable: '--font-fragment-mono',
+  weight: ['400'],
   subsets: ['latin'],
 });
 
@@ -19,14 +21,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={cn(manropeSans.variable, fragmentMono.variable)}>
         {children}
       </body>
     </html>
