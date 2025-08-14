@@ -70,15 +70,24 @@
     @apply hover:text-grey text-[18px] leading-[1.6em] text-[#4A4A45] underline;
   }
   .nav-home {
-    @apply leading-[120%] tracking-[-0.01em] text-black no-underline hover:text-[#000000];
+    @apply text-[16px] leading-[120%] tracking-[-0.01em] text-black no-underline hover:text-[#000000];
   }
   .nav-footer-home {
     @apply hover:text-light-grey leading-[120%] font-bold text-white no-underline;
   }
   .nav-links {
-    @apply leading-[2em] tracking-[-0.2px] text-[#4A4A45] no-underline hover:text-[#828282];
+    @apply text-[14px] leading-[2em] tracking-[-0.2px] text-[#4A4A45] no-underline hover:text-[#828282];
   }
   .nav-footer-links {
     @apply text-grey leading-[2em] tracking-[-0.2px] no-underline hover:text-white;
+  }
+}
+
+@layer components {
+  .wrapper {
+    @apply w-full px-[20px] md:px-[40px] lg:px-[100px];
+  }
+  .wrapper-content {
+    @apply mx-auto w-full max-w-[1600px];
   }
 }

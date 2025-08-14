@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Manrope, Fragment_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import Navbar from '@/components/navbar';
 
 const manropeSans = Manrope({
   variable: '--font-manrope-sans',
@@ -23,9 +24,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(manropeSans.variable, fragmentMono.variable)}>
-        {children}
+        <main className="relative flex min-h-screen flex-col">
+          <Navbar />
+          <div className="mt-32 min-h-screen flex-1 flex-grow">{children}</div>
+        </main>
       </body>
     </html>
   );
