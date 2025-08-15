@@ -52,7 +52,7 @@ export default function Navbar() {
     <nav
       className={cn(
         'border-light-grey fixed top-0 right-0 left-0 z-50 mx-auto flex h-[80px] w-full -translate-y-[90px] flex-col border-b bg-white/50 backdrop-blur-2xl transition-all duration-[350ms] md:h-[90px]',
-        { 'translate-y-0': navbarVisible, 'h-[65vh]': hamburger }
+        { 'translate-y-0': navbarVisible, 'h-[55vh]': hamburger }
       )}
     >
       <div className="mx-auto flex h-[80px] w-full max-w-[1600px] shrink-0 items-center justify-between px-[20px] md:h-[90px] md:px-[40px] lg:px-[50px]">
@@ -80,9 +80,7 @@ export default function Navbar() {
             <div
               className={cn(
                 'h-[2px] w-full rounded-full bg-black transition-all duration-[400ms]',
-                {
-                  'translate-y-[5px] rotate-45': hamburger,
-                }
+                { 'translate-y-[5px] rotate-45': hamburger }
               )}
               style={{
                 transformOrigin: '50% 50% 0px',
@@ -91,9 +89,7 @@ export default function Navbar() {
             <div
               className={cn(
                 'h-[2px] w-[20px] rounded-full bg-black transition-all duration-[400ms]',
-                {
-                  'w-full -translate-y-[5px] -rotate-45': hamburger,
-                }
+                { 'w-full -translate-y-[5px] -rotate-45': hamburger }
               )}
               style={{
                 transformOrigin: '50% 50% 0px',
@@ -106,13 +102,11 @@ export default function Navbar() {
       {/* Nav Mobile */}
       <div
         className={cn(
-          'wrapper-content flex h-0 w-full items-center justify-center overflow-hidden transition-all duration-200',
-          {
-            'h-full': hamburger,
-          }
+          'wrapper-content flex h-0 w-full items-center justify-center overflow-hidden px-5 py-8 opacity-0 transition-all duration-200',
+          { 'h-full opacity-100': hamburger }
         )}
       >
-        <div className="flex w-full flex-col items-center gap-12 md:hidden">
+        <div className="flex h-full w-full flex-col items-center justify-between md:hidden">
           {NAVLINKS.map((link, i) => (
             <Link
               key={i}

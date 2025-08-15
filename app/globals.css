@@ -24,32 +24,11 @@
 }
 
 @layer base {
+  html {
+    min-width: 360px;
+  }
   body {
     @apply bg-background font-sans antialiased;
-  }
-  p {
-    @apply text-dark-grey text-[18px] leading-[1.6em];
-  }
-  .body-reguler {
-    @apply leading-[1.5em];
-  }
-  .body-medium {
-    @apply leading-[1.5em] font-medium text-black;
-  }
-  .body-semibold {
-    @apply leading-[1.7em] font-semibold text-black;
-  }
-  .body-small {
-    @apply text-[16px] leading-[1.5em] text-[#4A4A45];
-  }
-  .card-text {
-    @apply text-[#4A4A45];
-  }
-  .caption {
-    @apply text-[15px] leading-[1.4em] font-medium text-black;
-  }
-  .caption-semibold {
-    @apply text-[15px] leading-[1.2em] font-semibold text-black;
   }
   a {
     @apply hover:text-grey text-[18px] leading-[1.6em] text-[#4A4A45] underline;
@@ -74,5 +53,48 @@
   }
   .wrapper-content {
     @apply mx-auto w-full max-w-[1200px];
+  }
+
+  .h1-l {
+    @apply text-[55px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+  }
+  .h1-m {
+    @apply text-[45px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+  }
+  .h1-s {
+    @apply text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+  }
+  .h2-l {
+    @apply text-[50px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
+  }
+  .h2-m {
+    @apply text-[45px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
+  }
+  .h2-s {
+    @apply text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
+  }
+  .h3-l {
+    @apply text-[30px] leading-[1.3em] font-medium text-black;
+  }
+  .h3-m {
+    @apply text-[30px] leading-[1.3em] font-medium text-black;
+  }
+  .h3-s {
+    @apply text-[25px] leading-[1.3em] font-medium text-black;
+  }
+  .h4-l {
+    @apply text-[24px] leading-[1.4em] font-medium text-black;
+  }
+  .h4-m {
+    @apply text-[24px] leading-[1.4em] font-medium text-black;
+  }
+  .h4-s {
+    @apply text-[20px] leading-[1.4em] font-medium text-black;
+  }
+  .h5 {
+    @apply text-[20px] leading-[1.4em] font-medium text-black;
+  }
+  .h6 {
+    @apply text-[16px] leading-[1.4em] font-bold text-[#333333];
   }
 }
