@@ -28,9 +28,7 @@ export default function RootLayout({
       <body className={cn(manropeSans.variable, fragmentMono.variable)}>
         <main className="relative flex min-h-screen flex-col">
           <Navbar />
-          <div className="mt-28 min-h-screen flex-1 flex-grow md:mt-[155px] lg:mt-[135px]">
-            {children}
-          </div>
+          <div className="min-h-screen flex-1 flex-grow">{children}</div>
         </main>
       </body>
     </html>

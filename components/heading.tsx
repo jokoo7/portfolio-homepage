@@ -7,22 +7,22 @@ const headingVariants = cva('scroll-m-20', {
     variant: {
       'h1-l':
         'text-[55px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15]',
-      'h1-s':
-        'text-[45px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15]',
       'h1-m':
+        'text-[45px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15]',
+      'h1-s':
         'text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15]',
       'h2-l':
         'text-[50px] leading-[1.2em] font-medium tracking-[-0.02em] text-black',
-      'h2-s':
-        'text-[45px] leading-[1.2em] font-medium tracking-[-0.02em] text-black',
       'h2-m':
+        'text-[45px] leading-[1.2em] font-medium tracking-[-0.02em] text-black',
+      'h2-s':
         'text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black',
       'h3-l': 'text-[30px] leading-[1.3em] font-medium text-black',
-      'h3-s': 'text-[30px] leading-[1.3em] font-medium text-black',
-      'h3-m': 'text-[25px] leading-[1.3em] font-medium text-black',
+      'h3-m': 'text-[30px] leading-[1.3em] font-medium text-black',
+      'h3-s': 'text-[25px] leading-[1.3em] font-medium text-black',
       'h4-l': 'text-[24px] leading-[1.4em] font-medium text-black',
-      'h4-s': 'text-[24px] leading-[1.4em] font-medium text-black',
-      'h4-m': 'text-[20px] leading-[1.4em] font-medium text-black',
+      'h4-m': 'text-[24px] leading-[1.4em] font-medium text-black',
+      'h4-s': 'text-[20px] leading-[1.4em] font-medium text-black',
       h5: 'text-[20px] leading-[1.4em] font-medium text-black',
       h6: 'text-[16px] leading-[1.4em] font-bold text-[#333333]',
     },

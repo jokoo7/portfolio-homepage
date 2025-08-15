@@ -25,7 +25,7 @@
 
 @layer base {
   body {
-    @apply bg-white font-sans antialiased;
+    @apply bg-background font-sans antialiased;
   }
   p {
     @apply text-dark-grey text-[18px] leading-[1.6em];
@@ -70,7 +70,7 @@
 
 @layer components {
   .wrapper {
-    @apply w-full px-[20px] md:px-[40px] lg:px-[100px];
+    @apply w-full px-[20px] pt-[60px] pb-[100px] md:px-[40px] md:py-[80px] lg:px-[100px] lg:pt-[100px] lg:pb-[150px];
   }
   .wrapper-content {
     @apply mx-auto w-full max-w-[1200px];

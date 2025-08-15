@@ -51,7 +51,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'border-light-grey fixed top-0 right-0 left-0 z-50 mx-auto flex h-[80px] w-full -translate-y-[90px] flex-col border-b bg-transparent backdrop-blur-2xl transition-all duration-[350ms] md:h-[90px]',
+        'border-light-grey fixed top-0 right-0 left-0 z-50 mx-auto flex h-[80px] w-full -translate-y-[90px] flex-col border-b bg-white/50 backdrop-blur-2xl transition-all duration-[350ms] md:h-[90px]',
         { 'translate-y-0': navbarVisible, 'h-[65vh]': hamburger }
       )}
     >
