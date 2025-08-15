@@ -18,29 +18,14 @@
   --color-light-grey: var(--light-grey);
   --font-sans: var(--font-manrope-sans);
   --font-mono: var(--font-fragment-mono);
+
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1200px;
 }
 
 @layer base {
   body {
     @apply bg-white font-sans antialiased;
-  }
-  h1 {
-    @apply text-[55px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
-  }
-  h2 {
-    @apply text-[50px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
-  }
-  h3 {
-    @apply text-[30px] leading-[1.3em] font-medium text-black;
-  }
-  h4 {
-    @apply text-[24px] leading-[1.4em] font-medium text-black;
-  }
-  h5 {
-    @apply text-[20px] leading-[1.4em] font-medium text-black;
-  }
-  h6 {
-    @apply text-[16px] leading-[1.4em] font-bold text-[#333333];
   }
   p {
     @apply text-dark-grey text-[18px] leading-[1.6em];
@@ -88,6 +73,6 @@
     @apply w-full px-[20px] md:px-[40px] lg:px-[100px];
   }
   .wrapper-content {
-    @apply mx-auto w-full max-w-[1600px];
+    @apply mx-auto w-full max-w-[1200px];
   }
 }

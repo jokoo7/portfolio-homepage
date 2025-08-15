@@ -51,11 +51,11 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'border-light-grey fixed top-0 right-0 left-0 z-50 mx-auto flex h-[80px] w-full max-w-[1800px] -translate-y-[90px] flex-col border-b bg-transparent px-[20px] backdrop-blur-2xl transition-all duration-[350ms] md:h-[90px] md:px-[40px]',
+        'border-light-grey fixed top-0 right-0 left-0 z-50 mx-auto flex h-[80px] w-full -translate-y-[90px] flex-col border-b bg-transparent backdrop-blur-2xl transition-all duration-[350ms] md:h-[90px]',
         { 'translate-y-0': navbarVisible, 'h-[65vh]': hamburger }
       )}
     >
-      <div className="wrapper-content flex h-[80px] shrink-0 items-center justify-between md:h-[90px]">
+      <div className="mx-auto flex h-[80px] w-full max-w-[1600px] shrink-0 items-center justify-between px-[20px] md:h-[90px] md:px-[40px] lg:px-[50px]">
         <Logo />
 
         {/* Navlinks */}
