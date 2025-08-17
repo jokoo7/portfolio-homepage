@@ -7,11 +7,13 @@ import {
   CardTitle,
 } from '@/components/card';
 import MainHero from '@/components/main-hero';
-import { Paragraph } from '@/components/paragraph';
+import { Paragraph, paragraphVariants } from '@/components/paragraph';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub, FaInstagram } from 'react-icons/fa';
 import { FaLinkedin, FaTiktok } from 'react-icons/fa6';
+import { IoArrowForward } from 'react-icons/io5';
 
 const SOCIALLINKS = [
   { path: '', label: 'Instagram', icon: <FaInstagram /> },
@@ -28,8 +30,8 @@ const PROJECTS = [
     description:
       'Elevating the user experience of a renowned fitness tracker app through a strategic.',
     link: 'https://pro.motion-primitives.com/',
-    image: '/project_01.png',
-    images: ['/project_01.png'],
+    image: '/project_1.avif',
+    images: ['/project_1.avif'],
   },
   {
     id: 'project2',
@@ -38,8 +40,8 @@ const PROJECTS = [
     description:
       'Designing a mobile app to connect food enthusiasts through shared dining experiences, from concept to prototype.',
     link: 'https://motion-primitives.com/',
-    image: '/project_02.jpg',
-    images: ['/project_02.jpg'],
+    image: '/project_2.avif',
+    images: ['/project_2.avif'],
   },
 ];
 
@@ -59,11 +61,10 @@ export default function Home() {
           </div>
           <h1 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] md:font-normal md:tracking-[-0.5px] md:text-[#201d15] lg:text-[55px]">
             I&apos;m Joko Santoso, <br className="md:hidden" /> a frontend
-            developer web apps with a backend foundation based in Riau,
-            Indonesia.
+            developer with a basic backend foundation based in Riau, Indonesia.
           </h1>
           <Paragraph>
-            Combining frontend expertise with a solid backend foundation, I
+            Combining frontend expertise with a basic backend foundation, I
             craft sleek, high-performance, and user-friendly web applications,
             ensuring seamless functionality and visual appeal across platforms.
           </Paragraph>
@@ -80,33 +81,93 @@ export default function Home() {
           ))}
         </div>
       </MainHero>
-      <div className="wrapper">
+
+      <div className="wrapper space-y-24">
         <div className="wrapper-content space-y-10">
           <div className="flex flex-col gap-4">
             <h2 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
               Selected projects
             </h2>
-            <Paragraph>
+            <Paragraph className="max-w-[800px]">
               Explore my selected projects, highlighting my passion for crafting
               sleek, functional, and user-focused web applications.
             </Paragraph>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             {PROJECTS.map((project) => (
-              <Card key={project.id}>
+              <Card key={project.id} path={project.link}>
                 <CardHeader>
                   <Image
                     src={project.image}
                     alt={project.id}
                     width={2000}
                     height={2000}
-                    className="h-full w-full object-fill object-center transition-all duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-110"
                   />
                 </CardHeader>
                 <CardContent>
-                  <CardTitle path={project.link}>{project.name}</CardTitle>
+                  <CardTitle>{project.name}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
+                  <div className="flex items-center gap-1 text-black [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
+                    <p
+                      className={cn(
+                        paragraphVariants({
+                          variant: 'captionSemibold',
+                        }),
+                        'leading-0 whitespace-nowrap transition-all duration-500 md:opacity-0 md:group-hover:opacity-100'
+                      )}
+                    >
+                      She the project
+                    </p>
+                    <IoArrowForward className="transition-all duration-500 group-hover:translate-x-1 md:opacity-0 md:group-hover:opacity-100" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="wrapper-content space-y-10">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+              My Articles
+            </h2>
+            <Paragraph className="max-w-[800px]">
+              Discover my collection of articles, where I share insights,
+              experiences, and knowledge about web development, design, and
+              technology.
+            </Paragraph>
+          </div>
+
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+            {PROJECTS.map((project) => (
+              <Card key={project.id} path={project.link}>
+                <CardHeader>
+                  <Image
+                    src={project.image}
+                    alt={project.id}
+                    width={2000}
+                    height={2000}
+                    className="h-full w-full object-cover object-center transition-all duration-500 group-hover:scale-110"
+                  />
+                </CardHeader>
+                <CardContent>
+                  <CardTitle>{project.name}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                  <div className="flex items-center gap-1 text-black [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0">
+                    <p
+                      className={cn(
+                        paragraphVariants({
+                          variant: 'captionSemibold',
+                        }),
+                        'leading-0 whitespace-nowrap transition-all duration-500 md:opacity-0 md:group-hover:opacity-100'
+                      )}
+                    >
+                      She the project
+                    </p>
+                    <IoArrowForward className="transition-all duration-500 group-hover:translate-x-1 md:opacity-0 md:group-hover:opacity-100" />
+                  </div>
                 </CardContent>
               </Card>
             ))}

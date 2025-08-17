@@ -38,4 +38,4 @@ const Paragraph = ({
   );
 };
 
-export { Paragraph, type paragraphVariants };
+export { Paragraph, paragraphVariants };
