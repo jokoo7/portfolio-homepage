@@ -8,11 +8,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'text-black bg-white hover:text-white hover:bg-black',
-        dark: 'text-[#E8E9EE] bg-black hover:text-black hover:bg-white',
+        dark: 'text-[#E8E9EE] bg-black hover:text-black hover:bg-white border-dark-grey',
       },
       size: {
         default: 'px-[20px] py-[10px]',
-        big: 'px-[20px] py-[10px] h-[50px] text-[16px]',
+        big: 'px-[20px] py-[10px] h-[50px] text-[16px] [&_svg]:size-5',
         icon: 'w-[42px] aspect-square rounded-full',
       },
     },

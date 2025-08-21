@@ -15,7 +15,7 @@ import { FaGithub, FaInstagram } from 'react-icons/fa';
 import { FaLinkedin, FaTiktok } from 'react-icons/fa6';
 import { IoArrowForward } from 'react-icons/io5';
 
-const SOCIALLINKS = [
+export const SOCIALLINKS = [
   { path: '', label: 'Instagram', icon: <FaInstagram /> },
   { path: '', label: 'Tiktok', icon: <FaTiktok /> },
   { path: '', label: 'Github', icon: <FaGithub /> },

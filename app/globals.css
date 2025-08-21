@@ -37,13 +37,13 @@
     @apply text-[16px] leading-[120%] tracking-[-0.01em] text-black no-underline hover:text-[#000000];
   }
   .nav-footer-home {
-    @apply hover:text-light-grey leading-[120%] font-bold text-white no-underline;
+    @apply hover:text-light-grey text-[16px] leading-[120%] font-bold text-white no-underline;
   }
   .nav-links {
     @apply text-[14px] leading-[2em] tracking-[-0.2px] text-[#4A4A45] no-underline hover:text-[#828282];
   }
   .nav-footer-links {
-    @apply text-grey leading-[2em] tracking-[-0.2px] no-underline hover:text-white;
+    @apply text-grey text-[14px] leading-[2em] tracking-[-0.2px] no-underline hover:text-white;
   }
 }
 

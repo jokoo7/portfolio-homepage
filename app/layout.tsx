@@ -3,6 +3,7 @@ import { Manrope, Fragment_Mono } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
 
 const manropeSans = Manrope({
   variable: '--font-manrope-sans',
@@ -29,6 +30,7 @@ export default function RootLayout({
         <main className="relative flex min-h-screen flex-col">
           <Navbar />
           <div className="min-h-screen flex-1 flex-grow">{children}</div>
+          <Footer />
         </main>
       </body>
     </html>
