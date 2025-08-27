@@ -5,6 +5,7 @@ import React from 'react';
 import { Button } from './button';
 import { FaGithub } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 const NAVLINKS = [
   { path: '/projects', label: 'Projects' },
@@ -21,14 +22,15 @@ function Logo() {
 }
 
 export default function Navbar() {
-  const navRef = React.useRef<number | null>(null);
+  const navRef = React.useRef(0);
   const [navbarVisible, setNavbarVisible] = React.useState(true);
   const [hamburger, setHamburger] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
       const { scrollY } = window;
-      const isScrollingDown = scrollY > (navRef.current || 0);
+      const isScrollingDown = scrollY > navRef.current;
       navRef.current = scrollY;
 
       setNavbarVisible((prev) => {
@@ -42,12 +44,16 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScrollDebounced, { passive: true });
-    handleScroll();
+    handleScroll(); // sync state awal
 
     return () => {
       window.removeEventListener('scroll', handleScrollDebounced);
     };
   }, []);
+
+  React.useEffect(() => {
+    setHamburger(false); // tutup hamburger saat ganti route
+  }, [pathname]);
 
   return (
     <nav
@@ -63,7 +69,13 @@ export default function Navbar() {
           {/* Navlinks */}
           <div className="hidden items-center gap-8 md:flex">
             {NAVLINKS.map((link, i) => (
-              <Link key={i} href={link.path} className="nav-links">
+              <Link
+                key={i}
+                href={link.path}
+                className={cn('nav-links', {
+                  'line-through': pathname === link.path,
+                })}
+              >
                 {link.label}
               </Link>
             ))}
@@ -107,7 +119,10 @@ export default function Navbar() {
             <Link
               key={i}
               href={link.path}
-              className="nav-links text-[20px] leading-[28px] font-medium"
+              className={cn(
+                'nav-links text-[20px] leading-[28px] font-medium',
+                { 'line-through': pathname === link.path }
+              )}
             >
               {link.label}
             </Link>

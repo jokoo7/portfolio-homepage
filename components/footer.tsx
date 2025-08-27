@@ -36,7 +36,7 @@ export default function Footer() {
       <footer className="w-full bg-black">
         <div className="wrapper py-0">
           <div className="wrapper-content border-grey flex flex-col items-center justify-between gap-10 border-b py-14 md:flex-row md:py-10">
-            <div className="flex flex-col items-center gap-14 md:flex-row">
+            <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
               <Link
                 href="/"
                 className="text-[18px] leading-[120%] font-bold text-white no-underline md:text-[16px]"
