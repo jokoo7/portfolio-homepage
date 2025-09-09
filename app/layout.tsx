@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import { Manrope, Fragment_Mono } from 'next/font/google';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
+import { cn } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { Fragment_Mono, Manrope } from 'next/font/google';
+import './globals.css';
 
 const manropeSans = Manrope({
   variable: '--font-manrope-sans',
@@ -11,7 +11,7 @@ const manropeSans = Manrope({
 });
 
 const fragmentMono = Fragment_Mono({
-  variable: '--font-fragment-mono',
+  variable: '--foznt-fragment-mono',
   weight: ['400'],
   subsets: ['latin'],
 });

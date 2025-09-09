@@ -1,14 +1,18 @@
 import MainHero from '@/components/main-hero';
 import { Paragraph } from '@/components/paragraph';
 import Image from 'next/image';
-import React from 'react';
+
+const BIO = [
+  { year: '2003', desc: 'Born in Siak, Indonesia' },
+  { year: '2023 - Now', desc: 'Working as a Freelance website develover' },
+];
 
 export default function AboutPage() {
   return (
     <>
       <MainHero>
         <div className="wrapper-content">
-          <h1 className="mb-6 text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15] md:mb-16 md:text-[45px] lg:text-[55px]">
+          <h1 className="mb-6 text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15] md:mb-12 md:text-[45px] lg:text-[55px]">
             Who I am ?
           </h1>
 
@@ -38,7 +42,7 @@ export default function AboutPage() {
         </div>
       </MainHero>
 
-      <div className="wrapper space-y-24">
+      <div className="wrapper space-y-24 pb-0">
         <div className="wrapper-content">
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             My Inspirations and Interests
@@ -56,6 +60,42 @@ export default function AboutPage() {
               reading, reflecting, and finding little details in everyday life
               that remind me how creativity often hides in simplicity.
             </Paragraph>
+          </div>
+        </div>
+      </div>
+
+      <div className="wrapper space-y-24">
+        <div className="wrapper-content">
+          <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+            Bio
+          </h2>
+          <div className="space-y-2">
+            {BIO.map((v, i) => (
+              <div key={i} className="p-reguler flex items-center gap-2">
+                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
+                  {v.year}
+                </span>
+                <span className="text-black">{v.desc}</span>
+              </div>
+            ))}
+
+            {/* <div className="flex items-center gap-2">
+              <span className="inline-block w-20 text-[16px] font-bold text-black md:w-24">
+                2017
+              </span>
+              <span className="text-[16px] leading-[1.5em] text-black md:text-[18px]">
+                Completed my Bachelor&apos;s degree in Information Systems at
+                Bina Nusantara University, Jakarta.
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="inline-block w-20 text-[16px] font-bold text-black md:w-24">
+                2017 - Now
+              </span>
+              <span className="text-[16px] leading-[1.5em] text-black md:text-[18px]">
+                Working as a Product Designer and Frontend Developer.
+              </span>
+            </div> */}
           </div>
         </div>
       </div>

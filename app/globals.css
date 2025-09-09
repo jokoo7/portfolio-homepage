@@ -97,4 +97,20 @@
   .h6 {
     @apply text-[16px] leading-[1.4em] font-bold text-[#333333];
   }
+
+  .p-small {
+    @apply text-[16px] leading-[1.5em] text-[#4A4A45];
+  }
+
+  .p-reguler {
+    @apply text-[18px] leading-[1.5em];
+  }
+
+  .p-medium {
+    @apply text-[18px] leading-[1.5em] font-medium text-black;
+  }
+
+  .p-semibold {
+    @apply text-[18px] leading-[1.7em] font-semibold text-black;
+  }
 }
