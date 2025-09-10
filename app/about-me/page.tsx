@@ -1,6 +1,8 @@
 import MainHero from '@/components/main-hero';
 import { Paragraph } from '@/components/paragraph';
+import { SKILS, SOFTWARE } from '@/constants/skills-stacks';
 import Image from 'next/image';
+import { JSX } from 'react';
 
 const BIO = [
   { year: '2003', desc: 'Born in Siak, Indonesia' },
@@ -8,6 +10,10 @@ const BIO = [
 ];
 
 export default function AboutPage() {
+  const SKILLSInArray: Array<[string, JSX.Element]> = Object.entries(SKILS);
+  const SOFTWAREInArray: Array<[string, JSX.Element]> =
+    Object.entries(SOFTWARE);
+
   return (
     <>
       <MainHero>
@@ -64,38 +70,70 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="wrapper space-y-24">
+      <div className="wrapper space-y-24 pb-0">
         <div className="wrapper-content">
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             Bio
           </h2>
           <div className="space-y-2">
             {BIO.map((v, i) => (
-              <div key={i} className="p-reguler flex items-center gap-2">
-                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
+              <div key={i} className="p-reguler flex items-start gap-2">
+                <span className="p-semibold inline-block w-28 shrink-0 whitespace-nowrap text-black md:w-24">
                   {v.year}
                 </span>
                 <span className="text-black">{v.desc}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
 
-            {/* <div className="flex items-center gap-2">
-              <span className="inline-block w-20 text-[16px] font-bold text-black md:w-24">
-                2017
-              </span>
-              <span className="text-[16px] leading-[1.5em] text-black md:text-[18px]">
-                Completed my Bachelor&apos;s degree in Information Systems at
-                Bina Nusantara University, Jakarta.
-              </span>
+      <div className="wrapper space-y-24">
+        <div className="wrapper-content">
+          <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+            Skils & Tools
+          </h2>
+          <div className="space-y-8">
+            <div className="flex items-start gap-10">
+              <div className="w-10 shrink-0">
+                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
+                  Skills
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-8">
+                {SKILLSInArray.map(([name, icon], index) => (
+                  <div
+                    key={index}
+                    className="flex h-fit w-fit items-center gap-1"
+                  >
+                    <div className="flex h-5 w-5 items-center justify-center">
+                      {icon}
+                    </div>
+                    <Paragraph>{name}</Paragraph>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-20 text-[16px] font-bold text-black md:w-24">
-                2017 - Now
-              </span>
-              <span className="text-[16px] leading-[1.5em] text-black md:text-[18px]">
-                Working as a Product Designer and Frontend Developer.
-              </span>
-            </div> */}
+            <div className="flex items-start gap-10">
+              <div className="w-10 shrink-0">
+                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
+                  Tools
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-8">
+                {SOFTWAREInArray.map(([name, icon], index) => (
+                  <div
+                    key={index}
+                    className="flex h-fit w-fit items-center gap-1"
+                  >
+                    <div className="flex h-5 w-5 items-center justify-center">
+                      {icon}
+                    </div>
+                    <Paragraph>{name}</Paragraph>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
