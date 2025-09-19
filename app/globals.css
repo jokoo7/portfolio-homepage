@@ -21,6 +21,32 @@
 
   --breakpoint-md: 800px;
   --breakpoint-lg: 1200px;
+
+  /* H1 */
+  --text-h1-l: 55px;
+  --text-h1-m: 45px;
+  --text-h1-s: 40px;
+
+  /* H2 */
+  --text-h2-l: 50px;
+  --text-h2-m: 45px;
+  --text-h2-s: 32px;
+
+  /* H3 */
+  --text-h3-l: 30px;
+  --text-h3-m: 30px; /* sama dengan h3-l */
+  --text-h3-s: 25px;
+
+  /* H4 */
+  --text-h4-l: 24px;
+  --text-h4-m: 24px; /* sama dengan h4-l */
+  --text-h4-s: 20px;
+
+  /* H5 */
+  --text-h5: 20px;
+
+  /* H6 */
+  --text-h6: 16px;
 }
 
 @layer base {
@@ -55,47 +81,36 @@
     @apply mx-auto w-full max-w-[1200px];
   }
 
-  .h1-l {
-    @apply text-[55px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+  /* ===================== Responsive text sizes ===================== */
+
+  /* H1 */
+  .h1-responsive {
+    @apply text-[40px] md:text-[45px] lg:text-[55px];
   }
-  .h1-m {
-    @apply text-[45px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+
+  /* H2 */
+  .h2-responsive {
+    @apply text-[32px] md:text-[45px] lg:text-[50px];
   }
-  .h1-s {
-    @apply text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15];
+
+  /* H3 */
+  .h3-responsive {
+    @apply text-[25px] md:text-[30px] lg:text-[30px];
   }
-  .h2-l {
-    @apply text-[50px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
+
+  /* H4 */
+  .h4-responsive {
+    @apply text-[20px] md:text-[24px] lg:text-[24px];
   }
-  .h2-m {
-    @apply text-[45px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
+
+  /* H5 */
+  .h5-responsive {
+    @apply text-[18px] md:text-[20px];
   }
-  .h2-s {
-    @apply text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black;
-  }
-  .h3-l {
-    @apply text-[30px] leading-[1.3em] font-medium text-black;
-  }
-  .h3-m {
-    @apply text-[30px] leading-[1.3em] font-medium text-black;
-  }
-  .h3-s {
-    @apply text-[25px] leading-[1.3em] font-medium text-black;
-  }
-  .h4-l {
-    @apply text-[24px] leading-[1.4em] font-medium text-black;
-  }
-  .h4-m {
-    @apply text-[24px] leading-[1.4em] font-medium text-black;
-  }
-  .h4-s {
-    @apply text-[20px] leading-[1.4em] font-medium text-black;
-  }
-  .h5 {
-    @apply text-[20px] leading-[1.4em] font-medium text-black;
-  }
-  .h6 {
-    @apply text-[16px] leading-[1.4em] font-bold text-[#333333];
+
+  /* H6 */
+  .h6-responsive {
+    @apply text-[14px] md:text-[16px];
   }
 
   .p-small {

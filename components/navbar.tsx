@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
-import React from 'react';
-import { Button } from './button';
-import { FaGithub } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import React from 'react';
+import { FaGithub } from 'react-icons/fa';
+import { Button } from './button';
 
 const NAVLINKS = [
   { path: '/projects', label: 'Projects' },

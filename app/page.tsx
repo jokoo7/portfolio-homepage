@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/card';
+import { Heading } from '@/components/heading';
 import MainHero from '@/components/main-hero';
 import { Paragraph, paragraphVariants } from '@/components/paragraph';
 import { cn } from '@/lib/utils';
@@ -59,10 +60,13 @@ export default function Home() {
               className="object-cover grayscale-100"
             />
           </div>
-          <h1 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] md:font-normal md:tracking-[-0.5px] md:text-[#201d15] lg:text-[55px]">
+          <Heading
+            as="h2"
+            className="text-h2-s md:text-h1-m lg:text-h1-l text-[#201d15] md:font-normal md:tracking-[-0.5px]"
+          >
             I&apos;m Joko Santoso, <br className="md:hidden" /> a frontend
             developer with a basic backend foundation based in Riau, Indonesia.
-          </h1>
+          </Heading>
           <Paragraph>
             Combining frontend expertise with a basic backend foundation, I
             craft sleek, high-performance, and user-friendly web applications,
@@ -85,9 +89,9 @@ export default function Home() {
       <div className="wrapper space-y-24">
         <div className="wrapper-content space-y-10">
           <div className="flex flex-col gap-4">
-            <h2 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+            <Heading as="h2" className="h2-responsive">
               Selected projects
-            </h2>
+            </Heading>
             <Paragraph className="max-w-[800px]">
               Explore my selected projects, highlighting my passion for crafting
               sleek, functional, and user-focused web applications.
@@ -130,9 +134,9 @@ export default function Home() {
 
         <div className="wrapper-content space-y-10">
           <div className="flex flex-col gap-4">
-            <h2 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+            <Heading as="h2" className="h2-responsive">
               My Articles
-            </h2>
+            </Heading>
             <Paragraph className="max-w-[800px]">
               Discover my collection of articles, where I share insights,
               experiences, and knowledge about web development, design, and

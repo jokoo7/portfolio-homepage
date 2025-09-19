@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { Paragraph } from './paragraph';
-import { Button, buttonVariants } from './button';
-import { MdEmail } from 'react-icons/md';
 import { SOCIALLINKS } from '@/app/page';
 import Link from 'next/link';
+import { TbPlugConnected } from 'react-icons/tb';
+import { Button, buttonVariants } from './button';
+import { Heading } from './heading';
+import { Paragraph } from './paragraph';
 
 const NAVLINKS = [
   { path: '/projects', label: 'Projects' },
@@ -17,9 +17,9 @@ export default function Footer() {
       <section className="bg-dark-grey w-full">
         <div className="wrapper py-20">
           <div className="wrapper-content">
-            <h2 className="text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-white md:text-[50px]">
+            <Heading as="h2" className="h2-responsive text-white">
               Interested in connecting?
-            </h2>
+            </Heading>
             <Paragraph className="text-background mt-2">
               Let’s talk projects, collaborations, or anything else!
             </Paragraph>
@@ -28,18 +28,18 @@ export default function Footer() {
               size="big"
               className="mt-8 w-full md:mt-6 md:w-fit"
             >
-              <MdEmail /> Let’s connect
+              <TbPlugConnected /> Let’s connect
             </Button>
           </div>
         </div>
       </section>
       <footer className="w-full bg-black">
         <div className="wrapper py-0">
-          <div className="wrapper-content border-grey flex flex-col items-center justify-between gap-10 border-b py-14 md:flex-row md:py-10">
+          <div className="wrapper-content border-grey flex flex-col items-center justify-between gap-20 border-b py-14 md:flex-row md:py-10">
             <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
               <Link
                 href="/"
-                className="text-[18px] leading-[120%] font-bold text-white no-underline md:text-[16px]"
+                className="text-[18px] leading-[120%] font-bold whitespace-nowrap text-white no-underline md:text-[16px]"
               >
                 Joko Santoso
               </Link>
@@ -49,14 +49,14 @@ export default function Footer() {
                   <Link
                     key={i}
                     href={link.path}
-                    className="text-grey text-[18px] leading-[1.5em] no-underline hover:text-white md:text-[14px]"
+                    className="text-grey text-[18px] leading-[1.5em] whitespace-nowrap no-underline hover:text-white md:text-[14px]"
                   >
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-10 md:gap-8">
+            <div className="flex w-full max-w-md items-center justify-between gap-10 md:w-fit md:justify-center md:gap-8">
               {SOCIALLINKS.map((link, i) => (
                 <Link
                   href={link.path}

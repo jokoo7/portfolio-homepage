@@ -34,14 +34,14 @@ export default function AboutPage() {
             </div>
             <div className="space-y-7">
               <h4 className="text-[20px] leading-[1.4em] font-medium text-black md:text-[24px]">
-                More than a UX/UI designer, I&apos;m a storyteller at heart,
-                weaving narratives through my designs.
+                More than a frontend developer, I craft experiences where design
+                meets seamless function — supported by a solid touch of backend.
               </h4>
               <Paragraph>
-                My philosophy? Every app tells a story, and every interface is a
-                journey. I find joy in simple things — a well-crafted espresso,
-                the crisp pages of a new book, and the quiet buzz of a city at
-                dawn.
+                My philosophy? Every project is a story, and every interface is
+                a chapter of that story. I enjoy the little things — clean and
+                elegant code, the excitement of solving a challenging problem,
+                and the quiet joy when everything clicks into place.
               </Paragraph>
             </div>
           </div>
@@ -55,16 +55,17 @@ export default function AboutPage() {
           </h2>
           <div className="flex flex-col gap-5 md:flex-row md:gap-10">
             <Paragraph>
-              Inspiration often comes to me in the simplest moments — brewing a
-              fresh cup of coffee, turning the pages of a new book, or watching
-              the city slowly wake up in the early morning. These quiet routines
-              recharge me and often spark new ideas for my work.
+              Inspiration often comes in the simplest moments — a fresh cup of
+              coffee, the first pages of a book, or watching the city wake up at
+              dawn. These quiet routines recharge me and spark new ideas for my
+              work, reminding me that creativity often begins with simplicity.
             </Paragraph>
             <Paragraph>
-              I enjoy exploring how design and logic connect, and I find joy in
-              solving problems with code. Outside of development, I love
-              reading, reflecting, and finding little details in everyday life
-              that remind me how creativity often hides in simplicity.
+              I enjoy exploring how design and logic connect, finding joy in
+              turning concepts into code. With frontend as my focus and a touch
+              of backend foundation, I love solving problems and creating
+              experiences that feel both beautiful and functional — little
+              details that transform ideas into meaningful journeys.
             </Paragraph>
           </div>
         </div>
