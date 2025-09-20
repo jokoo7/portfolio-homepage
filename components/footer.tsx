@@ -4,6 +4,7 @@ import { TbPlugConnected } from 'react-icons/tb';
 import { Button, buttonVariants } from './button';
 import { Heading } from './heading';
 import { Paragraph } from './paragraph';
+import { Wrapper, WrapperContent } from './wrapper';
 
 const NAVLINKS = [
   { path: '/projects', label: 'Projects' },
@@ -15,8 +16,8 @@ export default function Footer() {
   return (
     <>
       <section className="bg-dark-grey w-full">
-        <div className="wrapper py-20">
-          <div className="wrapper-content">
+        <Wrapper className="py-20">
+          <WrapperContent>
             <Heading as="h2" className="h2-responsive text-white">
               Interested in connecting?
             </Heading>
@@ -30,12 +31,12 @@ export default function Footer() {
             >
               <TbPlugConnected /> Let’s connect
             </Button>
-          </div>
-        </div>
+          </WrapperContent>
+        </Wrapper>
       </section>
       <footer className="w-full bg-black">
-        <div className="wrapper py-0">
-          <div className="wrapper-content border-grey flex flex-col items-center justify-between gap-20 border-b py-14 md:flex-row md:py-10">
+        <Wrapper>
+          <WrapperContent className="border-grey flex flex-col items-center justify-between gap-20 border-b py-14 md:flex-row md:py-10">
             <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
               <Link
                 href="/"
@@ -67,14 +68,14 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-          </div>
+          </WrapperContent>
 
-          <div className="wrapper-content py-12 pt-8 text-center">
+          <WrapperContent className="py-12 pt-8 text-center">
             <p className="text-grey text-[14px] leading-[1.2em]">
               Copyright {new Date().getFullYear()} by Joko Santoso
             </p>
-          </div>
-        </div>
+          </WrapperContent>
+        </Wrapper>
       </footer>
     </>
   );

@@ -1,5 +1,6 @@
 import MainHero from '@/components/main-hero';
 import { Paragraph } from '@/components/paragraph';
+import { Wrapper, WrapperContent } from '@/components/wrapper';
 import { SKILS, SOFTWARE } from '@/constants/skills-stacks';
 import Image from 'next/image';
 import { JSX } from 'react';
@@ -17,7 +18,7 @@ export default function AboutPage() {
   return (
     <>
       <MainHero>
-        <div className="wrapper-content">
+        <WrapperContent>
           <h1 className="mb-6 text-[40px] leading-[120%] font-normal tracking-[-0.5px] text-[#201d15] md:mb-12 md:text-[45px] lg:text-[55px]">
             Who I am ?
           </h1>
@@ -45,11 +46,11 @@ export default function AboutPage() {
               </Paragraph>
             </div>
           </div>
-        </div>
+        </WrapperContent>
       </MainHero>
 
-      <div className="wrapper space-y-24 pb-0">
-        <div className="wrapper-content">
+      <Wrapper className="space-y-24 pb-0">
+        <WrapperContent>
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             My Inspirations and Interests
           </h2>
@@ -68,11 +69,11 @@ export default function AboutPage() {
               details that transform ideas into meaningful journeys.
             </Paragraph>
           </div>
-        </div>
-      </div>
+        </WrapperContent>
+      </Wrapper>
 
-      <div className="wrapper space-y-24 pb-0">
-        <div className="wrapper-content">
+      <Wrapper className="space-y-24 pb-0">
+        <WrapperContent>
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             Bio
           </h2>
@@ -86,11 +87,11 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </WrapperContent>
+      </Wrapper>
 
-      <div className="wrapper space-y-24">
-        <div className="wrapper-content">
+      <Wrapper className="space-y-24">
+        <WrapperContent>
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             Skils & Tools
           </h2>
@@ -136,8 +137,8 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </WrapperContent>
+      </Wrapper>
     </>
   );
 }

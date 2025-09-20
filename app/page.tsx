@@ -9,6 +9,7 @@ import {
 import { Heading } from '@/components/heading';
 import MainHero from '@/components/main-hero';
 import { Paragraph, paragraphVariants } from '@/components/paragraph';
+import { Wrapper, WrapperContent } from '@/components/wrapper';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -50,7 +51,7 @@ export default function Home() {
   return (
     <>
       <MainHero>
-        <div className="wrapper-content flex flex-col gap-8 md:gap-10">
+        <WrapperContent className="flex flex-col gap-8 md:gap-10">
           <div className="aspect-square w-[100px] overflow-hidden rounded-full">
             <Image
               src="/profile.jpg"
@@ -72,8 +73,8 @@ export default function Home() {
             craft sleek, high-performance, and user-friendly web applications,
             ensuring seamless functionality and visual appeal across platforms.
           </Paragraph>
-        </div>
-        <div className="wrapper-content mt-16 flex w-full items-center gap-6 md:mt-10">
+        </WrapperContent>
+        <WrapperContent className="mt-16 flex w-full items-center gap-6 md:mt-10">
           {SOCIALLINKS.map((link, i) => (
             <Link
               href={link.path}
@@ -83,11 +84,11 @@ export default function Home() {
               {link.icon}
             </Link>
           ))}
-        </div>
+        </WrapperContent>
       </MainHero>
 
-      <div className="wrapper space-y-24">
-        <div className="wrapper-content space-y-10">
+      <Wrapper className="space-y-24">
+        <WrapperContent className="space-y-10">
           <div className="flex flex-col gap-4">
             <Heading as="h2" className="h2-responsive">
               Selected projects
@@ -130,9 +131,9 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </div>
+        </WrapperContent>
 
-        <div className="wrapper-content space-y-10">
+        <WrapperContent className="space-y-10">
           <div className="flex flex-col gap-4">
             <Heading as="h2" className="h2-responsive">
               My Articles
@@ -176,8 +177,8 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </div>
-      </div>
+        </WrapperContent>
+      </Wrapper>
     </>
   );
 }
