@@ -34,9 +34,10 @@ export default function Footer() {
           </WrapperContent>
         </Wrapper>
       </section>
+
       <footer className="w-full bg-black">
-        <Wrapper>
-          <WrapperContent className="border-grey flex flex-col items-center justify-between gap-20 border-b py-14 md:flex-row md:py-10">
+        <Wrapper className="pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0">
+          <WrapperContent className="border-grey flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row">
             <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
               <Link
                 href="/"
@@ -70,7 +71,7 @@ export default function Footer() {
             </div>
           </WrapperContent>
 
-          <WrapperContent className="py-12 pt-8 text-center">
+          <WrapperContent className="py-8 text-center">
             <p className="text-grey text-[14px] leading-[1.2em]">
               Copyright {new Date().getFullYear()} by Joko Santoso
             </p>

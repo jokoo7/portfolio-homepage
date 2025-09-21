@@ -1,3 +1,4 @@
+import { Heading } from '@/components/heading';
 import MainHero from '@/components/main-hero';
 import { Paragraph } from '@/components/paragraph';
 import { Wrapper, WrapperContent } from '@/components/wrapper';
@@ -49,7 +50,7 @@ export default function AboutPage() {
         </WrapperContent>
       </MainHero>
 
-      <Wrapper className="space-y-24 pb-0">
+      <Wrapper className="space-y-24">
         <WrapperContent>
           <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
             My Inspirations and Interests
@@ -72,68 +73,110 @@ export default function AboutPage() {
         </WrapperContent>
       </Wrapper>
 
-      <Wrapper className="space-y-24 pb-0">
+      <Wrapper className="space-y-24 pt-0 md:pt-0 lg:pt-0">
         <WrapperContent>
-          <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
+          <div className="grid lg:grid-cols-3">
+            <div>
+              <Heading as="h3" className="h3-responsive mb-6">
+                Bio
+              </Heading>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="space-y-2">
+                {BIO.map((v, i) => (
+                  <div key={i} className="p-reguler flex items-start gap-2">
+                    <span className="p-semibold inline-block w-fit shrink-0 font-mono whitespace-nowrap text-black">
+                      {v.year}
+                    </span>
+                    <span className="text-black">{v.desc}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* <div className="mt-12">
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Saya adalah developer yang passionate tentang menciptakan
+                  pengalaman web yang accessible dan performant. Keahlian saya
+                  terletak pada intersection antara design dan development,
+                  menciptakan aplikasi yang tidak hanya terlihat bagus tetapi
+                  juga dibangun dengan performa dan usability yang optimal.
+                </p>
+              </div> */}
+            </div>
+          </div>
+
+          {/* <Heading as="h3" className="h3-responsive mb-6">
             Bio
-          </h2>
+          </Heading>
           <div className="space-y-2">
             {BIO.map((v, i) => (
               <div key={i} className="p-reguler flex items-start gap-2">
-                <span className="p-semibold inline-block w-28 shrink-0 whitespace-nowrap text-black md:w-24">
+                <span className="p-semibold inline-block w-fit shrink-0 font-mono whitespace-nowrap text-black">
                   {v.year}
                 </span>
                 <span className="text-black">{v.desc}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </WrapperContent>
       </Wrapper>
 
-      <Wrapper className="space-y-24">
+      <Wrapper className="space-y-24 pt-0 md:pt-0 lg:pt-0">
         <WrapperContent>
-          <h2 className="mb-6 text-[32px] leading-[1.2em] font-medium tracking-[-0.02em] text-black md:text-[45px] lg:text-[50px]">
-            Skils & Tools
-          </h2>
-          <div className="space-y-8">
-            <div className="flex items-start gap-10">
-              <div className="w-10 shrink-0">
-                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
-                  Skills
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-8">
-                {SKILLSInArray.map(([name, icon], index) => (
-                  <div
-                    key={index}
-                    className="flex h-fit w-fit items-center gap-1"
-                  >
-                    <div className="flex h-5 w-5 items-center justify-center">
-                      {icon}
-                    </div>
-                    <Paragraph>{name}</Paragraph>
-                  </div>
-                ))}
-              </div>
+          <div className="grid lg:grid-cols-3">
+            <div>
+              {/* <h2 className="mb-6 text-3xl font-bold">Keahlian & Tools</h2> */}
+              <Heading as="h3" className="h3-responsive mb-6">
+                Skills & Tools
+              </Heading>
             </div>
-            <div className="flex items-start gap-10">
-              <div className="w-10 shrink-0">
-                <span className="p-semibold inline-block w-28 whitespace-nowrap text-black md:w-24">
-                  Tools
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-8">
-                {SOFTWAREInArray.map(([name, icon], index) => (
-                  <div
-                    key={index}
-                    className="flex h-fit w-fit items-center gap-1"
-                  >
-                    <div className="flex h-5 w-5 items-center justify-center">
-                      {icon}
-                    </div>
-                    <Paragraph>{name}</Paragraph>
+            <div className="lg:col-span-2">
+              <div className="space-y-12">
+                {/* Skills */}
+                <div>
+                  <Heading as="h4" className="h4-responsive mb-6">
+                    Skills
+                  </Heading>
+                  {/* <h3 className="mb-6 text-xl font-semibold">Skills</h3> */}
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                    {SKILLSInArray.map(([name, icon], index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-center gap-1 border px-4 py-2"
+                      >
+                        <div className="flex h-5 w-5 items-center justify-center">
+                          {icon}
+                        </div>
+                        <Paragraph variant="medium" className="font-mono">
+                          {name}
+                        </Paragraph>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                {/* Tools */}
+                <div>
+                  <Heading as="h4" className="h4-responsive mb-6">
+                    Tools
+                  </Heading>
+                  {/* <h3 className="mb-6 text-xl font-semibold">Tools</h3> */}
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                    {SOFTWAREInArray.map(([name, icon], index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-center gap-1 border px-4 py-2"
+                      >
+                        <div className="flex h-5 w-5 items-center justify-center">
+                          {icon}
+                        </div>
+                        <Paragraph variant="medium" className="font-mono">
+                          {name}
+                        </Paragraph>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

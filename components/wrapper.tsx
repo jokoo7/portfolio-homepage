@@ -9,7 +9,7 @@ const Wrapper = ({ className, children, ...rest }: WrapperProps) => {
     <div
       {...rest}
       className={cn(
-        'w-full px-[20px] pt-[60px] pb-[100px] md:px-[40px] md:py-[80px] lg:px-[100px] lg:pt-[100px] lg:pb-[150px]',
+        'w-full px-[20px] py-[80px] md:px-[40px] md:py-[80px] lg:px-[100px] lg:py-[100px]',
         className
       )}
     >

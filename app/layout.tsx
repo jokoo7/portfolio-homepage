@@ -11,7 +11,7 @@ const manropeSans = Manrope({
 });
 
 const fragmentMono = Fragment_Mono({
-  variable: '--foznt-fragment-mono',
+  variable: '--font-fragment-mono',
   weight: ['400'],
   subsets: ['latin'],
 });
