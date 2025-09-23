@@ -11,17 +11,17 @@ import MainHero from '@/components/main-hero';
 import { Paragraph, paragraphVariants } from '@/components/paragraph';
 import { Wrapper, WrapperContent } from '@/components/wrapper';
 import { cn } from '@/lib/utils';
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaGithub, FaInstagram } from 'react-icons/fa';
-import { FaLinkedin, FaTiktok } from 'react-icons/fa6';
 import { IoArrowForward } from 'react-icons/io5';
 
 export const SOCIALLINKS = [
-  { path: '', label: 'Instagram', icon: <FaInstagram /> },
-  { path: '', label: 'Tiktok', icon: <FaTiktok /> },
-  { path: '', label: 'Github', icon: <FaGithub /> },
-  { path: '', label: 'Linkedln', icon: <FaLinkedin /> },
+  { path: '', label: 'Instagram', icon: <Instagram /> },
+  // { path: '', label: 'Tiktok', icon: <PiTiktokLogo /> },
+  { path: '', label: 'Github', icon: <Github /> },
+  { path: '', label: 'Linkedln', icon: <Linkedin /> },
+  { path: '', label: 'Email', icon: <Mail /> },
 ];
 
 const PROJECTS = [

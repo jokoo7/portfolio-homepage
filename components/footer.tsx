@@ -1,7 +1,5 @@
-import { SOCIALLINKS } from '@/app/page';
-import Link from 'next/link';
-import { TbPlugConnected } from 'react-icons/tb';
-import { Button, buttonVariants } from './button';
+import { Github, Linkedin, Mail, Unplug } from 'lucide-react';
+import { Button } from './button';
 import { Heading } from './heading';
 import { Paragraph } from './paragraph';
 import { Wrapper, WrapperContent } from './wrapper';
@@ -29,13 +27,13 @@ export default function Footer() {
               size="big"
               className="mt-8 w-full md:mt-6 md:w-fit"
             >
-              <TbPlugConnected /> Let’s connect
+              <Unplug /> Let’s connect
             </Button>
           </WrapperContent>
         </Wrapper>
       </section>
 
-      <footer className="w-full bg-black">
+      {/* <footer className="w-full bg-black">
         <Wrapper className="pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0">
           <WrapperContent className="border-grey flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row">
             <div className="flex flex-col items-center gap-10 md:flex-row md:gap-14">
@@ -75,6 +73,43 @@ export default function Footer() {
             <p className="text-grey text-[14px] leading-[1.2em]">
               Copyright {new Date().getFullYear()} by Joko Santoso
             </p>
+          </WrapperContent>
+        </Wrapper>
+      </footer> */}
+
+      <footer className="w-full bg-black py-8">
+        <Wrapper className="pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0">
+          <WrapperContent className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            {/* <p className="text-muted-foreground text-sm">
+              © 2className="border-grey flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row"024 Portfolio. Dibuat dengan Next.js dan TailwindCSS.
+            </p> */}
+            <p className="text-grey text-[14px] leading-[1.2em]">
+              © {new Date().getFullYear()} Portfolio Joko Santoso, Build with
+              ❤️
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://github.com"
+                className="text-grey transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                className="text-grey transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="mailto:hello@example.com"
+                className="text-grey transition-colors"
+                aria-label="Email"
+              >
+                <Mail size={16} />
+              </a>
+            </div>
           </WrapperContent>
         </Wrapper>
       </footer>

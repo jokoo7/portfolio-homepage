@@ -84,40 +84,28 @@ export default function AboutPage() {
             <div className="lg:col-span-2">
               <div className="space-y-2">
                 {BIO.map((v, i) => (
-                  <div key={i} className="p-reguler flex items-start gap-2">
-                    <span className="p-semibold inline-block w-fit shrink-0 font-mono whitespace-nowrap text-black">
+                  <div key={i} className="flex items-start gap-4">
+                    <Paragraph
+                      variant="captionSemibold"
+                      className="w-fit shrink-0 font-mono text-black"
+                    >
                       {v.year}
-                    </span>
-                    <span className="text-black">{v.desc}</span>
+                    </Paragraph>
+                    <Paragraph>{v.desc}</Paragraph>
                   </div>
                 ))}
               </div>
-
-              {/* <div className="mt-12">
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Saya adalah developer yang passionate tentang menciptakan
-                  pengalaman web yang accessible dan performant. Keahlian saya
-                  terletak pada intersection antara design dan development,
-                  menciptakan aplikasi yang tidak hanya terlihat bagus tetapi
-                  juga dibangun dengan performa dan usability yang optimal.
-                </p>
-              </div> */}
+              <div className="mt-12">
+                <Paragraph className="leading-relaxed">
+                  I am a developer passionate about creating accessible and
+                  performant web experiences. My expertise lies at the
+                  intersection of design and development, building applications
+                  that not only look great but are also optimized for
+                  performance and usability.
+                </Paragraph>
+              </div>
             </div>
           </div>
-
-          {/* <Heading as="h3" className="h3-responsive mb-6">
-            Bio
-          </Heading>
-          <div className="space-y-2">
-            {BIO.map((v, i) => (
-              <div key={i} className="p-reguler flex items-start gap-2">
-                <span className="p-semibold inline-block w-fit shrink-0 font-mono whitespace-nowrap text-black">
-                  {v.year}
-                </span>
-                <span className="text-black">{v.desc}</span>
-              </div>
-            ))}
-          </div> */}
         </WrapperContent>
       </Wrapper>
 
@@ -125,7 +113,6 @@ export default function AboutPage() {
         <WrapperContent>
           <div className="grid lg:grid-cols-3">
             <div>
-              {/* <h2 className="mb-6 text-3xl font-bold">Keahlian & Tools</h2> */}
               <Heading as="h3" className="h3-responsive mb-6">
                 Skills & Tools
               </Heading>
@@ -142,12 +129,12 @@ export default function AboutPage() {
                     {SKILLSInArray.map(([name, icon], index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-center gap-1 border px-4 py-2"
+                        className="border-grey flex items-center gap-1 border px-4 py-2"
                       >
                         <div className="flex h-5 w-5 items-center justify-center">
                           {icon}
                         </div>
-                        <Paragraph variant="medium" className="font-mono">
+                        <Paragraph variant="small" className="font-medium">
                           {name}
                         </Paragraph>
                       </div>
@@ -160,17 +147,16 @@ export default function AboutPage() {
                   <Heading as="h4" className="h4-responsive mb-6">
                     Tools
                   </Heading>
-                  {/* <h3 className="mb-6 text-xl font-semibold">Tools</h3> */}
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                     {SOFTWAREInArray.map(([name, icon], index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-center gap-1 border px-4 py-2"
+                        className="border-grey flex items-center gap-1 border px-4 py-2"
                       >
                         <div className="flex h-5 w-5 items-center justify-center">
                           {icon}
                         </div>
-                        <Paragraph variant="medium" className="font-mono">
+                        <Paragraph variant="small" className="font-medium">
                           {name}
                         </Paragraph>
                       </div>
