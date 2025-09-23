@@ -2,20 +2,46 @@ import { Heading } from '@/components/heading';
 import MainHero from '@/components/main-hero';
 import { Paragraph } from '@/components/paragraph';
 import { Wrapper, WrapperContent } from '@/components/wrapper';
-import { SKILS, SOFTWARE } from '@/constants/skills-stacks';
 import Image from 'next/image';
-import { JSX } from 'react';
 
 const BIO = [
   { year: '2003', desc: 'Born in Siak, Indonesia' },
   { year: '2023 - Now', desc: 'Working as a Freelance website develover' },
 ];
 
-export default function AboutPage() {
-  const SKILLSInArray: Array<[string, JSX.Element]> = Object.entries(SKILS);
-  const SOFTWAREInArray: Array<[string, JSX.Element]> =
-    Object.entries(SOFTWARE);
+const skillsData = [
+  {
+    category: 'Frontend Development',
+    description: 'Crafting interactive and responsive user interfaces.',
+    skills: [
+      'Proficient in HTML, CSS, JavaScript',
+      'Experienced with React and Framer Motion for dynamic interfaces',
+      'Strong understanding of user-centered design principles',
+      'Skilled in responsive design and creating seamless user experiences',
+    ],
+  },
+  {
+    category: 'Backend Foundations',
+    description: 'Building robust server-side solutions and APIs.',
+    skills: [
+      'Basic knowledge of REST APIs integration',
+      'Familiar with database handling (CRUD operations)',
+      'Understanding of server-side logic fundamentals',
+    ],
+  },
+  {
+    category: 'Additional Strengths',
+    description:
+      'Bringing problem-solving and design-thinking to every project.',
+    skills: [
+      'Excellent problem-solving skills and attention to detail',
+      'Ability to conduct user research and usability testing',
+      'Passion for connecting design and logic through clean, maintainable code',
+    ],
+  },
+];
 
+export default function AboutPage() {
   return (
     <>
       <MainHero>
@@ -75,35 +101,33 @@ export default function AboutPage() {
 
       <Wrapper className="space-y-24 pt-0 md:pt-0 lg:pt-0">
         <WrapperContent>
-          <div className="grid lg:grid-cols-3">
+          <div className="flex flex-col">
             <div>
               <Heading as="h3" className="h3-responsive mb-6">
                 Bio
               </Heading>
             </div>
-            <div className="lg:col-span-2">
-              <div className="space-y-2">
-                {BIO.map((v, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <Paragraph
-                      variant="captionSemibold"
-                      className="w-fit shrink-0 font-mono text-black"
-                    >
-                      {v.year}
-                    </Paragraph>
-                    <Paragraph>{v.desc}</Paragraph>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-12">
-                <Paragraph className="leading-relaxed">
-                  I am a developer passionate about creating accessible and
-                  performant web experiences. My expertise lies at the
-                  intersection of design and development, building applications
-                  that not only look great but are also optimized for
-                  performance and usability.
-                </Paragraph>
-              </div>
+            <div className="space-y-2">
+              {BIO.map((v, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <Paragraph
+                    variant="captionSemibold"
+                    className="w-fit shrink-0 font-mono text-black"
+                  >
+                    {v.year}
+                  </Paragraph>
+                  <Paragraph>{v.desc}</Paragraph>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6">
+              <Paragraph className="leading-relaxed">
+                I am a developer passionate about creating accessible and
+                performant web experiences. My expertise lies at the
+                intersection of design and development, building applications
+                that not only look great but are also optimized for performance
+                and usability.
+              </Paragraph>
             </div>
           </div>
         </WrapperContent>
@@ -111,61 +135,31 @@ export default function AboutPage() {
 
       <Wrapper className="space-y-24 pt-0 md:pt-0 lg:pt-0">
         <WrapperContent>
-          <div className="grid lg:grid-cols-3">
-            <div>
-              <Heading as="h3" className="h3-responsive mb-6">
-                Skills & Tools
-              </Heading>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="space-y-12">
-                {/* Skills */}
-                <div>
-                  <Heading as="h4" className="h4-responsive mb-6">
-                    Skills
-                  </Heading>
-                  {/* <h3 className="mb-6 text-xl font-semibold">Skills</h3> */}
-                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                    {SKILLSInArray.map(([name, icon], index) => (
-                      <div
-                        key={index}
-                        className="border-grey flex items-center gap-1 border px-4 py-2"
-                      >
-                        <div className="flex h-5 w-5 items-center justify-center">
-                          {icon}
-                        </div>
-                        <Paragraph variant="small" className="font-medium">
-                          {name}
-                        </Paragraph>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          <Heading as="h3" className="h3-responsive mb-6">
+            Skills & Tools
+          </Heading>
 
-                {/* Tools */}
-                <div>
-                  <Heading as="h4" className="h4-responsive mb-6">
-                    Tools
-                  </Heading>
-                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                    {SOFTWAREInArray.map(([name, icon], index) => (
-                      <div
-                        key={index}
-                        className="border-grey flex items-center gap-1 border px-4 py-2"
-                      >
-                        <div className="flex h-5 w-5 items-center justify-center">
-                          {icon}
-                        </div>
-                        <Paragraph variant="small" className="font-medium">
-                          {name}
-                        </Paragraph>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          {skillsData.map((categoryItem, index) => (
+            <div key={index} className="mb-6">
+              <Paragraph className="inline">
+                <span className="font-bold">{categoryItem.category}, </span>
+                {categoryItem.description}
+              </Paragraph>
+
+              {/* List skills dengan flex */}
+              <ul className="mt-2 text-gray-700">
+                {categoryItem.skills.map((skill, idx) => (
+                  <li key={idx} className="flex items-start">
+                    {/* Bullet */}
+                    <span className="mt-1 mr-2">•</span>
+
+                    {/* Teks skill */}
+                    <Paragraph className="flex-1">{skill}</Paragraph>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </WrapperContent>
       </Wrapper>
     </>

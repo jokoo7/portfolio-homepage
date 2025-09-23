@@ -129,3 +129,10 @@
     @apply text-[18px] leading-[1.7em] font-semibold text-black;
   }
 }
+
+li::marker {
+  content: '•';
+  color: black;
+  font-size: 1.5em;
+  margin-right: 0.5rem; /* jarak bullet ke teks */
+}
