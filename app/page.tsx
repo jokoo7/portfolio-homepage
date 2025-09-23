@@ -16,7 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { IoArrowForward } from 'react-icons/io5';
 
-export const SOCIALLINKS = [
+const SOCIALLINKS = [
   { path: '', label: 'Instagram', icon: <Instagram /> },
   // { path: '', label: 'Tiktok', icon: <PiTiktokLogo /> },
   { path: '', label: 'Github', icon: <Github /> },
