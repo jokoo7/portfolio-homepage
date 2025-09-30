@@ -41,6 +41,16 @@ const skillsData = [
   },
 ];
 
+const experienceData = [
+  {
+    category: 'Freelance Web Developer',
+    description: 'Independen, Pekanbaru, Indonesia, June 2024 — Now',
+    skills: [
+      'Mengembangkan website dan aplikasi web untuk berbagai klien, dengan fokus pada performa, accessibility, dan user experience. Bekerja dengan teknologi modern seperti React, Next.js, dan TailwindCSS.',
+    ],
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -140,6 +150,36 @@ export default function AboutPage() {
           </Heading>
 
           {skillsData.map((categoryItem, index) => (
+            <div key={index} className="mb-6">
+              <Paragraph className="inline">
+                <span className="font-bold">{categoryItem.category}, </span>
+                {categoryItem.description}
+              </Paragraph>
+
+              {/* List skills dengan flex */}
+              <ul className="mt-2 text-gray-700">
+                {categoryItem.skills.map((skill, idx) => (
+                  <li key={idx} className="flex items-start">
+                    {/* Bullet */}
+                    <span className="mt-1 mr-2">•</span>
+
+                    {/* Teks skill */}
+                    <Paragraph className="flex-1">{skill}</Paragraph>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </WrapperContent>
+      </Wrapper>
+
+      <Wrapper className="space-y-24 pt-0 md:pt-0 lg:pt-0">
+        <WrapperContent>
+          <Heading as="h3" className="h3-responsive mb-6">
+            Experience
+          </Heading>
+
+          {experienceData.map((categoryItem, index) => (
             <div key={index} className="mb-6">
               <Paragraph className="inline">
                 <span className="font-bold">{categoryItem.category}, </span>

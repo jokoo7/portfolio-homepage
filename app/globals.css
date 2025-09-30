@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 :root {
   --background: #f3f3f2;
@@ -135,4 +136,104 @@ li::marker {
   color: black;
   font-size: 1.5em;
   margin-right: 0.5rem; /* jarak bullet ke teks */
+}
+
+/* ===================== Typography Plugin Overrides ===================== */
+/* Jika ada styling yang perlu di-override lebih lanjut, tambahkan di sini */
+
+/* ===================== Syntax Highlighting ===================== */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1.5em;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 8px;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--grey);
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #ff6b6b;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #4ecdc4;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #95e1d3;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #feca57;
+  font-weight: bold;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #ff9ff3;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #48dbfb;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #54a0ff;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #ee5a6f;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #ffa502;
+}
+
+.hljs-meta {
+  color: var(--grey);
+}
+
+.hljs-deletion {
+  background: #c0392b;
+}
+
+.hljs-addition {
+  background: #27ae60;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.prose table {
+  @apply border-light-grey my-6 w-full border;
+}
+
+.prose th,
+.prose td {
+  @apply border-light-grey border px-4 py-2 text-left;
 }
