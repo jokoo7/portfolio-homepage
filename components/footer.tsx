@@ -13,7 +13,7 @@ import { Wrapper, WrapperContent } from './wrapper';
 export default function Footer() {
   return (
     <>
-      <section className="bg-dark-grey w-full">
+      <section className="bg-dark-gray w-full">
         <Wrapper className="py-20">
           <WrapperContent>
             <Heading as="h2" className="h2-responsive text-white">
@@ -37,30 +37,30 @@ export default function Footer() {
         <Wrapper className="pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0">
           <WrapperContent className="flex flex-col items-center justify-between gap-4 md:flex-row">
             {/* <p className="text-muted-foreground text-sm">
-              © 2className="border-grey flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row"024 Portfolio. Dibuat dengan Next.js dan TailwindCSS.
+              © 2className="border-gray flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row"024 Portfolio. Dibuat dengan Next.js dan TailwindCSS.
             </p> */}
-            <p className="text-grey text-[14px] leading-[1.2em]">
+            <p className="text-gray text-[14px] leading-[1.2em]">
               © {new Date().getFullYear()} Portfolio Joko Santoso, Build with
               ❤️
             </p>
             <div className="flex items-center gap-4">
               <a
                 href="https://github.com"
-                className="text-grey transition-colors"
+                className="text-gray transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={16} />
               </a>
               <a
                 href="https://linkedin.com"
-                className="text-grey transition-colors"
+                className="text-gray transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={16} />
               </a>
               <a
                 href="mailto:hello@example.com"
-                className="text-grey transition-colors"
+                className="text-gray transition-colors"
                 aria-label="Email"
               >
                 <Mail size={16} />

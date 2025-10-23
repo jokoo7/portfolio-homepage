@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
-import { highlight } from 'sugar-high';
 import { headingVariants } from '../heading';
 import { paragraphVariants } from '../paragraph';
+import { CopyCode } from './copy-code';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -21,19 +21,28 @@ export const sharedMDXComponents = {
   ),
   h2: (props: HeadingProps) => (
     <h2
-      className={cn(headingVariants({ as: 'h2' }), 'h2-responsive mt-6 mb-3')}
+      className={cn(
+        headingVariants({ as: 'h2' }),
+        'h2-responsive mt-6 mb-3 font-normal'
+      )}
       {...props}
     />
   ),
   h3: (props: HeadingProps) => (
     <h3
-      className={cn(headingVariants({ as: 'h3' }), 'h3-responsive mt-4 mb-2')}
+      className={cn(
+        headingVariants({ as: 'h3' }),
+        'h3-responsive mt-4 mb-2 font-normal'
+      )}
       {...props}
     />
   ),
   h4: (props: HeadingProps) => (
     <h4
-      className={cn(headingVariants({ as: 'h4' }), 'h4-responsive mt-3 mb-2')}
+      className={cn(
+        headingVariants({ as: 'h4' }),
+        'h4-responsive mt-3 mb-2 font-normal'
+      )}
       {...props}
     />
   ),
@@ -47,10 +56,22 @@ export const sharedMDXComponents = {
     />
   ),
   ol: (props: ListProps) => (
-    <ol className="mb-4 list-decimal space-y-2 pl-5" {...props} />
+    <ol
+      className={cn(
+        paragraphVariants({ variant: 'default' }),
+        'mb-4 list-decimal space-y-2 pl-5'
+      )}
+      {...props}
+    />
   ),
   ul: (props: ListProps) => (
-    <ul className="mb-4 list-disc space-y-1 pl-5" {...props} />
+    <ul
+      className={cn(
+        paragraphVariants({ variant: 'default' }),
+        'mb-4 list-disc space-y-2 pl-5'
+      )}
+      {...props}
+    />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => (
@@ -80,24 +101,7 @@ export const sharedMDXComponents = {
       </a>
     );
   },
-  code: ({ children, ...props }: ComponentPropsWithoutRef<'code'>) => {
-    const codeHTML = highlight(children as string);
-    return (
-      <code
-        className="rounded px-1.5 py-0.5 font-mono text-sm"
-        dangerouslySetInnerHTML={{ __html: codeHTML }}
-        {...props}
-      />
-    );
-  },
-  pre: ({ children, ...props }: ComponentPropsWithoutRef<'pre'>) => (
-    <pre
-      className="my-4 overflow-x-auto rounded-lg border border-gray-700 bg-gray-900 p-4 text-gray-100 dark:bg-black"
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  pre: (props: ComponentPropsWithoutRef<'pre'>) => <CopyCode {...props} />,
   table: (props: ComponentPropsWithoutRef<'table'>) => (
     <div className="my-6 overflow-x-auto">
       <table
@@ -107,20 +111,18 @@ export const sharedMDXComponents = {
     </div>
   ),
   thead: (props: ComponentPropsWithoutRef<'thead'>) => (
-    <thead className="bg-gray-100 dark:bg-zinc-800" {...props} />
+    <thead
+      className={cn(paragraphVariants({ variant: 'default' }), 'bg-black')}
+      {...props}
+    />
   ),
   tbody: (props: ComponentPropsWithoutRef<'tbody'>) => (
     <tbody
-      className="divide-y divide-gray-200 dark:divide-zinc-700"
+      className="[&>tr:hover]:bg-light-gray divide-y divide-gray-200 [&>tr]:transition-colors"
       {...props}
     />
   ),
-  tr: (props: ComponentPropsWithoutRef<'tr'>) => (
-    <tr
-      className="transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50"
-      {...props}
-    />
-  ),
+  tr: (props: ComponentPropsWithoutRef<'tr'>) => <tr {...props} />,
   th: (props: ComponentPropsWithoutRef<'th'>) => (
     <th
       className="border border-gray-300 px-4 py-2 text-left font-semibold text-gray-900 dark:border-zinc-700 dark:text-white"

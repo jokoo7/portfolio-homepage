@@ -1,0 +1,369 @@
+# Complete MDX Components Showcase
+
+This document demonstrates all available MDX components and HTML tags.
+
+## Headings Examples
+
+# Heading 1 - Largest
+
+## Heading 2 - Second Level
+
+### Heading 3 - Third Level
+
+#### Heading 4 - Fourth Level
+
+##### Heading 5 - Fifth Level
+
+###### Heading 6 - Smallest
+
+---
+
+## Paragraphs and Text Formatting
+
+This is a regular paragraph with some **bold text**, _italic text_, and **_bold italic text_**. You can also use ~~strikethrough text~~ with del tags.
+
+Here's some ==highlighted text== using mark tag, and <small>small text</small> for fine print.
+
+Mathematical expressions can use subscript like H<sub>2</sub>O and superscript like E=mc<sup>2</sup>.
+
+---
+
+## Links
+
+- [Internal link](/blog/sample-post)
+- [External link](https://example.com)
+- [Anchor link](#headings-examples)
+
+---
+
+## Lists
+
+### Unordered List
+
+- First item
+- Second item with **bold**
+- Third item with _italic_
+  - Nested item 1
+  - Nested item 2
+- Fourth item
+
+### Ordered List
+
+1. First step
+2. Second step with `inline code`
+3. Third step
+   1. Substep A
+   2. Substep B
+4. Fourth step
+
+### Definition List
+
+<dl>
+  <dt>MDX</dt>
+  <dd>Markdown with JSX components</dd>
+
+<dt>Next.js</dt>
+<dd>React framework for production</dd>
+
+  <dt>Tailwind CSS</dt>
+  <dd>Utility-first CSS framework</dd>
+</dl>
+
+---
+
+## Blockquote
+
+> This is a blockquote. It can contain multiple paragraphs and other elements.
+>
+> Second paragraph in the blockquote with **formatted text**.
+
+---
+
+## Code
+
+### Inline Code
+
+Use the `useState` hook to manage state in React components.
+
+### Code Block
+
+```javascript
+function HelloWorld() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+### Keyboard Shortcuts
+
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+
+Press <kbd>⌘</kbd> + <kbd>S</kbd> to save file.
+
+### Sample Output
+
+<samp>Error: File not found</samp>
+
+### Variable
+
+The formula uses <var>x</var> and <var>y</var> variables.
+
+---
+
+## Tables
+
+| Feature     | Description               | Status         |
+| ----------- | ------------------------- | -------------- |
+| MDX Support | Full markdown with JSX    | ✅ Active      |
+| Dark Mode   | Automatic theme switching | ✅ Active      |
+| TypeScript  | Type-safe components      | ✅ Active      |
+| Responsive  | Mobile-first design       | 🚧 In Progress |
+
+### Table with Footer
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Item 1</td>
+      <td>$10</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Item 2</td>
+      <td>$20</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td>$110</td>
+      <td>8</td>
+    </tr>
+  </tfoot>
+</table>
+
+---
+
+## Images and Figures
+
+<figure>
+  <img
+    src="https://via.placeholder.com/800x400"
+    alt="Sample image placeholder"
+  />
+  <figcaption>Figure 1: This is a caption for the image above</figcaption>
+</figure>
+
+---
+
+## Interactive Elements
+
+<details>
+  <summary>Click to expand - What is MDX?</summary>
+
+MDX is a format that lets you seamlessly write JSX in your Markdown documents.
+You can import components, such as interactive charts or alerts, and embed
+them within your content. **Benefits:** - Write interactive content - Use
+React components - Keep markdown simplicity
+
+</details>
+
+<details>
+  <summary>Click to expand - Installation Guide</summary>
+
+```bash
+npm install @next/mdx @mdx-js/loader
+```
+
+Then configure your `next.config.js` file accordingly.
+
+</details>
+
+---
+
+## Callout / Aside
+
+<aside>
+  💡 **Pro Tip:** This is an aside element, perfect for tips, warnings, or
+  additional information that complements the main content.
+</aside>
+
+---
+
+## Sections and Articles
+
+<section>
+  <h3>Section Example</h3>
+  <p>This content is wrapped in a section tag for semantic HTML structure.</p>
+</section>
+
+<article>
+  <h3>Article Example</h3>
+  <p>
+    This content is wrapped in an article tag, representing independent content.
+  </p>
+</article>
+
+---
+
+## Special Text Elements
+
+### Abbreviations
+
+The <abbr title="World Wide Web">WWW</abbr> was invented by Tim Berners-Lee.
+
+Use <abbr title="HyperText Markup Language">HTML</abbr> for web structure.
+
+### Time
+
+Published on <time datetime="2025-01-15">January 15, 2025</time>
+
+Last updated: <time datetime="2025-10-22">October 22, 2025</time>
+
+---
+
+## Horizontal Rules
+
+Above this line
+
+---
+
+Below this line
+
+---
+
+And another style
+
+---
+
+## Mixed Content Example
+
+Here's a complex example combining multiple elements:
+
+1. **Step One**: Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+2. **Step Two**: Configure the application
+   - Edit `config.js`
+   - Set environment variables
+   - Run <kbd>npm run dev</kbd>
+
+3. **Step Three**: Check the result
+   > The server should start on `http://localhost:3000`
+
+<details>
+  <summary>Need help? Click here</summary>
+  If you encounter issues: - Check the [documentation](/docs) - Visit our{' '}
+  <abbr title="Frequently Asked Questions">FAQ</abbr>- Contact support at{' '}
+  <time>9 AM - 5 PM</time>
+</details>
+
+---
+
+## Nested Lists with Code
+
+Here's a development workflow:
+
+1. Planning Phase
+   - Define requirements
+   - Create wireframes
+   - Review with team
+
+2. Development Phase
+   - Set up project
+     ```bash
+     npx create-next-app my-app
+     cd my-app
+     ```
+   - Install dependencies
+     ```bash
+     npm install tailwindcss
+     ```
+   - Start coding! 🚀
+
+3. Testing Phase
+   - Write unit tests
+   - Perform integration tests
+   - User acceptance testing
+
+---
+
+## Complex Table Example
+
+<table>
+  <thead>
+    <tr>
+      <th>Framework</th>
+      <th>Type</th>
+      <th>Language</th>
+      <th>Performance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Next.js</strong>
+      </td>
+      <td>Full-stack</td>
+      <td>JavaScript/TypeScript</td>
+      <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Remix</strong>
+      </td>
+      <td>Full-stack</td>
+      <td>JavaScript/TypeScript</td>
+      <td>⭐⭐⭐⭐⭐</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Gatsby</strong>
+      </td>
+      <td>Static</td>
+      <td>JavaScript/TypeScript</td>
+      <td>⭐⭐⭐⭐</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        <em>All frameworks support React</em>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+---
+
+## Final Notes
+
+This document showcases all available MDX components. Feel free to use any combination of these elements in your content. Remember:
+
+- Use **semantic HTML** for better SEO
+- Keep content _accessible_ and readable
+- Test your content in both light and dark modes
+- Use `code` for technical terms
+- Add <kbd>keyboard shortcuts</kbd> where relevant
+
+<aside>
+  🎉 **Congratulations!** You've seen all available MDX components. Start
+  creating amazing content!
+</aside>

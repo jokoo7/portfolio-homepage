@@ -1,0 +1,1443 @@
+---
+title: Golang Dasar
+description: Belajar Golang Dasar
+---
+
+# Go-Lang Dasar
+
+## Instalasi Go
+
+Link Download : https://go.dev/
+
+Lalu untuk membuat project
+
+```bash
+go mod init name-projek
+```
+
+## Start Program
+
+```go title="main.go"
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello World")
+}
+```
+
+- `Main` function adalah sebuah fungsi yang akan dijalankan ketika program berjalan
+- Untuk membuat function, kita bisa menggunakan kata kunci `func`
+- Di Golang, function dalam module / project adalah unik, artinya kita tidak boleh membuat nama function yang sama
+
+## Build and Run Program
+
+Build
+
+```bash
+go build
+```
+
+Run
+
+```bash
+go run name-file.go
+```
+
+## Type Data
+
+### Number
+
+Ada dua jenis tipe data Number, yaitu :
+
+- Integer
+- Floating Point
+
+#### Integer
+
+| Tipe Data | Nilai Minimum              | Nilai Maksimum             |
+| --------- | -------------------------- | -------------------------- |
+| int8      | -128                       | 127                        |
+| int16     | -32,768                    | 32,767                     |
+| int32     | -2,147,483,648             | 2,147,483,647              |
+| int64     | -9,223,372,036,854,775,808 | 9,223,372,036,854,775,807  |
+| uint8     | 0                          | 255                        |
+| uint16    | 0                          | 65,535                     |
+| uint32    | 0                          | 4,294,967,295              |
+| uint64    | 0                          | 18,446,744,073,709,551,615 |
+
+#### Floating Point
+
+| Tipe Data  | Nilai Minimum                   | Nilai Maksimum                  |
+| ---------- | ------------------------------- | ------------------------------- |
+| float32    | 1.18×10⁻³⁸                      | 3.4×10³⁸                        |
+| float64    | 2.23×10⁻³⁰⁸                     | 1.80×10³⁰⁸                      |
+| complex64  | Real & imaginary parts: float32 | Real & imaginary parts: float32 |
+| complex128 | Real & imaginary parts: float64 | Real & imaginary parts: float64 |
+
+#### Alias
+
+| Tipe Data | Alias untuk    | Keterangan                                          |
+| --------- | -------------- | --------------------------------------------------- |
+| byte      | uint8          | Alias untuk uint8 (8-bit unsigned)                  |
+| rune      | int32          | Alias untuk int32, biasanya untuk karakter Unicode  |
+| int       | Minimal int32  | Ukurannya minimal 32-bit, tergantung arsitektur CPU |
+| uint      | Minimal uint32 | Ukurannya minimal 32-bit, tergantung arsitektur CPU |
+
+### Boolean
+
+| Nilai | Keterangan |
+| ----- | ---------- |
+| true  | benar      |
+| false | salah      |
+
+### String
+
+#### Function untuk string
+
+| Function         | Keterangan                                                                    |
+| ---------------- | ----------------------------------------------------------------------------- |
+| len("string)     | Menghitung jumlah karakter di String                                          |
+| "string"[number] | Mengambil karakter pada posisi yang ditentukan tetapi masih dalam bentuk byte |
+
+### Array
+
+- Array adalah tipe data yang berisikan kumpulan data dengan tipe yang sama
+- Saat membuat array, kita perlu menentukan jumlah data yang bisa ditampung oleh Array tersebut
+- Daya tampung Array tidak bisa bertambah setelah Array dibuat
+
+```go
+var names [3] string
+
+names[0] = "Joko"
+names[1] = "Santoso"
+names[2] = "Widodo"
+// !Error
+names[3] = "Budiono"
+```
+
+Di Go-Lang kita juga bisa membuat Array secara langsung saat deklarasi variable
+
+```go
+var values = [3]int{ 90, 80, 0} // 0 default jika tidak ada nilainya
+```
+
+#### Function array
+
+| Operasi              | Keterangan                      |
+| -------------------- | ------------------------------- |
+| len(array)           | Untuk mendapatkan panjang array |
+| array[index]         | Mendapat data di posisi index   |
+| array[index] = value | Mengubah data di posisi index   |
+
+```go
+arr := [3]int{10, 20, 30} // terbatas
+// or
+arr := [...]int{10, 20, 30, 40} // bebas
+
+fmt.Println(len(arr))     // Output: 3 or 4
+fmt.Println(arr[1])       // Output: 20
+arr[1] = 99
+fmt.Println(arr[1])       // Output: 99
+```
+
+### Slice
+
+- Tipe data Slice adalah potongan dari data Array
+- Slice mirip dengan Array, yang membedakan adalah ukuran Slice bisa berubah
+- Slide dan Array selalu terkoneksi, dimana Slice adalah data yang mengakses sebagian atau seluruh data di Array
+- Tipe Data Slice memiliki 3 data, yaitu `pointer`, `length` dan `capacity`
+- Pointer adalah penunjuk data pertama di array para slice
+- Length adalah panjang dari slice, dan
+- Capacity adalah kapasitas dari slice, dimana length tidak boleh lebih dari capacity
+
+| Membuat Slice   | Keterangan                                                       |
+| --------------- | ---------------------------------------------------------------- |
+| array[low:high] | Membuat slice dari array, dari index `low` sampai sebelum `high` |
+| array[low:]     | Membuat slice dari index `low` hingga akhir array                |
+| array[:high]    | Membuat slice dari awal (index 0) hingga sebelum `high`          |
+| array[:]        | Membuat slice dari seluruh array (dari awal hingga akhir)        |
+
+```go
+  names := [...]string{
+    "Joko",// 0
+    "Santoso",// 1
+    "Budi",// 2
+    "Siregar",// 3
+    "Samsul",// 4
+    "Hadi",// 5
+  }
+
+  slices1 := names[3:5] // [Siregar Samsul]
+  slices2 := names[:5] // [Joko Santoso Budi Siregar Samsul]
+  slices3 := names[3:] // [Siregar Samsul Hadi]
+  slices4 := names[:] // [Joko Santoso Budi Siregar Samsul Hadi]
+
+  // keterangan
+  /*
+    names[3:5]
+    pointer = 3
+    length = 2
+    capasity = 3
+  */
+```
+
+#### Function Slice
+
+| Operasi                            | Keterangan                                                                     |
+| ---------------------------------- | ------------------------------------------------------------------------------ |
+| len(slice)                         | Untuk mendapatkan panjang slice                                                |
+| cap(slice)                         | Untuk mendapatkan kapasitas slice                                              |
+| append(slice, data)                | Menambahkan data ke akhir slice, membuat array baru jika kapasitas sudah penuh |
+| make([]TipeData, length, capacity) | Membuat slice baru dengan panjang dan kapasitas tertentu                       |
+| copy(destination, source)          | Menyalin elemen dari `source` ke `destination`                                 |
+
+`Slicing array`
+
+```go
+names := [...]string{"Joko", "Santoso", "Budi", "Siregar", "Samsul", "Hadi"}
+
+slices1 := names[3:5] // ["Siregar", "Samsul"]
+slices2 := names[:5]  // dari index 0 sampai 4
+slices3 := names[3:]  // dari index 3 sampai akhir
+slices4 := names[:]   // seluruh array
+```
+
+- `array[start:end]` akan mengambil data dari index start sampai sebelum end.
+- Slice tetap terhubung ke array asalnya (shared memory).
+
+```go
+days := []string{"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"}
+daySlice1 := days[2:5] // ["Rabu", "Kamis", "Jumat"]
+
+daySlice1[0] = "s1rabu2"
+daySlice1[1] = "s1kamis2"
+
+fmt.Println(daySlice1) // ["s1rabu2", "s1kamis2", "Jumat"]
+fmt.Println(days) // ["Senin", "Selasa", "s1rabu2", "s1kamis2", "Jumat", "Sabtu", "Minggu"]
+```
+
+- Karena daySlice1 berasal dari days, maka mengubah isi daySlice1 juga mengubah isi slice days.
+
+```go
+daySlice2 := append(daySlice1, "Haribaru")
+daySlice2[1] = "s2kamis3"
+```
+
+- Jika append tidak melebihi kapasitas, maka hasil slice masih terhubung dengan array asal.
+- Jika melebihi kapasitas, Go otomatis membuat array baru di belakang layar.
+- Dalam contoh ini daySlice2 masih satu memori dengan daySlice1 karena kapasitas belum melebihi.
+
+`Make dan Append`
+
+```go
+newSlice := make([]string, 2, 5) // panjang 2, kapasitas 5
+newSlice[0] = "Joko"
+newSlice[1] = "Joko"
+
+// newSlice[2] = "Joko" ❌ error karena belum ada elemen ke-3
+newSlice2 := append(newSlice, "Joko") // ✅ -> // [Joko Joko Joko]
+```
+
+- `make([]string, 2, 5)` membuat slice kosong dengan panjang 2 dan kapasitas 5.
+- Gunakan `append()` untuk menambah elemen baru jika melewati panjang awal.
+
+`Copy`
+
+```go
+days := []string{"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"}
+
+fromSlice := days[:]
+toSlice := make([]string, 3, 5)
+copy(toSlice, fromSlice)
+
+toSlice[1] = "SelasaBaru"
+fmt.Println(toSlice) // [Senin SelasaBaru Rabu]
+```
+
+- Fungsi `copy(dest, src)` menyalin isi slice dari src ke dest sebanyak panjang slice tujuan (toSlice).
+- copy tidak berbagi memori, jadi perubahan di toSlice tidak mengubah fromSlice.
+
+Saat membuat Array, kita harus berhati-hati, jika salah, maka yang kita buat bukanlah Array, melainkan Slice
+
+```go
+iniArray := [...]int{1,2,3,4,5} -> [...]
+iniSlice := []int{1,2,3,4,5} -> []
+```
+
+### Map
+
+- Map adalah tipe data lain yang berisikan kumpulan data yang sama, namun kita bisa menentukan jenis tipe data index yang akan kita gunakan
+- Sederhananya, Map adalah tipe data kumpulan `key-value` (kata kunci - nilai), dimana kata kuncinya bersifat unik, tidak boleh sama
+- Berbeda dengan Array dan Slice, jumlah data yang kita masukkan ke dalam Map boleh sebanyak-banyaknya, asalkan kata kunci nya berbeda, jika kita gunakan kata kunci sama, maka secara otomatis data sebelumnya akan diganti dengan data baru
+
+| Operasi                     | Keterangan                            |
+| --------------------------- | ------------------------------------- |
+| len(map)                    | Mengambil jumlah elemen di map        |
+| map[key]                    | Mengakses data berdasarkan key        |
+| map[key] = value            | Mengubah atau menambahkan data di map |
+| make(map[TypeKey]TypeValue) | Membuat map baru                      |
+| delete(map, key)            | Menghapus data berdasarkan key        |
+
+```go
+m := make(map[string]string)
+m["nama"] = "Joko"
+m["alamat"] = "Riau"
+fmt.Println(m["nama"])       // Output: Joko
+fmt.Println(m["alamat"])     // Output: Riau
+fmt.Println(len(m))          // Output: 2
+delete(m, "nama")            // Output: map[alamat:Riau] -> key "nama" sudah dihapus
+
+```
+
+## Variabel
+
+### `Var`
+
+- Di Go-Lang Variable hanya bisa menyimpan tipe data yang sama, jika kita ingin menyimpan data yang berbeda-beda jenis, kita harus membuat beberapa variable
+
+```go
+func main() {
+  var name string
+
+  name = "Joko Santoso"
+  fmt.Println(name)
+
+  name  = "Joko Widodo"
+  fmt.Println(name)
+}
+```
+
+- Saat kita membuat variable, maka kita wajib menyebutkan tipe data variable tersebut
+- Namun jika kita langsung menginisialisasikan data pada variable nya, maka kita tidak wajib menyebutkan tipe data variable nya
+
+```go
+func main() {
+  var name = "Joko Santoso"
+  fmt.Println(name)
+
+  name = "Joko Widodo"
+  fmt.Println(name)
+}
+```
+
+- Di Go-Lang, kata kunci var saat membuat variable tidak lah wajib.
+- Asalkan saat membuat variable kita langsung menginisialisasi datanya
+- Agar tidak perlu menggunakan kata kunci var, kita perlu menggunakan kata kunci `:=` saat menginisialisasikan data pada variable tersebut
+- `:=` hanya untuk deklarasi awal saja
+
+```go
+func main() {
+  name := "Joko Santoso"
+  fmt.Println(name)
+
+  name = "Joko Widodo"
+  fmt.Println(name)
+}
+```
+
+### `Const`
+
+- Constant adalah variable yang nilainya tidak bisa diubah lagi setelah pertama kali diberi nilai
+- Cara pembuatan constant mirip dengan variable, yang membedakan hanya kata kunci yang digunakan adalah `const`, bukan `var`
+- Saat pembuatan constant, kita wajib langsung menginisialisasikan datanya
+
+```go
+func main() {
+  const firstName = "Joko"
+  const lastName = "Santoso"
+
+  // !error
+  firstName = "Budi"
+  lastName = "Widodo"
+}
+```
+
+### Deklarasi Multiple Variable
+
+- Di Go-Lang kita bisa membuat variable secara sekaligus banyak
+- Code yang dibuat akan lebih bagus dan mudah dibaca
+
+```go
+func main() {
+  var (
+    firstName = "Joko"
+    middleName = "D"
+    lastName = "Santoso"
+  )
+
+  const (
+    firstName = "Joko"
+    lastName = "Santoso"
+  )
+}
+```
+
+## Konversi Type Data
+
+- Di Go-Lang kadang kita butuh melakukan konversi tipe data dari satu tipe ke tipe lain
+- Misal kita ingin mengkonversi tipe data int32 ke int63, dan lain-lain
+
+```go
+func main() {
+  var nilai32 int32 = 32768
+  var nilai64 int64 = int64(nilai32)
+  var nilai16 int16 = int16(nilai32)
+
+  fmt.Println(nilai32) // 32768
+  fmt.Println(nilai64) // 32768
+  fmt.Println(nilai16) // -32768 (karena batas cuman sampai 32767 maka jadi negatif)
+
+  var name = "Eko Kurniawan"
+  var e uint8 = name[0]
+  var eString = string(e)
+
+  fmt.Println(name)
+  fmt.Println(e)
+  fmt.Println(eString)
+}
+```
+
+## Type Declaration
+
+- Type Declarations adalah kemampuan membuat ulang tipe data baru dari tipe data yang sudah ada
+- Type Declarations biasanya digunakan untuk membuat alias terhadap tipe data yang sudah ada, dengan tujuan agar lebih mudah dimengerti
+
+```go
+func main() {
+  type NoKTP string
+
+  var ktpJoko NoKTP = "11"
+  var contoh string = "22"
+  var contohKtp NoKTP = NoKTP(contoh)
+
+  fmt.Println(ktpJoko) // "11"
+  fmt.Println(contoh) // "22"
+  fmt.Println(contohKtp) // "22"
+}
+```
+
+## Operator Matematika
+
+| Operator  | Contoh    | Keterangan               |
+| --------- | --------- | ------------------------ |
+| +         | a + b     | Penjumlahan              |
+| -         | a - b     | Pengurangan              |
+| \*        | a \* b    | Perkalian                |
+| /         | a / b     | Pembagian                |
+| %         | a % b     | Sisa pembagian (modulus) |
+| +=        | a += 10   | a = a + 10 (penambahan)  |
+| -=        | a -= 10   | a = a - 10 (pengurangan) |
+| \*=       | a \*= 10  | a = a \* 10 (perkalian)  |
+| /=        | a /= 10   | a = a / 10 (pembagian)   |
+| %=        | a %= 10   | a = a % 10 (modulus)     |
+| ++        | a++ / ++a | a = a + 1 (increment)    |
+| --        | a-- / --a | a = a - 1 (decrement)    |
+| - (unary) | -a        | Negatif                  |
+| + (unary) | +a        | Positif                  |
+| !         | !true     | Kebalikan nilai boolean  |
+
+## Operasi Perbandingan
+
+## Operasi Boolean
+
+```go
+a := true
+b := false
+
+fmt.Println(a && b) // false
+fmt.Println(a || b) // true
+fmt.Println(!a)     // false
+```
+
+## If Else Expression
+
+```go
+func main() {
+  name := "Joko"
+
+  if name == "Joko" {
+    fmt.Println("Hello Joko")
+  } else if name == "Eko" {
+    fmt.Println("Hello Eko")
+  } else {
+    fmt.Println("Hi, Boleh Kenalan.")
+  }
+}
+```
+
+If sort statment
+
+```go
+func main() {
+  name := "Joko"
+
+  // length := len(name); length > 5 menjadi len(name) > 5
+  if len(name) > 5 {
+    fmt.Println("Nama terlalu panjang")
+  } else {
+    fmt.Println("Nama sudah benar")
+  }
+}
+```
+
+## Switch Expression
+
+```go
+name := "Joko"
+
+switch name {
+  case "Joko":
+    fmt.Println("Hello Joko")
+  case "Eko":
+    fmt.Println("Hello Eko")
+  default:
+    fmt.Println("Hi, boleh kenalan.")
+}
+```
+
+Sort statment
+
+```go
+switch len(name) > 5 {
+  case true:
+    fmt.Println("Nama terlalu panjang")
+  case false:
+    fmt.Println("Nama sudah benar")
+  }
+```
+
+Tanpa expression
+
+```go
+length := len(name)
+switch  {
+  case length > 10:
+    fmt.Println("Nama terlalu panjang")
+  case length > 5:
+    fmt.Println("Nama lumayan panjang")
+  default:
+    fmt.Println("Nama sudah benar")
+}
+```
+
+## For Loops
+
+```go
+counter := 1
+
+for counter <= 10 {
+  fmt.Println("Perulangan ke ", counter)
+  counter++
+}
+```
+
+For dengan statment
+
+```go
+for i := 1; i <= 10; i++ {
+  fmt.Println("Perulangan ke ", i)
+}
+```
+
+For range
+
+```go
+names := []string{"Joko", "Santoso"}
+for index, name := range names {
+  fmt.Println("Index", index, "=", name)
+}
+// Kalau tidak pakai index
+for _, name := range names {
+  fmt.Println(name)
+}
+
+namesWithKey := map[string]string{"firstname": "Joko", "lastname": "Santoso"}
+for i, v := range namesWithKey {
+  fmt.Println("Key", i, "=", v)
+}
+```
+
+## Break & Continue
+
+- Break & continue adalah kata kunci yang bisa digunakan dalam perulangan
+- Break digunakan untuk menghentikan seluruh perulangan
+- Continue adalah digunakan untuk menghentikan perulangan yang berjalan, dan langsung melanjutkan ke perulangan selanjutnya
+
+Break:
+
+```go
+for i := 0; i < 10; i++ {
+  if i == 5 {
+      break
+    }
+    fmt.Println("Perulangan ke", i) // return samoai index ke 5
+  }
+```
+
+Continue:
+
+```go
+for i := 0; i < 10; i++ {
+  if i%2 == 0 {
+      continue
+  }
+  fmt.Println("Perulangan ke", i) // return index ganjil
+}
+```
+
+## Function
+
+```go
+func sayHello()  {
+  fmt.Println("Hello World")
+}
+
+func main()  {
+  sayHello()
+}
+```
+
+`With parameter`
+
+- Jika kita menambahkan parameter di function, maka ketika memanggil function tersebut, kita wajib memasukkan data ke parameternya
+
+```go
+func sayHello(firstName string, lastName string)  {
+  fmt.Println("Hello", firstName, lastName)
+}
+
+func main()  {
+  sayHello("Joko", "Santoso")
+}
+```
+
+`Function return value`
+
+```go
+func getHello(name string) string  {
+	return "Helo " +  name
+}
+
+func main()  {
+  // result := getHello("Joko")
+	fmt.Println(getHello("Joko")) // or result
+}
+```
+
+`Function return multiple value`
+
+- Function tidak hanya dapat mengembalikan satu value, tapi juga bisa multiple value
+- Untuk memberitahu jika function mengembalikan multiple value, kita harus menulis semua tipe data return value nya di function
+
+```go
+func getFullName() (string, string) {
+  return "Joko", "Santoso"
+}
+
+func main() {
+  firstName, lastName := getFullName()
+  fmt.Println(firstName, lastName) // Joko Santoso
+}
+```
+
+- Multiple return value wajib ditangkap semua value nya
+- Jika kita ingin menghiraukan return value tersebut, kita bisa menggunakan tanda \_ (garis bawah)
+
+```go
+firstName, _ := getFullName()
+fmt.Println(firstName) // Joko
+```
+
+- Biasanya saat kita memberi tahu bahwa sebuah function mengembalikan value, maka kita hanya mendeklarasikan tipe data return value di function
+- Namun kita juga bisa membuat variable secara langsung di tipe data return function nya
+
+```go
+func getFullName() (firstName string, age int) {
+  firstName = "Joko"
+  age = 22
+
+  return firstName, age
+}
+```
+
+`Variadic function`
+
+- Parameter yang berada di posisi terakhir, memiliki kemampuan dijadikan sebuah varargs
+- Varargs artinya datanya bisa menerima lebih dari satu input, atau anggap saja semacam Array.
+- Apa bedanya dengan parameter biasa dengan tipe data Array?
+  - Jika parameter tipe Array, kita wajib membuat array terlebih dahulu sebelum mengirimkan ke function
+  - Jika parameter menggunakan varargs, kita bisa langsung mengirim data nya, jika lebih dari satu, cukup gunakan tanda koma
+
+```go
+func sumAll(numbers ...int) int {
+  total := 0
+
+  for _, number := range numbers {
+    total += number
+  }
+
+  return total
+}
+
+func main() {
+  fmt.Println(sumAll(10,10,10))
+}
+```
+
+- Kadang ada kasus dimana kita menggunakan Variadic Function, namun memiliki variable berupa slice
+- Kita bisa menjadikan slice sebagai vararg parameter
+
+```go
+numbers := []int{10,10}
+fmt.Println(sumAll(numbers...))
+```
+
+`Funtion as value`
+
+```go
+func getGoodBy(name string) string {
+  return "Good by " + name
+}
+
+func main() {
+  goodBy := getGoodBy
+  fmt.Println(goodBy("Joko")) // Good by Joko
+}
+```
+
+`Function as parameter`
+
+- Function tidak hanya bisa kita simpan di dalam variable sebagai value
+- Namun juga bisa kita gunakan sebagai parameter untuk function lain
+
+```go
+func sayHelloWithFillter(name string, fillter func(string) string) {
+  if name == "" {
+    fmt.Println("Nama tidak ada")
+  } else {
+    fmt.Println("Hello", fillter(name))
+  }
+}
+
+func spamFillter(name string) string  {
+  if name == "Anjing" {
+    return "..."
+  } else {
+    return name
+  }
+}
+
+func main() {
+  sayHelloWithFillter("Joko", spamFillter)
+
+  fillter := spamFillter
+  sayHelloWithFillter("Anjing", fillter)
+
+  sayHelloWithFillter("", spamFillter)
+}
+```
+
+`Function type declaration`
+
+```go
+type Filter func(string) string
+
+func sayHelloWithFillter(name string, fillter Filter) {
+  // ...
+}
+```
+
+`Anonymous function`
+
+- Sebelumnya setiap membuat function, kita akan selalu memberikan sebuah nama pada function tersebut
+- Namun kadang ada kalanya lebih mudah membuat function secara langsung di variable atau parameter tanpa harus membuat function terlebih dahulu
+- Hal tersebut dinamakan anonymous function, atau function tanpa nama
+
+```go
+type Blacklist func(string) bool
+
+func registerUser(name string, blacklist Blacklist) {
+  if blacklist(name) {
+    fmt.Println("You Are Blocked", name)
+  } else {
+    fmt.Println("Welcome", name)
+  }
+}
+
+func main() {
+  registerUser("Anjing", func(name string) bool {
+    return name == "Anjing"
+  })
+}
+```
+
+`Recursive function`
+
+- Recursive function adalah function yang memanggil function dirinya sendiri
+- Kadang dalam pekerjaan, kita sering menemui kasus dimana menggunakan recursive function lebih mudah dibandingkan tidak menggunakan recursive function
+- Contoh kasus yang lebih mudah diselesaikan menggunakan recursive adalah Factorial
+
+```go
+func factorialLoop(value int) int {
+  result := 1
+
+  for i := value; i > 0; i-- {
+    result *= i
+  }
+
+  return result
+}
+
+func factorialRecursive(value int) int  {
+  if value == 1 {
+    return  1
+  } else {
+    return  value * factorialRecursive(value-1)
+  }
+}
+
+func main() {
+  fmt.Println(5 * 4 * 3 * 2 * 1) // 120
+  fmt.Println(factorialLoop(5)) // 120
+  fmt.Println(factorialRecursive(5)) // 120
+}
+```
+
+`Closure`
+
+- Closure adalah kemampuan sebuah function berinteraksi dengan data-data disekitarnya dalam scope yang sama
+- Harap gunakan fitur closure ini dengan bijak saat kita membuat aplikasi
+
+```go
+func main() {
+  counter := 0
+
+  increment := func() {
+    counter++
+  }
+
+  increment()
+  increment()
+  increment()
+
+  fmt.Println(counter) // 3
+}
+```
+
+`Defer`, `Panic`, `Recover`
+
+Defer
+
+- Defer function adalah function yang bisa kita jadwalkan untuk dieksekusi setelah sebuah function selesai di eksekusi
+- Defer function akan selalu dieksekusi walaupun terjadi error di function yang dieksekusi
+
+```go
+func endApp() {
+  fmt.Println("Program berhenti")
+}
+
+func runApp() {
+  defer endApp() // ✅
+  fmt.Println("Program berjalan")
+
+  endApp() // ❌
+}
+
+func main() {
+  runApp()
+}
+```
+
+Panic
+
+- Panic function adalah function yang bisa kita gunakan untuk menghentikan program
+- Panic function biasanya dipanggil ketika terjadi panic pada saat program kita berjalan
+- Saat panic function dipanggil, program akan terhenti, namun defer function tetap akan dieksekusi
+
+```go
+func endApp() {
+	fmt.Println("Program berhenti")
+}
+
+func runApp(error bool) {
+	defer endApp() // tetap berjalan
+
+	fmt.Println("Program berjalan")
+
+	if error {
+		panic("UPPS error!")
+	}
+}
+
+func main() {
+	runApp(true)
+}
+```
+
+Recover
+
+- Recover adalah function yang bisa kita gunakan untuk menangkap data panic
+- Dengan recover proses panic akan terhenti, sehingga program akan tetap berjalan
+- Sebaiknya recover function dipanggil di defer function karena jika tipanggil setelah panic maka program akan terhenti semua, namun jika di defer program selanjutnya akan tetap berjalan.
+
+```go
+func endApp() {
+	fmt.Println("Program berhenti")
+  // CONTOH BENAR✅
+	message := recover()
+	fmt.Println("Upss error", message)
+}
+
+func runApp(error bool) {
+	defer endApp()
+
+	fmt.Println("Program berjalan")
+
+	if error {
+		panic("UPPS error!")
+	}
+
+  // CONTOH SALAH❌
+  message := recover()
+  fmt.Println("Upss error", message)
+}
+
+func main() {
+	runApp(true)
+	fmt.Println("Program lanjut berjalan") // tetap berjalan walaupun terjadi panic
+}
+```
+
+## Komentar
+
+```go
+/*
+  Isi komentar
+  Isi komentar
+  Isi komentar
+*/
+
+// Isi komentar
+// Isi komentar
+// Isi komentar
+```
+
+## Struct
+
+- Struct adalah sebuah template data yang digunakan untuk menggabungkan nol atau lebih tipe data lainnya dalam satu kesatuan
+- Struct biasanya representasi data dalam program aplikasi yang kita buat
+- Data di struct disimpan dalam field
+- Sederhananya struct adalah kumpulan dari field
+
+```go
+type Customer struct {
+  Name, Addres string
+  Age int
+}
+```
+
+- Struct adalah template data atau prototype data
+- Struct tidak bisa langsung digunakan
+- Namun kita bisa membuat data/object dari struct yang telah kita buat
+
+```go
+func main() {
+  var joko Customer
+  joko.Name = "Joko"
+  joko.Addres = "Riau"
+  joko.Age = 22
+
+  eko := Customer{
+    Name:   "Eko",
+    Addres: "Siak",
+    Age:    25,
+  }
+}
+```
+
+`Struct method`
+
+- Struct adalah tipe data seperti tipe data lainnya, dia bisa digunakan sebagai parameter untuk function
+- Namun jika kita ingin menambahkan method ke dalam structs, sehingga seakan-akan sebuah struct memiliki function
+- Method adalah function
+
+```go
+func (customer Customer) sayHello(name string)  {
+  fmt.Println("hello", name, "My name is", customer.Name)
+}
+
+func main() {
+  // Ambil dari variabel diatas 👆
+
+  joko.sayHello("Agus")
+  eko.sayHello("Agus")
+}
+```
+
+## Interface
+
+- Interface adalah tipe data Abstract, dia tidak memiliki implementasi langsung
+- Sebuah interface berisikan definisi-definisi method
+- Biasanya interface digunakan sebagai kontrak
+
+```go
+type HasName interface {
+  GetName() string
+}
+
+func SayHello(value HasName) {
+  fmt.Println("Hello", value.GetName())
+}
+```
+
+`Implamentasi interface`
+
+- Setiap tipe data yang sesuai dengan kontrak interface, secara otomatis dianggap sebagai interface tersebut
+- Sehingga kita tidak perlu mengimplementasikan interface secara manual
+- Hal ini agak berbeda dengan bahasa pemrograman lain yang ketika membuat interface, kita harus menyebutkan secara eksplisit akan menggunakan interface mana
+
+```go
+type Person struct {
+  Name string
+}
+
+func (person Person) GetName() string {
+  return person.Name
+}
+
+func main() {
+  person := Person{Name: "Joko Santoso"}
+  SayHello(person) // Hello Joko Santosos
+}
+```
+
+`Interface kosong`
+
+```go
+func Ups() any {
+  return 1
+}
+
+func main() {
+  kosong := Ups()
+  fmt.Println(kosong) // 1
+}
+```
+
+## Nil
+
+- Biasanya di dalam bahasa pemrograman lain, object yang belum diinisialisasi maka secara otomatis nilainya adalah null atau nil
+- Berbeda dengan Go-Lang, di Go-Lang saat kita buat variable dengan tipe data tertentu, maka secara otomatis akan dibuatkan default value nya
+- Namun di Go-Lang ada data nil, yaitu data kosong
+- Nil sendiri hanya bisa digunakan di beberapa tipe data, seperti `interface`, `function`, `map`, `slice`, `pointer` dan `channel`
+
+```go
+func NewMap(name string) map[string]string {
+	if name == "" {
+		return nil
+	} else {
+		return map[string]string{
+			"name": name,
+		}
+	}
+}
+
+func main() {
+	data := NewMap("Joko")
+
+	if data == nil {
+		fmt.Println("Data Kosong")
+	} else {
+		fmt.Println(data["name"])
+	}
+}
+```
+
+## Type Assertions
+
+- Type Assertions merupakan kemampuan merubah tipe data menjadi tipe data yang diinginkan
+- Fitur ini sering sekali digunakan ketika kita bertemu dengan data interface kosong
+
+`Type Assertions Menggunakan Switch`
+
+- Saat salah menggunakan type assertions, maka bisa berakibat terjadi panic di aplikasi kita
+- Jika panic dan tidak ter-recover, maka otomatis program kita akan mati
+- Agar lebih aman, sebaiknya kita menggunakan switch expression untuk melakukan type assertions
+
+```go
+func random() any {
+	return false
+}
+
+func main() {
+	result := random()
+
+	switch value := result.(type) {
+	case string:
+		fmt.Println("String", value)
+	case int:
+		fmt.Println("Int", value)
+	default:
+		fmt.Println("Unknown", value)
+	}
+}
+```
+
+## Pointer
+
+`Default`
+
+- Secara default di Go-Lang semua variable itu di passing by `value`, bukan by `reference`
+- Artinya, jika kita mengirim sebuah variable ke dalam function, method atau variable lain, sebenarnya yang dikirim adalah duplikasi value nya
+
+```go
+type Addres struct {
+	City, Prov, Country string
+}
+
+func main() {
+  addres1 := Addres{"Siak", "Riau", "Indonesia"}
+  addres2 := addres1
+
+  addres2.City = "Pekanbaru"
+
+  fmt.Println(addres1) // {"Siak", "Riau", "Indonesia"}
+  fmt.Println(addres2) // {"Pekanbaru", "Riau", "Indonesia"}
+}
+```
+
+`Pointer`
+
+- Pointer adalah kemampuan membuat reference ke lokasi data di memory yang sama, tanpa menduplikasi data yang sudah ada
+- Sederhananya, dengan kemampuan pointer, kita bisa membuat pass by reference
+- Untuk membuat sebuah variable dengan nilai pointer ke variable yang lain, kita bisa menggunakan operator `&` diikuti dengan nama variable nya
+
+```go
+// var addres1 Addres = Addres{"Siak", "Riau", "Indonesia"}
+// var addres2 *Addres = &addres1
+// OR 👇
+addres1 := Addres{"Siak", "Riau", "Indonesia"}
+addres2 := &addres1
+
+addres2.City = "Pekanbaru"
+
+fmt.Println(addres1) // {"Pekanbaru", "Riau", "Indonesia"}
+fmt.Println(addres2) // {"Pekanbaru", "Riau", "Indonesia"}
+```
+
+` Asterisk Operator`
+
+- Saat kita mengubah variable pointer, maka yang berubah hanya variable tersebut.
+- Semua variable yang mengacu ke data yang sama tidak akan berubah
+- Jika kita ingin mengubah seluruh variable yang mengacu ke data tersebut, kita bisa menggunakan operator `*`
+
+```go
+type Addres struct {
+	City, Prov, Country string
+}
+
+func main() {
+	addres1 := Addres{"Siak", "Riau", "Indonesia"}
+	addres2 := &addres1
+
+	addres2.City = "Pekanbaru"
+	fmt.Println(addres1) // {"Pekanbaru", ...}
+	fmt.Println(addres2) // {"Pekanbaru", ...}
+
+  // addres1 tidak berubah
+	addres2 = &Addres{"Kandis", "Riau", "Indonesia"}
+  fmt.Println(addres1) // {"Pekanbaru", ...}
+	fmt.Println(addres2) // {"Kandis", ...}
+
+  // addres1 ikut berubah
+	*addres2 = Addres{"Kandis", "Riau", "Indonesia"}
+	fmt.Println(addres1) // {"Kandis", ...}
+	fmt.Println(addres2) // {"Kandis", ...}
+}
+```
+
+`Operator new`
+
+- Sebelumnya untuk membuat pointer dengan menggunakan operator &
+- Go-Lang juga memiliki function new yang bisa digunakan untuk membuat pointer
+- Namun function new hanya mengembalikan pointer ke data kosong, artinya tidak ada data awal
+
+```go
+/*
+  &Addres{} == new(Addres)
+*/
+var addres1 *Addres = new(Addres)
+var addres2 *Addres = addres1
+
+addres2.Country = "Indonesia"
+
+fmt.Println(addres1) // {  Indonesia}
+fmt.Println(addres2) // {  Indonesia}
+```
+
+`Pointer Function`
+
+- Saat kita membuat parameter di function, secara default adalah pass by value, artinya data akan di copy lalu dikirim ke function tersebut
+- Oleh karena itu, jika kita mengubah data di dalam function, data yang aslinya tidak akan pernah berubah.
+- Hal ini membuat variable menjadi aman, karena tidak akan bisa diubah
+- Namun kadang kita ingin membuat function yang bisa mengubah data asli parameter tersebut
+- Untuk melakukan ini, kita juga bisa menggunakan pointer di function
+- Untuk menjadikan sebuah parameter sebagai pointer, kita bisa menggunakan operator \* di parameternya
+
+```go
+type Address struct {
+	City, Country string
+}
+
+func ChangeAddress(address *Address) *Address {
+	address.Country = "Indonesia"
+	return address
+}
+
+func main() {
+	address := Address{}
+	address2 := ChangeAddress(address)
+
+	fmt.Println(address) // { Indonesia}
+	fmt.Println(address2) // { Indonesia}
+}
+```
+
+`Pointer Method`
+
+- Walaupun method akan menempel di struct, tapi sebenarnya data struct yang diakses di dalam method adalah pass by value
+- Sangat direkomendasikan menggunakan pointer di method, sehingga tidak boros memory karena harus selalu diduplikasi ketika memanggil method
+
+```go
+type Man struct {
+	Name string
+}
+
+func (man *Man) Married() {
+	man.Name = "Mr. " + man.Name
+}
+
+func main() {
+	joko := Man{"Joko"}
+	joko.Married()
+
+	fmt.Println(joko.Name) // Mr. Joko
+}
+```
+
+## Package dan Import
+
+### Package
+
+- Package adalah tempat yang bisa digunakan untuk mengorganisir kode program yang kita buat di Go-Lang
+- Dengan menggunakan package, kita bisa merapikan kode program yang kita buat
+- Package sendiri sebenarnya hanya direktori folder di sistem operasi kita
+
+```go
+// 📂 helper/helper.go
+package helper
+
+func SayHello(name string) string {
+	return "Hello " + name
+}
+```
+
+### Import
+
+- Secara standar, file Go-Lang hanya bisa mengakses file Go-Lang lainnya yang berada dalam package yang sama
+- Jika kita ingin mengakses file Go-Lang yang berada diluar package, maka kita bisa menggunakan Import
+
+```go
+package main
+
+import (
+	"fmt"
+	"golang-dasar/helper"
+)
+
+func main() {
+	result := helper.SayHello("Joko")
+	fmt.Println(result) // Hello Joko
+}
+```
+
+### Accsess Modifier
+
+- Di bahasa pemrograman lain, biasanya ada kata kunci yang bisa digunakan untuk menentukan access modifier terhadap suatu function atau variable
+- Di Go-Lang, untuk menentukan access modifier, cukup dengan nama function atau variable
+- Jika nama nya diawali dengan huruf besar, maka artinya bisa diakses dari package lain, jika dimulai dengan hurup kecil, artinya tidak bisa diakses dari package lain
+
+```go
+package helper
+
+var version = "0.0.1" // tidak dapat diakses
+var Aplication = "golang" // dapat diakses
+
+// tidak dapat diakses
+func sayHello(name string) string {
+	return "Hello " + name
+}
+
+// dapat diakses
+func SayHello(name string) string {
+	return "Hello " + name
+}
+```
+
+### Package Initialization
+
+- Saat kita membuat package, kita bisa membuat sebuah function yang akan diakses ketika package kita diakses
+- Ini sangat cocok ketika contohnya, jika package kita berisi function-function untuk berkomunikasi dengan database, kita membuat function inisialisasi untuk membuka koneksi ke database
+- Untuk membuat function yang diakses secara otomatis ketika package diakses, kita cukup membuat function dengan nama init
+
+```go
+// 📂 database/mtsql.go
+package database
+
+var connection string
+
+func init() {
+	connection = "MYSQL"
+}
+
+func GetDatabasse() string {
+	return connection
+}
+```
+
+Import
+
+```go
+package main
+
+import (
+	"fmt"
+	"golang-dasar/database"
+)
+
+func main() {
+	fmt.Println(database.GetDatabasse()) // MYSQL
+}
+```
+
+`Blank Identifier`
+
+- Kadang kita hanya ingin menjalankan init function di package tanpa harus mengeksekusi salah satu function yang ada di package
+- Secara default, Go-Lang akan komplen ketika ada package yang di import namun tidak digunakan
+- Untuk menangani hal tersebut, kita bisa menggunakan blank identifier `_ "lokasi-package"` sebelum nama package ketika melakukan import
+
+```go
+import (
+	"fmt"
+	_ "golang-dasar/internal"
+)
+```
+
+## Error
+
+- Go-Lang memiliki interface yang digunakan sebagai kontrak untuk membuat error, nama interface nya adalah error
+
+```go
+type error interface {
+  Error() string
+}
+```
+
+- Untuk membuat error, kita tidak perlu manual.
+- Go-Lang sudah menyediakan library untuk membuat helper secara mudah, yang terdapat di package errors (Package akan kita bahas secara detail di materi tersendiri)
+
+```go
+import (
+	"errors"
+	"fmt"
+)
+
+func pembagian(nilai int, pembagi int) (int, error) {
+	if pembagi == 0 {
+		return 0, errors.New("Pembagian dengan 0")
+	} else {
+		return nilai / pembagi, nil
+	}
+}
+
+func main() {
+	hasil, err := pembagian(100, 10)
+	if err == nil {
+		fmt.Println("hasil", hasil)
+	} else {
+		fmt.Println("Error", err.Error())
+	}
+}
+```
+
+## Custom Error
+
+- Karena error adalah sebuah interface, jadi jika kita ingin membuat error sendiri, kita bisa membuat struct yang mengikuti kontrak dari interface error
+
+`Membuat struct error`
+
+```go
+type validationError struct {
+	Message string
+}
+
+func (v *validationError) Error() string {
+	return v.Message
+}
+
+type notFoundError struct {
+	Message string
+}
+
+func (n *notFoundError) Error() string {
+	return n.Message
+}
+```
+
+`Menggunakan custom error`
+
+```go
+func saveData(id string, data any) error {
+	if id == "" {
+		return &validationError{"Validation Error"}
+	}
+
+	if data != "Joko" {
+		return &notFoundError{"Not Found Error"}
+	}
+
+	return nil
+}
+```
+
+`Mengecek custom error`
+
+```go
+func main() {
+	err := saveData("dsd", "Joko")
+	if err != nil {
+		// IF
+		if validationErr, ok := err.(*validationError); ok {
+			fmt.Println("Validation Error", validationErr.Message)
+		} else if notFoundErr, ok := err.(*notFoundError); ok {
+			fmt.Println("Not Found Error", notFoundErr.Message)
+		}  else {
+			fmt.Println("Unknown Error", err.Error())
+		}
+
+		// SWITCH
+		switch finalError := err.(type) {
+		case *validationError:
+			fmt.Println("Validation Error", finalError.Error())
+		case *notFoundError:
+			fmt.Println("Not Found Error", finalError.Error())
+		default:
+			fmt.Println("Unknown Error", finalError.Error())
+		}
+	} else {
+		fmt.Println("Sukses")
+	}
+}
+```

@@ -1,52 +1,55 @@
 @import 'tailwindcss';
-/* @plugin '@tailwindcss/typography'; */
 
 :root {
   --background: #f3f3f2;
   --white: #ffffff;
   --black: #2a2a28;
-  --dark-grey: #444444;
-  --grey: #afafac;
-  --light-grey: #ebebeb;
+  --dark-gray: #444444;
+  --gray: #afafac;
+  --light-gray: #ebebeb;
+
+  --sh-class: #7aa2f7;
+  --sh-sign: #89ddff;
+  --sh-string: #9ece6a;
+  --sh-keyword: #bb9af7;
+  --sh-comment: #565f89;
+  --sh-jsxliterals: #7aa2f7;
+  --sh-property: #73daca;
+  --sh-entity: #e0af68;
+  --sh-identifier: #354150;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-white: var(--white);
   --color-black: var(--black);
-  --color-dark-grey: var(--dark-grey);
-  --color-grey: var(--grey);
-  --color-light-grey: var(--light-grey);
+  --color-dark-gray: var(--dark-gray);
+  --color-gray: var(--gray);
+  --color-light-gray: var(--light-gray);
   --font-sans: var(--font-manrope-sans);
   --font-mono: var(--font-fragment-mono);
 
   --breakpoint-md: 800px;
   --breakpoint-lg: 1200px;
 
-  /* H1 */
   --text-h1-l: 55px;
   --text-h1-m: 45px;
   --text-h1-s: 40px;
 
-  /* H2 */
   --text-h2-l: 50px;
   --text-h2-m: 45px;
   --text-h2-s: 32px;
 
-  /* H3 */
   --text-h3-l: 30px;
-  --text-h3-m: 30px; /* sama dengan h3-l */
+  --text-h3-m: 30px;
   --text-h3-s: 25px;
 
-  /* H4 */
   --text-h4-l: 24px;
-  --text-h4-m: 24px; /* sama dengan h4-l */
+  --text-h4-m: 24px;
   --text-h4-s: 20px;
 
-  /* H5 */
   --text-h5: 20px;
 
-  /* H6 */
   --text-h6: 16px;
 }
 
@@ -58,73 +61,104 @@
     @apply bg-background font-sans antialiased;
   }
   a {
-    @apply hover:text-grey text-[18px] leading-[1.6em] text-[#4A4A45] underline;
+    @apply hover:text-gray text-[18px] leading-[1.6em] text-[#4A4A45] underline;
   }
+}
+
+@layer components {
   .nav-home {
     @apply text-[16px] leading-[120%] tracking-[-0.01em] text-black no-underline hover:text-[#000000];
   }
   .nav-footer-home {
-    @apply hover:text-light-grey text-[16px] leading-[120%] font-bold text-white no-underline;
+    @apply hover:text-light-gray text-[16px] leading-[120%] font-bold text-white no-underline;
   }
   .nav-links {
     @apply text-[14px] leading-[2em] tracking-[-0.2px] text-[#4A4A45] no-underline hover:text-[#828282];
   }
   .nav-footer-links {
-    @apply text-grey text-[14px] leading-[2em] tracking-[-0.2px] no-underline hover:text-white;
+    @apply text-gray text-[14px] leading-[2em] tracking-[-0.2px] no-underline hover:text-white;
   }
-}
 
-@layer components {
-  /* H1 */
   .h1-responsive {
     @apply text-[40px] md:text-[45px] lg:text-[55px];
   }
 
-  /* H2 */
   .h2-responsive {
     @apply text-[32px] md:text-[45px] lg:text-[50px];
   }
 
-  /* H3 */
   .h3-responsive {
     @apply text-[25px] md:text-[30px] lg:text-[30px];
   }
 
-  /* H4 */
   .h4-responsive {
     @apply text-[20px] md:text-[24px] lg:text-[24px];
   }
 
-  /* H5 */
   .h5-responsive {
     @apply text-[18px] md:text-[20px];
   }
 
-  /* H6 */
   .h6-responsive {
     @apply text-[14px] md:text-[16px];
   }
-
-  .p-small {
-    @apply text-[16px] leading-[1.5em] text-[#4A4A45];
-  }
-
-  .p-reguler {
-    @apply text-[18px] leading-[1.5em];
-  }
-
-  .p-medium {
-    @apply text-[18px] leading-[1.5em] font-medium text-black;
-  }
-
-  .p-semibold {
-    @apply text-[18px] leading-[1.7em] font-semibold text-black;
-  }
 }
 
-li::marker {
-  content: '•';
-  color: black;
-  font-size: 1.5em;
-  margin-right: 0.5rem; /* jarak bullet ke teks */
+pre {
+  -ms-overflow-style: none;
+  background-color: var(--black);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  line-height: 1;
+  scrollbar-width: none;
+  position: relative;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+pre code > span .sh__token--identifier {
+  color: white !important;
+}
+
+/* Inline code — hanya berlaku untuk <code> yang TIDAK di dalam <pre> */
+code:not(pre code) {
+  display: inline-block;
+  padding: 0px 4px;
+  border: 1px solid var(--gray, #ccc);
+  border-radius: 10px;
+  background: var(--light-gray);
+  color: var(--black);
+}
+
+code:not(pre code) span {
+  font-weight: 500;
+  color: #111 !important;
+}
+
+summary {
+  color: var(--black);
+  margin-bottom: 0.2rem;
+  font-size: 18px;
+  line-height: 1.6em;
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+  padding: 0.6em 0em;
+}
+
+summary::marker {
+  color: var(--black);
+  font-size: 1.2em;
 }

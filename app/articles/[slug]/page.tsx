@@ -1,4 +1,5 @@
 import { sharedMDXComponents } from '@/components/mdx/shared-components';
+import { Wrapper, WrapperContent } from '@/components/wrapper';
 import { getAllPosts, getPostBySlug } from '@/lib/mdx';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
@@ -22,27 +23,31 @@ export default async function BlogPost({
     const post = getPostBySlug(slug);
 
     return (
-      <article className="mx-auto max-w-4xl px-4 py-8">
-        <header className="mb-8">
-          <h1 className="mb-2 text-4xl font-bold">{post.meta.title}</h1>
-          <p className="text-gray-600 dark:text-zinc-400">
-            {post.meta.date} • {post.meta.author}
-          </p>
-        </header>
+      <Wrapper>
+        <WrapperContent>
+          <article>
+            <header className="mb-8">
+              <h1 className="mb-2 text-4xl font-bold">{post.meta.title}</h1>
+              <p className="text-gray-600 dark:text-zinc-400">
+                {post.meta.date} • {post.meta.author}
+              </p>
+            </header>
 
-        <div className="prose prose-lg dark:prose-invert max-w-none">
-          <MDXRemote
-            source={post.content}
-            components={sharedMDXComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [],
-              },
-            }}
-          />
-        </div>
-      </article>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <MDXRemote
+                source={post.content}
+                components={sharedMDXComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [],
+                  },
+                }}
+              />
+            </div>
+          </article>
+        </WrapperContent>
+      </Wrapper>
     );
   } catch (error) {
     console.error('Error loading post:', error);
