@@ -1,25 +1,12 @@
 'use client';
 
+import { NAVLINKS } from '@/lib/constans';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { Button } from './button';
-
-const NAVLINKS = [
-  { path: '/projects', label: 'Projects' },
-  { path: '/articles', label: 'Articles' },
-  { path: '/about-me', label: 'About me' },
-];
-
-function Logo() {
-  return (
-    <Link href="/" className="nav-home">
-      Joko Santoso
-    </Link>
-  );
-}
+import { buttonVariants } from './button';
 
 export default function Navbar() {
   const navRef = React.useRef(0);
@@ -64,7 +51,10 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-[470px] w-full max-w-[1600px] shrink-0 flex-col items-center px-[20px] md:px-[40px] lg:px-[50px]">
         <div className="flex h-[80px] w-full shrink-0 items-center justify-between md:h-[90px]">
-          <Logo />
+          {/* Logo */}
+          <Link href="/" className="nav-home">
+            Joko Santoso
+          </Link>
 
           {/* Navlinks */}
           <div className="hidden items-center gap-8 md:flex">
@@ -79,10 +69,17 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button>
+            <Link
+              href="https://github.com/jokoo7"
+              target="_blank"
+              className={cn(
+                buttonVariants({ variant: 'default' }),
+                'no-underline'
+              )}
+            >
               <FaGithub />
               Source
-            </Button>
+            </Link>
           </div>
 
           {/* Hamburger Menu */}
@@ -127,10 +124,17 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Button className="w-full" variant="dark" size="big">
+          <Link
+            href="https://github.com/jokoo7"
+            target="_blank"
+            className={cn(
+              buttonVariants({ variant: 'dark', size: 'big' }),
+              'w-full no-underline'
+            )}
+          >
             <FaGithub />
             Source
-          </Button>
+          </Link>
         </div>
       </div>
     </nav>

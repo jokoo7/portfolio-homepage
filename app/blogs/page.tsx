@@ -9,63 +9,21 @@ import { Heading } from '@/components/heading';
 import MainHero from '@/components/main-hero';
 import { Paragraph, paragraphVariants } from '@/components/paragraph';
 import { WrapperContent } from '@/components/wrapper';
+import { PROJECTS } from '@/lib/constans';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { IoArrowForward } from 'react-icons/io5';
 
-const PROJECTS = [
-  {
-    id: 'project1',
-    slug: 'nextnime',
-    name: 'Redesign project: fitness tracker App Revamp',
-    description:
-      'Elevating the user experience of a renowned fitness tracker app through a strategic.',
-    link: 'https://pro.motion-primitives.com/',
-    image: '/project_1.avif',
-    images: ['/project_1.avif'],
-  },
-  {
-    id: 'project2',
-    slug: 'motion-primitives',
-    name: 'Internship project: social dining app design',
-    description:
-      'Designing a mobile app to connect food enthusiasts through shared dining experiences, from concept to prototype.',
-    link: 'https://motion-primitives.com/',
-    image: '/project_2.avif',
-    images: ['/project_2.avif'],
-  },
-  {
-    id: 'project3',
-    slug: 'nextnime',
-    name: 'Redesign project: fitness tracker App Revamp',
-    description:
-      'Elevating the user experience of a renowned fitness tracker app through a strategic.',
-    link: 'https://pro.motion-primitives.com/',
-    image: '/project_1.avif',
-    images: ['/project_1.avif'],
-  },
-  {
-    id: 'project4',
-    slug: 'motion-primitives',
-    name: 'Internship project: social dining app design',
-    description:
-      'Designing a mobile app to connect food enthusiasts through shared dining experiences, from concept to prototype.',
-    link: 'https://motion-primitives.com/',
-    image: '/project_2.avif',
-    images: ['/project_2.avif'],
-  },
-];
-
-export default function ArticlesPage() {
+export default function BlogsPage() {
   return (
     <MainHero>
       <WrapperContent className="space-y-10">
         <div className="flex flex-col gap-4">
           <Heading as="h2" className="h2-responsive">
-            My Articles
+            My Blogs
           </Heading>
           <Paragraph className="max-w-[800px]">
-            Discover my collection of articles, where I share insights,
+            Discover my collection of blogs, where I share insights,
             experiences, and knowledge about web development, design, and
             technology.
           </Paragraph>

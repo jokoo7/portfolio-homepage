@@ -1,14 +1,10 @@
-import { Github, Linkedin, Mail, Unplug } from 'lucide-react';
+import { SOCIALLINKS } from '@/lib/constans';
+import { Unplug } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from './button';
 import { Heading } from './heading';
 import { Paragraph } from './paragraph';
 import { Wrapper, WrapperContent } from './wrapper';
-
-// const NAVLINKS = [
-//   { path: '/projects', label: 'Projects' },
-//   { path: '/articles', label: 'Articles' },
-//   { path: '/about-me', label: 'About me' },
-// ];
 
 export default function Footer() {
   return (
@@ -36,35 +32,21 @@ export default function Footer() {
       <footer className="w-full bg-black py-8">
         <Wrapper className="pt-0 pb-0 md:pt-0 md:pb-0 lg:pt-0 lg:pb-0">
           <WrapperContent className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            {/* <p className="text-muted-foreground text-sm">
-              © 2className="border-gray flex flex-col items-center justify-between gap-20 border-b py-12 md:flex-row"024 Portfolio. Dibuat dengan Next.js dan TailwindCSS.
-            </p> */}
             <p className="text-gray text-[14px] leading-[1.2em]">
               © {new Date().getFullYear()} Portfolio Joko Santoso, Build with
               ❤️
             </p>
             <div className="flex items-center gap-4">
-              <a
-                href="https://github.com"
-                className="text-gray transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={16} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                className="text-gray transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={16} />
-              </a>
-              <a
-                href="mailto:hello@example.com"
-                className="text-gray transition-colors"
-                aria-label="Email"
-              >
-                <Mail size={16} />
-              </a>
+              {SOCIALLINKS.map((l, i) => (
+                <Link
+                  key={i}
+                  href={l.path}
+                  className="text-gray transition-colors"
+                  aria-label="GitHub"
+                >
+                  <l.icon size={16} />
+                </Link>
+              ))}
             </div>
           </WrapperContent>
         </Wrapper>
